@@ -12,7 +12,7 @@ const UserSchema = new Schema({
         type: String,
         trim: true,
         unique: true,
-        required: 'Username is required',
+        required: 'Username is required'
     },
     email: {
         type: String,
@@ -25,7 +25,7 @@ const UserSchema = new Schema({
     password: {
         type: String,
         trim: true,
-        required: 'Password is required',
+        required: 'Password is required'
     },
     bio: {
         type: String,
@@ -34,7 +34,7 @@ const UserSchema = new Schema({
     },
     picture: {
         type: String,
-        trim: true,
+        trim: true
     },
     followers: [
         {
