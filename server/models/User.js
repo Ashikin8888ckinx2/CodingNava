@@ -54,6 +54,16 @@ const UserSchema = new Schema({
     }
 });
 
+UserSchema.pre('save', (next) => {
+    // do something to encrypt password
+    next();
+});
+
+UserSchema.methods.checkPassword = (pw) => {
+    // decrypt pw and check if it matches with what user entered
+    // return true or false according to whether it matches up or not
+}
+
 const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
