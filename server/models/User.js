@@ -25,7 +25,8 @@ const UserSchema = new Schema({
     password: {
         type: String,
         trim: true,
-        required: 'Password is required',
+        minlength: 5,
+        required: 'Password is required'
     },
     bio: {
         type: String,
@@ -34,7 +35,7 @@ const UserSchema = new Schema({
     },
     picture: {
         type: String,
-        trim: true,
+        trim: true
     },
     followers: [
         {
@@ -55,13 +56,19 @@ const UserSchema = new Schema({
 });
 
 UserSchema.pre('save', (next) => {
-    // do something to encrypt password
+    // set up pre-save middleware to create password
+    // uses bcrypt to encrypt password
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
     next();
 });
 
 UserSchema.methods.checkPassword = (pw) => {
-    // decrypt pw and check if it matches with what user entered
-    // return true or false according to whether it matches up or not
+    // compare the incoming password with the hashed password
+    // returns true or false depending on whether it matches up or not
+    return bcrypt.compare(pw, this.password);
 }
 
 const User = mongoose.model("User", UserSchema);
