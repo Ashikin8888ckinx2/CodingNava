@@ -8,8 +8,6 @@ const typeDefs = gql`
     password: String
     bio: String
     picture: String
-    followers: []
-    following: []
     privacy_mode: Boolean
   }
 

@@ -56,7 +56,7 @@ const UserSchema = new Schema({
     }
 });
 
-UserSchema.pre('save', (next) => {
+UserSchema.pre('save', async function (next) {
     // set up pre-save middleware to create password
     // uses bcrypt to encrypt password
     if (this.isNew || this.isModified('password')) {
@@ -66,7 +66,7 @@ UserSchema.pre('save', (next) => {
     next();
 });
 
-UserSchema.methods.checkPassword = (pw) => {
+UserSchema.methods.checkPassword = function (pw) {
     // compare the incoming password with the hashed password
     // returns true or false depending on whether it matches up or not
     return bcrypt.compare(pw, this.password);
