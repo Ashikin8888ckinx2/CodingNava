@@ -1,10 +1,11 @@
 // loads css onto homepage
-import "./Home.css";
+import './Home.css';
 
 const Home = () => {
-
   return (
-        <h1>Buck It!</h1>
+    <>
+      <div className='py-4 py-lg-5 container-fluid'>Home Page</div>
+    </>
   );
 };
 
