@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
+const {BucketListSchema} = require('./BucketList');
 
 const Schema = mongoose.Schema;
 
-const validateEmail = function(email) {
+const validateEmail = function (email) {
     const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return re.test(email);
 };
@@ -51,9 +52,10 @@ const UserSchema = new Schema({
         }
     ],
     privacy_mode: {
-        type: Boolean,    
-        default: false    
-    }
+        type: Boolean,
+        default: false
+    },
+    bucketList: [BucketListSchema]
 });
 
 UserSchema.pre('save', async function (next) {

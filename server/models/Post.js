@@ -31,10 +31,6 @@ const PostSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     },
-    bucket_list_id: {
-        type: Schema.Types.ObjectId,
-        ref: "BucketList"
-    },
     comment_ids: [
         {
             type: Schema.Types.ObjectId,
@@ -45,4 +41,4 @@ const PostSchema = new Schema({
 
 const Post = mongoose.model("Post", PostSchema);
 
-module.exports = Post;
+module.exports = {Post, PostSchema};

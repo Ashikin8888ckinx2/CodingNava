@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const {PostSchema} = require('./Post');
 
 const Schema = mongoose.Schema;
 
@@ -10,12 +11,9 @@ const BucketListSchema = new Schema({
     progress: {
         type: String,
     },
-    user_id: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    }
+    post: [PostSchema]
 });
 
 const BucketList = mongoose.model("BucketList", BucketListSchema);
 
-module.exports = BucketList;
+module.exports = {BucketList, BucketListSchema};
