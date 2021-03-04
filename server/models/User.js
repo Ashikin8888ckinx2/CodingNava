@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const {BucketListSchema} = require('./BucketList');
 
 const Schema = mongoose.Schema;
 
 const validateEmail = function (email) {
-  const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  return re.test(email);
+    const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email);
 };
 
 const UserSchema = new Schema({
@@ -55,12 +56,39 @@ const UserSchema = new Schema({
     default: false,
   },
   // THIS IS THE USER BUCKET LIST
+  // Do we need this since we read in the BucketList schema on line 91?
   bucket_list: [
     {
       type: Schema.Types.ObjectId,
       ref: 'BucketList',
     },
   ],
+    bio: {
+        type: String,
+        trim: true,
+        maxLength: 300
+    },
+    picture: {
+        type: String,
+        trim: true
+    },
+    followers: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
+    following: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
+    privacy_mode: {
+        type: Boolean,
+        default: false
+    },
+    bucketList: [BucketListSchema]
 });
 
 UserSchema.pre('save', async function (next) {
