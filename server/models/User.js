@@ -55,40 +55,7 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  // THIS IS THE USER BUCKET LIST
-  // Do we need this since we read in the BucketList schema on line 91?
-  bucket_list: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'BucketList',
-    },
-  ],
-    bio: {
-        type: String,
-        trim: true,
-        maxLength: 300
-    },
-    picture: {
-        type: String,
-        trim: true
-    },
-    followers: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "User"
-        }
-    ],
-    following: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "User"
-        }
-    ],
-    privacy_mode: {
-        type: Boolean,
-        default: false
-    },
-    bucketList: [BucketListSchema]
+  bucketList: [BucketListSchema]
 });
 
 UserSchema.pre('save', async function (next) {
