@@ -66,7 +66,7 @@ UserSchema.pre('save', async function (next) {
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
   next();
-});
+}); 
 
 UserSchema.methods.checkPassword = function (pw) {
   // compare the incoming password with the hashed password
