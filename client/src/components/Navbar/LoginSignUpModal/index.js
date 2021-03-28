@@ -4,6 +4,7 @@ import Signup from '../SignUpForm';
 
 // BOOTSTRAP COMPONENTS
 import { Modal, Nav, Tab } from 'react-bootstrap';
+import { BoxArrowRight } from 'react-bootstrap-icons';
 
 const LoginSignUpModal = () => {
   const [show, setShow] = useState(false);
@@ -19,7 +20,8 @@ const LoginSignUpModal = () => {
           color: 'white',
         }}
       >
-        Login/Sign Up
+        {/* Login/Sign Up Icon */}
+        <BoxArrowRight size={36} />
       </Nav.Link>
 
       {/* LOGIN/SIGNUP MODAL */}
