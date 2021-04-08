@@ -25,14 +25,14 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_BUCKET_LIST = gql`
-  mutation addBucketList($listData: BucketListInput!){
-    addBucketList(listData: $listData){
+  mutation addBucketList($listData: BucketListInput!) {
+    addBucketList(listData: $listData) {
       _id
       username
       email
       bio
       picture
-      bucketList{
+      bucketList {
         _id
         progress
       }
@@ -41,11 +41,11 @@ export const ADD_BUCKET_LIST = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postData: PostInput!){
-    addPost(postData: $postData){
+  mutation addPost($postData: PostInput!) {
+    addPost(postData: $postData) {
       _id
       progress
-      post{
+      post {
         _id
         description
         images
@@ -58,15 +58,15 @@ export const ADD_POST = gql`
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($commentData: CommentInput!){
-    addComment(commentData: $commentData){
+  mutation addComment($commentData: CommentInput!) {
+    addComment(commentData: $commentData) {
       _id
       description
       images
       likes
       tags
       date_created
-      comment{
+      comment {
         comment
         likes
         date_created
@@ -76,14 +76,14 @@ export const ADD_COMMENT = gql`
 `;
 
 export const DELETE_BUCKET_LIST = gql`
-  mutation deleteBucketList($listId: ID!){
-    deleteBucketList(listId: $listId){
+  mutation deleteBucketList($listId: ID!) {
+    deleteBucketList(listId: $listId) {
       _id
       username
       email
       bio
       picture
-      bucketList{
+      bucketList {
         _id
         progress
       }
@@ -92,11 +92,11 @@ export const DELETE_BUCKET_LIST = gql`
 `;
 
 export const DELETE_POST = gql`
-  mutation deletePost($postId: ID!){
-    deletePost(postId: $postId){
+  mutation deletePost($postId: ID!) {
+    deletePost(postId: $postId) {
       _id
       progress
-      post{
+      post {
         _id
         description
         images
@@ -109,15 +109,15 @@ export const DELETE_POST = gql`
 `;
 
 export const DELETE_COMMENT = gql`
-  mutation deleteComment($commentId: ID!){
-    deleteComment(commentId: $commentId){
+  mutation deleteComment($commentId: ID!) {
+    deleteComment(commentId: $commentId) {
       _id
       description
       images
       likes
       tags
       date_created
-      comment{
+      comment {
         comment
         likes
         date_created
