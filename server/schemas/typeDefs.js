@@ -20,6 +20,7 @@ const typeDefs = gql`
  type BucketList {
    _id: ID!
    progress: String!
+   createdBy: String
    post: [Post]
  }
  
@@ -57,8 +58,8 @@ const typeDefs = gql`
  type Query {
    me: User
    users: [User]
-   user(username: String!): User
-   bucketLists(username: String): [BucketList]
+   user(userId: String!): User
+   bucketLists(userId: String): [BucketList]
    bucketList(listId: ID!): BucketList
  }
  
@@ -73,5 +74,7 @@ const typeDefs = gql`
    deleteComment(commentId: ID!): Post
  }
 `;
+
+// We need edits for the mutations
  
 module.exports = typeDefs;

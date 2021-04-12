@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const {BucketListSchema} = require('./BucketList');
 
 const Schema = mongoose.Schema;
 
@@ -55,7 +54,13 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  bucketList: [BucketListSchema]
+  // When we're querying, we will need to populate to get all the BucketList info
+  bucketList: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'BucketList'
+    }
+  ]
 });
 
 UserSchema.pre('save', async function (next) {
