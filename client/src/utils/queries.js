@@ -8,6 +8,7 @@ export const GET_ME = gql`
       email
       bio
       picture
+      banner_picture
       privacy_mode
     }
   }
@@ -21,6 +22,7 @@ export const GET_USER = gql`
       email
       bio
       picture
+      banner_picture
       bucketList{
         _id
         progress

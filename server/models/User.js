@@ -39,6 +39,10 @@ const UserSchema = new Schema({
     type: String,
     trim: true,
   },
+  banner_picture: {
+    type: String,
+    trim: true,
+  },
   followers: [
     {
       type: Schema.Types.ObjectId,

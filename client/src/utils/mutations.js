@@ -32,6 +32,7 @@ export const ADD_BUCKET_LIST = gql`
       email
       bio
       picture
+      banner_picture
       bucketList {
         _id
         progress
@@ -83,6 +84,7 @@ export const DELETE_BUCKET_LIST = gql`
       email
       bio
       picture
+      banner_picture
       bucketList {
         _id
         progress

@@ -8,6 +8,7 @@ const typeDefs = gql`
    password: String
    bio: String
    picture: String
+   banner_picture: String
    privacy_mode: Boolean
    bucketList: [BucketList]
  }
