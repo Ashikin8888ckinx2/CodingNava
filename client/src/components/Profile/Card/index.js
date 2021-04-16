@@ -27,16 +27,16 @@ const ProfileCard = (props) => {
     e.target.style.borderColor = 'transparent';
     e.target.style.fontSize = '100%';
   };
-
+console.log(props.userData);
   return (
     <Container className='pb-2' style={editProfileCardStyle} fluid>
       <Row>
         <Col sm={4} md={4} lg={4}>
           <Card className='shadow h-100'>
             <Card.Body>
-              <Card.Title className='text-dark'>Username</Card.Title>
+              <Card.Title className='text-dark'>{ props.userData.username }</Card.Title>
               <Card.Subtitle className='mb-2 text-muted'>About Me</Card.Subtitle>
-              <Card.Text>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut</Card.Text>
+              <Card.Text>{ props.userData.bio }</Card.Text>
               <Card.Footer className=' align-text-top bg-transparent'>
                 <Stack direction='horizontal' className='justify-content-around' gap={2}>
                   <Card.Link href='#' className='text-decoration-none text-dark'>
@@ -48,13 +48,13 @@ const ProfileCard = (props) => {
                   <Card.Link href='#' className='text-decoration-none text-dark'>
                     <Stack gap={2} className='align-items-center justify-content-end'>
                       <People size={36} />
-                      3000
+                      { props.userData.followers.length }
                     </Stack>
                   </Card.Link>
                   <Card.Link href='#' className='text-decoration-none text-dark'>
                     <Stack gap={2} className='align-items-center justify-content-end'>
                       <PersonPlus size={36} />
-                      256
+                      { props.userData.following.length }
                     </Stack>
                   </Card.Link>
                 </Stack>

@@ -9,6 +9,8 @@ export const GET_ME = gql`
       bio
       picture
       banner_picture
+      followers
+      following
       privacy_mode
     }
   }
@@ -23,6 +25,8 @@ export const GET_USER = gql`
       bio
       picture
       banner_picture
+      followers
+      following
       bucketList{
         _id
         progress

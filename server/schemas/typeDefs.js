@@ -9,6 +9,8 @@ const typeDefs = gql`
    bio: String
    picture: String
    banner_picture: String
+   followers: [ID]
+   following: [ID]
    privacy_mode: Boolean
    bucketList: [BucketList]
  }

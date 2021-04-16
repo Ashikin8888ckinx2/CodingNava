@@ -37,12 +37,12 @@ const ProfileHeader = (props) => {
       <Row>
         <Col>
           <Card className='bg-dark text-white rounded'>
-            <Card.Img src='https://source.unsplash.com/I0fDR8xtApA/970x250' alt='Image of Astronaut ' />
+            <Card.Img src={ props.userData.banner_picture } alt='Image of Astronaut ' />
             <Card.ImgOverlay>
               <Container className='p-0' fluid>
                 <Row className='justify-content-between'>
                   <Col xs={3} sm={3} md={3} lg={3}>
-                    <Image src='https://source.unsplash.com/XHVpWcr5grQ' fluid thumbnail rounded />
+                    <Image src={ props.userData.picture } fluid thumbnail rounded />
                   </Col>
 
                   {/* IF WINDOW SIZE IS LESS THAN xs=0-768 pixels */}
