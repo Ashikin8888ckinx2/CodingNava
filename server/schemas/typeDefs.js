@@ -1,5 +1,5 @@
 const { gql } = require('apollo-server-express');
- 
+
 const typeDefs = gql`
  type User {
    _id: ID
@@ -13,6 +13,15 @@ const typeDefs = gql`
    following: [ID]
    privacy_mode: Boolean
    bucketList: [BucketList]
+ }
+
+ input UpdateUserInput {
+  email: String
+  password: String
+  bio: String
+  picture: String
+  banner_picture: String
+  privacy_mode: Boolean
  }
  
  type Auth {
@@ -76,5 +85,5 @@ const typeDefs = gql`
    deleteComment(commentId: ID!): Post
  }
 `;
- 
+
 module.exports = typeDefs;

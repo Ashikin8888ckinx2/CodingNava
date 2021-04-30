@@ -24,6 +24,18 @@ export const ADD_USER = gql`
   }
 `;
 
+export const UPDATE_USER = gql`
+  mutation updateUser($userData: UpdateUserInput!) {
+    updateUser(userData: $userData) {
+      email
+      bio
+      picture
+      banner_picture
+      privacy_mode
+    }
+  }
+`
+
 export const ADD_BUCKET_LIST = gql`
   mutation addBucketList($listData: BucketListInput!) {
     addBucketList(listData: $listData) {
