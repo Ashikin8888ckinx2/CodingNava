@@ -36,6 +36,23 @@ export const UPDATE_USER = gql`
   }
 `
 
+export const FOLLOW_USER = gql`
+  mutation followUser($followId: ID!) {
+    followUser(followId: $followId) {
+      followingUser {
+        _id
+        followers
+        following
+      }
+      followedUser {
+        _id
+        followers
+        following
+      }
+    }
+  }
+`
+
 export const ADD_BUCKET_LIST = gql`
   mutation addBucketList($listData: BucketListInput!) {
     addBucketList(listData: $listData) {

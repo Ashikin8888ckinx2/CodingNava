@@ -24,10 +24,10 @@ const typeDefs = gql`
   privacy_mode: Boolean
  }
  
- type Auth {
-   token: ID!
-   user: User
- }
+ type FollowUser {
+   followingUser: User
+   followedUser: User
+ } 
  
  type BucketList {
    _id: ID!
@@ -65,6 +65,11 @@ const typeDefs = gql`
    comment: String!
    date_created: String!
  }
+
+ type Auth {
+  token: ID!
+  user: User
+}
  
  type Query {
    me: User
@@ -78,6 +83,7 @@ const typeDefs = gql`
    addUser(username: String!, email: String!, password: String!): Auth
    login(email: String, username: String, password: String!): Auth
    updateUser(userData: UpdateUserInput!): User
+   followUser(followId: ID!): FollowUser
    addBucketList(listData: BucketListInput!): User
    addPost(postData: PostInput!): BucketList
    addComment(commentData: CommentInput!): Post
