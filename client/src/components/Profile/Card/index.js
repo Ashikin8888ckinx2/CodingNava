@@ -40,7 +40,7 @@ console.log(props.userData);
               <Card.Footer className=' align-text-top bg-transparent'>
                 <Stack direction='horizontal' className='justify-content-around' gap={2}>
                   <Card.Link href='#' className='text-decoration-none text-dark'>
-                    <Stack gap={2} className='align-items-center justify-content-end'>
+                    <Stack gap={2} className='align-items-center justify-content-end' onClick={props.follow}>
                       <Journals size={36} />
                       Buckets
                     </Stack>
