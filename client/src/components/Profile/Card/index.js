@@ -27,7 +27,7 @@ const ProfileCard = (props) => {
     e.target.style.borderColor = 'transparent';
     e.target.style.fontSize = '100%';
   };
-console.log(props.userData);
+
   return (
     <Container className='pb-2' style={editProfileCardStyle} fluid>
       <Row>

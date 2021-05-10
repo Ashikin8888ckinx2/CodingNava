@@ -69,12 +69,12 @@ const resolvers = {
       if (context.user) {
         const followingUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          {$push: { following: followId } },
+          { $addToSet: { following: followId } },
           { new: true }
         )
         const followedUser = await User.findByIdAndUpdate(
           { _id: followId },
-          {$push: { followers: context.user._id } },
+          { $addToSet: { followers: context.user._id } },
           { new: true }
         )
         return { followingUser, followedUser };
