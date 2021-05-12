@@ -54,73 +54,100 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addBucketList: async (parent, {listData}, context) =>{
+    updateUser: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          args,
+          { new: true }
+        )
+        return user;
+      }
+      throw new AuthenticationError('User not logged in');
+    },
+    followUser: async (parent, { followId }, context) => {
+      if (context.user) {
+        const followingUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { following: followId } },
+          { new: true }
+        )
+        const followedUser = await User.findByIdAndUpdate(
+          { _id: followId },
+          { $addToSet: { followers: context.user._id } },
+          { new: true }
+        )
+        return { followingUser, followedUser };
+      }
+      throw new AuthenticationError('User not logged in');
+    },
+    addBucketList: async (parent, { listData }, context) => {
       // Check if logged in, then add bucket list to a user's profile
-      if(context.user){
+      if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
-          {_id: context.user._id},
-          {$push: {bucketList: {listData}}},
-          {new: true}
+          { _id: context.user._id },
+          { $push: { bucketList: { listData } } },
+          { new: true }
         )
         return updatedUser;
       }
       throw new AuthenticationError('User not logged in');
     },
-    addPost: async (parent, {postData}, context) =>{
+    addPost: async (parent, { postData }, context) => {
       // check if logged in, then add a post to a user's bucket list
-      if(context.user){
+      if (context.user) {
         const updatedBucketList = await BucketList.findByIdAndUpdate(
-          {_id: context.user.bucketList._id},
-          {$push: {post: {postData}}},
-          {new: true}
+          { _id: context.user.bucketList._id },
+          { $push: { post: { postData } } },
+          { new: true }
         );
         return updatedBucketList;
       }
       throw new AuthenticationError('User not logged in');
     },
-    addComment: async (parent, {commentData}, context) =>{
+    addComment: async (parent, { commentData }, context) => {
       // check if logged in, then add a comment to a post
-      if(context.user){
+      if (context.user) {
         const updatedPost = await Post.findByIdAndUpdate(
-          {_id: context.user.bucketlist.post._id},
-          {$push: {comment: {commentData}}},
-          {new: true}
+          { _id: context.user.bucketlist.post._id },
+          { $push: { comment: { commentData } } },
+          { new: true }
         );
         return updatedPost;
       }
       throw new AuthenticationError('User not logged in');
     },
-    deleteBucketList: async (parent, {listId}, context) =>{
+    deleteBucketList: async (parent, { listId }, context) => {
       // check if logged in, then delete a bucket list from a user's profile
-      if(context.user){
+      if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
-          {_id: context.user._id},
-          {$pull: {bucketList: {listId}}},
-          {new: true}
+          { _id: context.user._id },
+          { $pull: { bucketList: { listId } } },
+          { new: true }
         );
         return updatedUser;
       }
       throw new AuthenticationError('User not logged in');
     },
-    deletePost: async (parent, {postId}, context) =>{
+    deletePost: async (parent, { postId }, context) => {
       // check if logged in then delete a post from a user's bucket list
-      if(context.user){
+      if (context.user) {
         const updatedBucketList = await BucketList.findByIdAndUpdate(
-          {_id: context.user.bucketList._id},
-          {$pull: {post: {postId}}},
-          {new: true}
+          { _id: context.user.bucketList._id },
+          { $pull: { post: { postId } } },
+          { new: true }
         );
         return updatedBucketList;
       }
       throw new AuthenticationError('User not logged in');
     },
-    deleteComment: async (parent, {commentId}, context) =>{
+    deleteComment: async (parent, { commentId }, context) => {
       // check if logged in, then delete a comment from a user's post
-      if(context.user){
+      if (context.user) {
         const updatedPost = await Post.findByIdAndUpdate(
-          {_id: context.user.bucketList.post._id},
-          {$pull: {comment: {commentId}}},
-          {new: true}
+          { _id: context.user.bucketList.post._id },
+          { $pull: { comment: { commentId } } },
+          { new: true }
         );
         return updatedPost;
       }

@@ -24,6 +24,35 @@ export const ADD_USER = gql`
   }
 `;
 
+export const UPDATE_USER = gql`
+  mutation updateUser($userData: UpdateUserInput!) {
+    updateUser(userData: $userData) {
+      email
+      bio
+      picture
+      banner_picture
+      privacy_mode
+    }
+  }
+`
+
+export const FOLLOW_USER = gql`
+  mutation followUser($followId: ID!) {
+    followUser(followId: $followId) {
+      followingUser {
+        _id
+        followers
+        following
+      }
+      followedUser {
+        _id
+        followers
+        following
+      }
+    }
+  }
+`
+
 export const ADD_BUCKET_LIST = gql`
   mutation addBucketList($listData: BucketListInput!) {
     addBucketList(listData: $listData) {
@@ -32,6 +61,7 @@ export const ADD_BUCKET_LIST = gql`
       email
       bio
       picture
+      banner_picture
       bucketList {
         _id
         progress
@@ -83,6 +113,7 @@ export const DELETE_BUCKET_LIST = gql`
       email
       bio
       picture
+      banner_picture
       bucketList {
         _id
         progress
