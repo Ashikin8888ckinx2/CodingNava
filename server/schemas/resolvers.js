@@ -2,13 +2,18 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, BucketList, Post, Comment } = require('../models');
 const { signToken } = require('../utils/auth');
 
+// Think about what action users can do with and without login
+// If things need to happen with login, then the Query needs context and auth error
+
 const resolvers = {
   Query: {
     // Access current user's profile
     me: async (parent, args, context) => {
       if (context.user) {
         // excludes password form User object
-        const userData = await User.findOne({ _id: context.user._id }).select('-__v -password');
+        const userData = await User
+          .findOne({ _id: context.user._id })
+          .select('-__v -password');
         return userData;
       }
       throw new AuthenticationError('Not logged in!');
@@ -18,8 +23,8 @@ const resolvers = {
       return User.find();
     },
     // Find a single user
-    user: async (parent, { username }) => {
-      return User.findOne({ username });
+    user: async (parent, { userId }) => {
+      return User.findOne({ userId });
     },
     // Find all bucket lists
     bucketLists: async () => {

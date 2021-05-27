@@ -27,10 +27,6 @@ const PostSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    user_id: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    },
     comment_ids: [
         {
             type: Schema.Types.ObjectId,
@@ -39,6 +35,4 @@ const PostSchema = new Schema({
     ]
 });
 
-const Post = mongoose.model("Post", PostSchema);
-
-module.exports = {Post, PostSchema};
+module.exports = {PostSchema};
