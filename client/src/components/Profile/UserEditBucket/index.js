@@ -24,8 +24,8 @@ const ProfileUserEditBucket = () => {
   });
 
   return (
-    <Col sm={8} md={8} lg={8}>
-      <Card className='shadow h-100'>
+    <Col>
+      <Card className='shadow'>
         <Card.Body>
           <Card.Title>
             <Nav fill variant='tabs' defaultActiveKey='1'>
