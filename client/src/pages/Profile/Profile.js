@@ -8,7 +8,6 @@ import { FOLLOW_USER } from '../../utils/mutations';
 //////////////////////////////////////////////////////////
 import ProfileHeader from '../../components/Profile/Header';
 import ProfileUserDetails from '../../components/Profile/UserDetails';
-import ProfileUserEditBucket from '../../components/Profile/UserEditBucket';
 
 //////////////////////////////////////////////////////////
 // BOOTSTRAP COMPONENTS
@@ -62,7 +61,6 @@ const Profile = () => {
           <Row>
             <>
               <ProfileUserDetails userData={userData} follow={handleFollowClick} />
-              <ProfileUserEditBucket userData={userData} />
             </>
           </Row>
         </Container>
