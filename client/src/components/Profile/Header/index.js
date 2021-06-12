@@ -68,7 +68,7 @@ const ProfileHeader = (props) => {
                 <Container className='p-0' fluid>
                   <Row className='justify-content-between'>
                     <Col xs={3}>
-                      <Image src={props.userData.picture || 'https://source.unsplash.com/XHVpWcr5grQ'} fluid thumbnail rounded />
+                      <Image src={props.userData.picture || 'https://source.unsplash.com/XHVpWcr5grQ/252x252'} fluid thumbnail rounded />
                     </Col>
                     {/* IF WINDOW SIZE IS LESS THAN xs=0-768 pixels */}
                     {width < 768 && editProfileBtn('sm')}

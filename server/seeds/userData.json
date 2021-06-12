@@ -1,12 +1,187 @@
 [
-    {
-        "_id": "123456789012",
-        "username": "tbetti",
-        "email": "tbetti@mail.com",
-        "password": "password123",
-        "bio": "Living life one day at a time!",
-        "picture": "null",
-        "followers": [],
-        "following": []
-    }
+  {
+    "_id": "5c8a1d5b0190b214360dc057",
+    "username": "mmehr1988",
+    "email": "mmehr1988@gmail.com",
+    "password": "password123",
+    "bio": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis",
+    "picture": "https://source.unsplash.com/XHVpWcr5grQ/252x252",
+    "banner_picture": "https://source.unsplash.com/I0fDR8xtApA/970x250",
+    "followers": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa181"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa183"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ],
+    "following": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa181"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa183"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ]
+  },
+  {
+    "_id": "5c8a1dfa2f8fb814b56fa181",
+    "username": "loulou",
+    "email": "loulou@example.com",
+    "password": "password123",
+    "bio": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis",
+    "picture": "https://source.unsplash.com/d2MSDujJl2g/252x252",
+    "banner_picture": "https://source.unsplash.com/yU4XRBasaDY/970x250",
+    "followers": [
+      {
+        "_id": "5c8a1d5b0190b214360dc057"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa183"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ],
+    "following": [
+      {
+        "_id": "5c8a1d5b0190b214360dc057"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa183"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ]
+  },
+  {
+    "_id": "5c8a1dfa2f8fb814b56fa182",
+    "username": "sophie",
+    "email": "sophie@example.com",
+    "password": "password123",
+    "bio": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis",
+    "picture": "https://source.unsplash.com/rDEOVtE7vOs/252x252",
+    "banner_picture": "https://source.unsplash.com/jeKN7eixmP0/970x250",
+    "followers": [
+      {
+        "_id": "5c8a1d5b0190b214360dc057"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa181"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa183"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ],
+    "following": [
+      {
+        "_id": "5c8a1d5b0190b214360dc057"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa181"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa183"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ]
+  },
+  {
+    "_id": "5c8a1dfa2f8fb814b56fa183",
+    "username": "lisa",
+    "email": "lisa@example.com",
+    "password": "password123",
+    "bio": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis",
+    "picture": "https://source.unsplash.com/vYpbBtkDhNE/252x252",
+    "banner_picture": "https://source.unsplash.com/vhU1lfwLmV8/970x250",
+    "followers": [
+      {
+        "_id": "5c8a1d5b0190b214360dc057"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa181"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ],
+    "following": [
+      {
+        "_id": "5c8a1d5b0190b214360dc057"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa181"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ]
+  },
+  {
+    "_id": "5c8a1dfa2f8fb814b56fa184",
+    "username": "jennifer",
+    "email": "jennifer@example.com",
+    "password": "password123",
+    "bio": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis",
+    "picture": "https://source.unsplash.com/mEZ3PoFGs_k/252x252",
+    "banner_picture": "https://source.unsplash.com/m7iyoBwUMI0/970x250",
+    "followers": [
+      {
+        "_id": "5c8a1d5b0190b214360dc057"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa181"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa183"
+      }
+    ],
+    "following": [
+      {
+        "_id": "5c8a1d5b0190b214360dc057"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa181"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa183"
+      }
+    ]
+  }
 ]

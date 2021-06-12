@@ -10,15 +10,9 @@ function App() {
     <Router>
       <Nav />
       <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route exact path='/profile'>
-          <Profile />
-        </Route>
-        <Route exact path='/profile/:username'>
-          <Profile />
-        </Route>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/profile' component={Profile} />
+        <exact path='/profile/:username' component={Profile} />
       </Switch>
     </Router>
   );
