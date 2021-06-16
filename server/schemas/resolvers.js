@@ -66,6 +66,9 @@ const resolvers = {
       throw new AuthenticationError('User not logged in');
     },
     followUser: async (parent, { followId }, context) => {
+      if (context.user._id == followId) {
+        throw new Error("Can't follow yourself");
+      }
       if (context.user) {
         const followingUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
