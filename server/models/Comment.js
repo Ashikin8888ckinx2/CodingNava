@@ -17,6 +17,7 @@ const CommentSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    // We need this because other users can make comments
     user_id: {
         type: Schema.Types.ObjectId,
         ref: "User"
