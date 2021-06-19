@@ -1,19 +1,27 @@
-// loads css onto homepage
-import './Profile.css';
-import ProfileHeader from '../../components/Profile/Header';
-import ProfileCard from '../../components/Profile/Card';
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME, GET_USER } from '../../utils/queries';
 import { FOLLOW_USER } from '../../utils/mutations';
 
-const Profile = () => {
+//////////////////////////////////////////////////////////
+// PROFILE COMPONENTS
+//////////////////////////////////////////////////////////
+import ProfileHeader from '../../components/Profile/Header';
+import ProfileUserDetails from '../../components/Profile/UserDetails';
 
+//////////////////////////////////////////////////////////
+// BOOTSTRAP COMPONENTS
+//////////////////////////////////////////////////////////
+import { Container, Row } from 'react-bootstrap';
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+const Profile = () => {
   const [followUser, { error, followData }] = useMutation(FOLLOW_USER);
   let { username } = useParams();
 
   const { loading, data } = useQuery(username ? GET_USER : GET_ME, {
-    variables: { username }
+    variables: { username },
   });
 
   let userData = data?.user || data?.me || {};
@@ -29,22 +37,33 @@ const Profile = () => {
       }
 
       userData = followData.followedUser;
-
     } catch (err) {
       console.error(err);
     }
-    
-  }
+  };
 
   if (loading) {
-    return (<h1>loading</h1>)
+    return <h1>loading</h1>;
   }
+
+  //////////////////////////////////////////////////////////////
+  // CSS STYLING
+  //////////////////////////////////////////////////////////////
+  let editProfileCardStyle = {
+    fontFamily: 'Rubik',
+  };
 
   return (
     <>
-      <div className='rounded '>
+      <div className='rounded' style={editProfileCardStyle}>
         <ProfileHeader userData={userData} />
-        <ProfileCard userData={userData} follow={handleFollowClick} />
+        <Container className='pb-2' fluid>
+          <Row>
+            <>
+              <ProfileUserDetails userData={userData} follow={handleFollowClick} />
+            </>
+          </Row>
+        </Container>
       </div>
     </>
   );

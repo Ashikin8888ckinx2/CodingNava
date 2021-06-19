@@ -1,6 +1,3 @@
-// loads css onto homepage
-import './Home.css';
-
 import { Container, Row, Col } from 'react-bootstrap';
 
 const Home = () => {
