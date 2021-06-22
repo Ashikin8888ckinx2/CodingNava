@@ -23,8 +23,8 @@ const resolvers = {
       return User.find();
     },
     // Find a single user
-    user: async (parent, { userId }) => {
-      return User.findOne({ userId });
+    user: async (parent, { username }) => {
+      return User.findOne({ username });
     },
     // Find all bucket lists
     bucketLists: async () => {
