@@ -25,7 +25,7 @@ const Profile = () => {
   });
 
   let userData = data?.user || data?.me || {};
-
+  console.log(userData);
   const handleFollowClick = async () => {
     try {
       const { followData } = await followUser({
