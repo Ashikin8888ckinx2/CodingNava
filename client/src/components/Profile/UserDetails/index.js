@@ -63,13 +63,13 @@ const ProfileUserDetails = (props) => {
                 <Card.Link href='#' className='text-decoration-none text-dark'>
                   <Stack gap={2} className='align-items-center justify-content-end'>
                     <People size={36} />
-                    {/* {props.userData.followers.length || 0} */}
+                    {props.userData.followers.length || 0}
                   </Stack>
                 </Card.Link>
                 <Card.Link href='#' className='text-decoration-none text-dark'>
                   <Stack gap={2} className='align-items-center justify-content-end'>
                     <PersonPlus size={36} />
-                    {/* {props.userData.following.length || 0} */}
+                    {props.userData.following.length || 0}
                   </Stack>
                 </Card.Link>
               </Stack>

@@ -23,8 +23,8 @@ const resolvers = {
       return User.find();
     },
     // Find a single user
-    user: async (parent, { userId }) => {
-      return User.findOne({ userId });
+    user: async (parent, { username }) => {
+      return User.findOne({ username });
     },
     // Find all bucket lists
     bucketLists: async () => {
@@ -72,6 +72,9 @@ const resolvers = {
     },
     followUser: async (parent, { followId }, context) => {
       if (context.user) {
+        if (context.user._id == followId) {
+          throw new Error("Can't follow yourself");
+        }
         const followingUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $addToSet: { following: followId } },

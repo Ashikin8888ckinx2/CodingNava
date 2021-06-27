@@ -10,7 +10,7 @@ const UserEditSettings = (props) => {
   const [update, { error, data }] = useMutation(UPDATE_USER);
 
   const [formState, setFormState] = useState({
-    username: props.userData.username,
+    email: props.userData.email,
     bio: props.userData.bio,
     picture: props.userData.picture,
     banner_picture: props.userData.banner_picture,
@@ -56,10 +56,20 @@ const UserEditSettings = (props) => {
   return (
     <>
       <Form onSubmit={handleFormSubmit}>
-        {/* USERNAME */}
+        {/* EMAIL */}
         <Form.Group className='mb-2'>
-          <Form.Label htmlFor='username'>Username</Form.Label>
-          <Form.Control type='username' name='username' defaultValue={props.userData.username} onChange={handleChange} required />
+          <Form.Label htmlFor='email'>Email</Form.Label>
+          <Form.Control type='email' name='email' defaultValue={props.userData.email} onChange={handleChange} required />
+        </Form.Group>
+        {/* PASSWORD */}
+        <Form.Group className='mb-2'>
+          <Form.Label htmlFor='password'>Password</Form.Label>
+          <Form.Control type='password' name='password' placeholder="Password" onChange={handleChange} required />
+        </Form.Group>
+        {/* CONFIRM PASSWORD */}
+        <Form.Group className='mb-2'>
+          <Form.Label htmlFor='password'>Confirm Password</Form.Label>
+          <Form.Control type='password' name='password' placeholder="Confirm Password" onChange={handleChange} required />
         </Form.Group>
         {/* ABOUT ME */}
         <Form.Group className='mb-2'>
