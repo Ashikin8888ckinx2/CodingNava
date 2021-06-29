@@ -59,11 +59,11 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    updateUser: async (parent, args, context) => {
+    updateUser: async (parent, { userData }, context) => {
       if (context.user) {
         const user = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          args,
+          userData,
           { new: true }
         )
         return user;

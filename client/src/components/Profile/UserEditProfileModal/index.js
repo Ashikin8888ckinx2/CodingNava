@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { UPDATE_USER } from '../../../utils/mutations';
-import Auth from '../../../utils/auth';
 
 // BOOTSTRAP COMPONENTS
 import { Form, Button } from 'react-bootstrap';
 
 const UserEditSettings = (props) => {
-  const [update, { error, data }] = useMutation(UPDATE_USER);
+  console.log(props);
 
-  const [formState, setFormState] = useState({
-    email: props.userData.email,
-    bio: props.userData.bio,
-    picture: props.userData.picture,
-    banner_picture: props.userData.banner_picture,
-    privacy_mode: false,
-  });
+  const [formState, setFormState] = useState({});
 
   // UPDATING "formState" BASED ON INPUT CHANGES
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(name, value);
     setFormState({
       ...formState,
       [name]: value,
@@ -29,29 +21,8 @@ const UserEditSettings = (props) => {
   // ON FORM SUBMIT
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // [1] Check whether user is logged in by checking to see if there is a JWT token
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-    // // [2] If there is not valid token, then exit the process
-    if (!token) {
-      return false;
-    }
-
-    try {
-      // [1] useMutation[UPDATE_USER] to update user details
-      const { data } = await update({
-        variables: {
-          userData: {
-            ...formState,
-          },
-        },
-      });
-
-      console.log(data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+    props.updateProfile(event, formState);
+  }
 
   return (
     <>
@@ -59,17 +30,17 @@ const UserEditSettings = (props) => {
         {/* EMAIL */}
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='email'>Email</Form.Label>
-          <Form.Control type='email' name='email' defaultValue={props.userData.email} onChange={handleChange} required />
+          <Form.Control type='email' name='email' defaultValue={props.userData.email} onChange={handleChange} />
         </Form.Group>
         {/* PASSWORD */}
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='password'>Password</Form.Label>
-          <Form.Control type='password' name='password' placeholder="Password" onChange={handleChange} required />
+          <Form.Control type='password' name='password' placeholder="Password" onChange={handleChange} />
         </Form.Group>
         {/* CONFIRM PASSWORD */}
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='password'>Confirm Password</Form.Label>
-          <Form.Control type='password' name='password' placeholder="Confirm Password" onChange={handleChange} required />
+          <Form.Control type='password' name='password' placeholder="Confirm Password" onChange={handleChange} />
         </Form.Group>
         {/* ABOUT ME */}
         <Form.Group className='mb-2'>
