@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, BucketList, Post, Comment } = require('../models');
 const { signToken } = require('../utils/auth');
+const { uploadImage } = require('../utils/imgur');
 
 // Think about what action users can do with and without login
 // If things need to happen with login, then the Query needs context and auth error
@@ -61,6 +62,12 @@ const resolvers = {
     },
     updateUser: async (parent, { userData }, context) => {
       if (context.user) {
+        if (userData.picture) {
+          userData.picture = await uploadImage(userData.picture);
+        }
+        if (userData.banner_picture) {
+          userData.banner_picture = await uploadImage(userData.banner_picture);
+        }
         const user = await User.findByIdAndUpdate(
           { _id: context.user._id },
           userData,

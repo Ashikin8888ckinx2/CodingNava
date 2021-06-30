@@ -21,8 +21,20 @@ const UserEditSettings = (props) => {
   // ON FORM SUBMIT
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(formState);
     props.updateProfile(event, formState);
   }
+
+    // UPDATING "formState" BASED ON INPUT CHANGES
+    const handleFileChange = (event) => {
+      const { name, files } = event.target;
+      console.log(name, files[0]);
+      setFormState({
+        ...formState,
+        [name]: files[0],
+      });
+    };
+  
 
   return (
     <>
@@ -50,13 +62,13 @@ const UserEditSettings = (props) => {
         {/* PROFILE PHOTO */}
         <Form.Group className='mb-2'>
           <Form.Label>Profile Photo</Form.Label>
-          <Form.Control type='file' name='picture' onChange={handleChange} />
+          <Form.Control type='file' name='picture' accept ="image/*" onChange={handleFileChange} />
         </Form.Group>
 
         {/* BANNER PHOTO */}
         <Form.Group className='mb-2'>
           <Form.Label>Profile Banner</Form.Label>
-          <Form.Control type='file' name='banner_picture' onChange={handleChange} />
+          <Form.Control type='file' name='banner_picture' accept ="image/*" onChange={handleFileChange} />
         </Form.Group>
         {/* PRIVACY RADIO */}
         <Form.Check className='mb-2' type='switch' id='custom-switch' name='privacy_mode' onChange={(e) => setFormState({ ...formState, privacy_mode: e.target.checked })} label='Private' />

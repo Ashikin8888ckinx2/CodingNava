@@ -49,9 +49,6 @@ console.log(followData);
     }
   };
 
-  // click function for updating user profile
-  // const [update, { updateError, updateData }] = useMutation(UPDATE_USER);
-
   // ON FORM SUBMIT
   const updateProfileSubmit = async (event, formData) => {
     event.preventDefault();
