@@ -68,11 +68,11 @@ const resolvers = {
         if (userData.banner_picture) {
           userData.banner_picture = await uploadImage(userData.banner_picture);
         }
-        const user = await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          userData,
-          { new: true }
-        )
+        const user = await User.findById(
+          { _id: context.user._id }
+        );
+        Object.assign(user, userData);
+        await user.save();
         return user;
       }
       throw new AuthenticationError('User not logged in');
