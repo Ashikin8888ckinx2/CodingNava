@@ -78,7 +78,7 @@ const UserEditSettings = (props) => {
           <Form.Control type='file' name='banner_picture' accept="image/*" onChange={handleFileChange} />
         </Form.Group>
         {/* PRIVACY RADIO */}
-        <Form.Check className='mb-2' type='switch' id='custom-switch' name='privacy_mode' onChange={(e) => setFormState({ ...formState, privacy_mode: e.target.checked })} label='Private' />
+        <Form.Check className='mb-2' type='switch' id='custom-switch' name='privacy_mode' defaultChecked={props.userData.privacy_mode} onChange={(e) => setFormState({ ...formState, privacy_mode: e.target.checked })} label='Private' />
 
         {/* UPDATE BUTTON  */}
         <Button variant='success' type='submit'>
