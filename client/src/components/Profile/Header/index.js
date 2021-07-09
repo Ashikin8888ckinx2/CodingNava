@@ -8,7 +8,6 @@ import { useViewport } from '../../../utils/hooks';
 import '../Profile.css';
 
 const ProfileHeader = (props) => {
-console.log("updated component");
   const { width } = useViewport();
 
   ////////////////////////////////////////////////

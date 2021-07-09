@@ -32,17 +32,20 @@ const Profile = () => {
 
   let userData = data?.user || data?.me || {};
 
+  const currentUserId = Auth.getProfile().data._id;
+  const isFollowing = userData.followers && userData.followers.includes(currentUserId);
+
   // click function for following user
   const handleFollowClick = async () => {
     try {
       const { data:followData } = await followUser({
-        variables: { followId: userData._id },
+        variables: { followId: userData._id, isFollowing },
       });
 
       if (!followData) {
         throw new Error('something went wrong!');
       }
-console.log(followData);
+
       userData = followData.followedUser;
     } catch (err) {
       console.error(err);
@@ -94,7 +97,7 @@ console.log(followData);
         <Container className='pb-2' fluid>
           <Row>
             <>
-              <ProfileUserDetails userData={userData} follow={handleFollowClick} />
+              <ProfileUserDetails userData={userData} follow={handleFollowClick} isFollowing={isFollowing} />
             </>
           </Row>
         </Container>

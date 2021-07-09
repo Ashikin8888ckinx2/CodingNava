@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Auth from '../../../utils/auth';
 
 import '../Profile.css';
 
@@ -38,7 +39,7 @@ const ProfileUserDetails = (props) => {
           {/* IF USER IS NOT FOLLOWING, USE THE PLUSSQUARE  */}
           <>
             <PlusSquare size={36} />
-            Follow
+            {props.isFollowing ? "Unfollow" : "Follow"} 
           </>
           {/* <><DashSquare size={36} />Unfollow</> */}
         </Stack>

@@ -91,7 +91,7 @@ const typeDefs = gql`
    addUser(username: String!, email: String!, password: String!): Auth
    login(email: String, username: String, password: String!): Auth
    updateUser(userData: UpdateUserInput!): User
-   followUser(followId: ID!): FollowUser
+   followUser(followId: ID!, isFollowing: Boolean): FollowUser
    addBucketList(listData: BucketListInput!): User
    addPost(postData: PostInput!): BucketList
    addComment(commentData: CommentInput!): Post

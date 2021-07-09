@@ -77,19 +77,20 @@ const resolvers = {
       }
       throw new AuthenticationError('User not logged in');
     },
-    followUser: async (parent, { followId }, context) => {
+    followUser: async (parent, { followId, isFollowing }, context) => {
       if (context.user) {
         if (context.user._id == followId) {
           throw new Error("Can't follow yourself");
         }
+        const action = isFollowing ? "$pull" : "$addToSet";
         const followingUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { following: followId } },
+          { [action]: { following: followId } },
           { new: true }
         )
         const followedUser = await User.findByIdAndUpdate(
           { _id: followId },
-          { $addToSet: { followers: context.user._id } },
+          { [action]: { followers: context.user._id } },
           { new: true }
         )
         return { followingUser, followedUser };
