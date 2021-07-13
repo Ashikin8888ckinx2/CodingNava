@@ -37,8 +37,8 @@ export const UPDATE_USER = gql`
 `
 
 export const FOLLOW_USER = gql`
-  mutation followUser($followId: ID!) {
-    followUser(followId: $followId) {
+  mutation followUser($followId: ID!, $isFollowing: Boolean) {
+    followUser(followId: $followId, isFollowing: $isFollowing) {
       followingUser {
         _id
         followers

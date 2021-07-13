@@ -1,6 +1,13 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+
+ type File {
+  filename: String!
+  mimetype: String!
+  encoding: String!
+ }
+
  type User {
    _id: ID
    username: String
@@ -19,8 +26,8 @@ const typeDefs = gql`
   email: String
   password: String
   bio: String
-  picture: String
-  banner_picture: String
+  picture: Upload
+  banner_picture: Upload
   privacy_mode: Boolean
  }
  
@@ -84,7 +91,7 @@ const typeDefs = gql`
    addUser(username: String!, email: String!, password: String!): Auth
    login(email: String, username: String, password: String!): Auth
    updateUser(userData: UpdateUserInput!): User
-   followUser(followId: ID!): FollowUser
+   followUser(followId: ID!, isFollowing: Boolean): FollowUser
    addBucketList(listData: BucketListInput!): User
    addPost(postData: PostInput!): BucketList
    addComment(commentData: CommentInput!): Post
@@ -95,5 +102,5 @@ const typeDefs = gql`
 `;
 
 // We need edits for the mutations
- 
+
 module.exports = typeDefs;

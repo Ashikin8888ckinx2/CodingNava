@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, BucketList, Post, Comment } = require('../models');
 const { signToken } = require('../utils/auth');
+const { uploadImage } = require('../utils/imgur');
 
 // Think about what action users can do with and without login
 // If things need to happen with login, then the Query needs context and auth error
@@ -59,30 +60,37 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    updateUser: async (parent, args, context) => {
+    updateUser: async (parent, { userData }, context) => {
       if (context.user) {
-        const user = await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          args,
-          { new: true }
-        )
+        if (userData.picture) {
+          userData.picture = await uploadImage(userData.picture);
+        }
+        if (userData.banner_picture) {
+          userData.banner_picture = await uploadImage(userData.banner_picture);
+        }
+        const user = await User.findById(
+          { _id: context.user._id }
+        );
+        Object.assign(user, userData);
+        await user.save();
         return user;
       }
       throw new AuthenticationError('User not logged in');
     },
-    followUser: async (parent, { followId }, context) => {
+    followUser: async (parent, { followId, isFollowing }, context) => {
       if (context.user) {
         if (context.user._id == followId) {
           throw new Error("Can't follow yourself");
         }
+        const action = isFollowing ? "$pull" : "$addToSet";
         const followingUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { following: followId } },
+          { [action]: { following: followId } },
           { new: true }
         )
         const followedUser = await User.findByIdAndUpdate(
           { _id: followId },
-          { $addToSet: { followers: context.user._id } },
+          { [action]: { followers: context.user._id } },
           { new: true }
         )
         return { followingUser, followedUser };
