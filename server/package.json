@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "graphql": "^15.5.1",
+    "imgur": "^1.0.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.6"
   },

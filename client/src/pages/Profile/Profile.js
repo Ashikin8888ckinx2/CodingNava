@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME, GET_USER } from '../../utils/queries';
-import { FOLLOW_USER } from '../../utils/mutations';
+import { FOLLOW_USER, UPDATE_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 //////////////////////////////////////////////////////////
 // PROFILE COMPONENTS
@@ -17,6 +18,11 @@ import { Container, Row } from 'react-bootstrap';
 //////////////////////////////////////////////////////////
 
 const Profile = () => {
+  const [update, { updateError, data:updateData }] = useMutation(UPDATE_USER, {
+    refetchQueries: [
+      GET_ME
+    ]
+  });
   const [followUser, { error, followData }] = useMutation(FOLLOW_USER);
   let { username } = useParams();
 
@@ -25,11 +31,15 @@ const Profile = () => {
   });
 
   let userData = data?.user || data?.me || {};
-  console.log(userData);
+
+  const currentUserId = Auth.getProfile().data._id;
+  const isFollowing = userData.followers && userData.followers.includes(currentUserId);
+
+  // click function for following user
   const handleFollowClick = async () => {
     try {
-      const { followData } = await followUser({
-        variables: { followId: userData._id },
+      const { data:followData } = await followUser({
+        variables: { followId: userData._id, isFollowing },
       });
 
       if (!followData) {
@@ -37,6 +47,33 @@ const Profile = () => {
       }
 
       userData = followData.followedUser;
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // ON FORM SUBMIT
+  const updateProfileSubmit = async (event, formData) => {
+    event.preventDefault();
+    // [1] Check whether user is logged in by checking to see if there is a JWT token
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    // // [2] If there is not valid token, then exit the process
+    if (!token) {
+      return false;
+    }
+    try {
+      // [1] useMutation[UPDATE_USER] to update user details
+      const { data:updateData } = await update({
+        variables: {
+          userData: {
+            ...formData
+          },
+        },
+      });
+
+      userData = updateData.updateUser;
+      console.log(userData);
     } catch (err) {
       console.error(err);
     }
@@ -56,11 +93,11 @@ const Profile = () => {
   return (
     <>
       <div className='rounded' style={editProfileCardStyle}>
-        <ProfileHeader userData={userData} />
+        <ProfileHeader userData={userData} updateProfile={updateProfileSubmit}/>
         <Container className='pb-2' fluid>
           <Row>
             <>
-              <ProfileUserDetails userData={userData} follow={handleFollowClick} />
+              <ProfileUserDetails userData={userData} follow={handleFollowClick} isFollowing={isFollowing} />
             </>
           </Row>
         </Container>

@@ -101,7 +101,7 @@ const ProfileHeader = (props) => {
             <Tab.Content>
               {/* TAB 1: Settings */}
               <Tab.Pane eventKey='Settings'>{/* <Login /> */}</Tab.Pane>
-              <UserEditSettings userData={props.userData} />
+              <UserEditSettings userData={props.userData} updateProfile={props.updateProfile} />
             </Tab.Content>
           </Modal.Body>
         </Tab.Container>

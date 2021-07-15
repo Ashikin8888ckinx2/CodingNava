@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { UPDATE_USER } from '../../../utils/mutations';
-import Auth from '../../../utils/auth';
 
 // BOOTSTRAP COMPONENTS
 import { Form, Button } from 'react-bootstrap';
 
 const UserEditSettings = (props) => {
-  const [update, { error, data }] = useMutation(UPDATE_USER);
+  console.log(props);
 
-  const [formState, setFormState] = useState({
-    email: props.userData.email,
-    bio: props.userData.bio,
-    picture: props.userData.picture,
-    banner_picture: props.userData.banner_picture,
-    privacy_mode: false,
-  });
+  const [formState, setFormState] = useState({});
 
   // UPDATING "formState" BASED ON INPUT CHANGES
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(name, value);
     setFormState({
       ...formState,
       [name]: value,
@@ -29,29 +21,25 @@ const UserEditSettings = (props) => {
   // ON FORM SUBMIT
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // [1] Check whether user is logged in by checking to see if there is a JWT token
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    // // [2] If there is not valid token, then exit the process
-    if (!token) {
+    if (formState.password !== formState.confirmPassword) {
       return false;
     }
+    delete formState.confirmPassword;
+    
+    props.updateProfile(event, formState);
+  }
 
-    try {
-      // [1] useMutation[UPDATE_USER] to update user details
-      const { data } = await update({
-        variables: {
-          userData: {
-            ...formState,
-          },
-        },
-      });
-
-      console.log(data);
-    } catch (err) {
-      console.error(err);
-    }
+  // UPDATING "formState" BASED ON INPUT CHANGES
+  const handleFileChange = (event) => {
+    const { name, files } = event.target;
+    console.log(name, files[0]);
+    setFormState({
+      ...formState,
+      [name]: files[0],
+    });
   };
+
 
   return (
     <>
@@ -59,18 +47,20 @@ const UserEditSettings = (props) => {
         {/* EMAIL */}
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='email'>Email</Form.Label>
-          <Form.Control type='email' name='email' defaultValue={props.userData.email} onChange={handleChange} required />
+          <Form.Control type='email' name='email' defaultValue={props.userData.email} onChange={handleChange} />
         </Form.Group>
         {/* PASSWORD */}
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='password'>Password</Form.Label>
-          <Form.Control type='password' name='password' placeholder="Password" onChange={handleChange} required />
+          <Form.Control type='password' name='password' placeholder="Password" onChange={handleChange} />
         </Form.Group>
         {/* CONFIRM PASSWORD */}
         <Form.Group className='mb-2'>
-          <Form.Label htmlFor='password'>Confirm Password</Form.Label>
-          <Form.Control type='password' name='password' placeholder="Confirm Password" onChange={handleChange} required />
+          <Form.Label htmlFor='confirmPassword'>Confirm Password</Form.Label>
+          <Form.Control type='password' name='confirmPassword' placeholder="Confirm Password" onChange={handleChange} />
         </Form.Group>
+        {/* CONFIRM PASSWORD */}
+          <p className="mb-2" style={{display:(formState.password !== '' && formState.password !== formState.confirmPassword && formState.confirmPassword !== '') ? "block" : "none", color: "red"}}>Passwords don't match</p>
         {/* ABOUT ME */}
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='bio'>About Me</Form.Label>
@@ -79,16 +69,16 @@ const UserEditSettings = (props) => {
         {/* PROFILE PHOTO */}
         <Form.Group className='mb-2'>
           <Form.Label>Profile Photo</Form.Label>
-          <Form.Control type='file' name='picture' onChange={handleChange} />
+          <Form.Control type='file' name='picture' accept="image/*" onChange={handleFileChange} />
         </Form.Group>
 
         {/* BANNER PHOTO */}
         <Form.Group className='mb-2'>
           <Form.Label>Profile Banner</Form.Label>
-          <Form.Control type='file' name='banner_picture' onChange={handleChange} />
+          <Form.Control type='file' name='banner_picture' accept="image/*" onChange={handleFileChange} />
         </Form.Group>
         {/* PRIVACY RADIO */}
-        <Form.Check className='mb-2' type='switch' id='custom-switch' name='privacy_mode' onChange={(e) => setFormState({ ...formState, privacy_mode: e.target.checked })} label='Private' />
+        <Form.Check className='mb-2' type='switch' id='custom-switch' name='privacy_mode' defaultChecked={props.userData.privacy_mode} onChange={(e) => setFormState({ ...formState, privacy_mode: e.target.checked })} label='Private' />
 
         {/* UPDATE BUTTON  */}
         <Button variant='success' type='submit'>
