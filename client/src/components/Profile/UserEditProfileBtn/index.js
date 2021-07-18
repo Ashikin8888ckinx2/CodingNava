@@ -26,9 +26,9 @@ const UserEditSettings = (props) => {
       return false;
     }
     delete formState.confirmPassword;
-    
+
     props.updateProfile(event, formState);
-  }
+  };
 
   // UPDATING "formState" BASED ON INPUT CHANGES
   const handleFileChange = (event) => {
@@ -39,7 +39,6 @@ const UserEditSettings = (props) => {
       [name]: files[0],
     });
   };
-
 
   return (
     <>
@@ -52,15 +51,17 @@ const UserEditSettings = (props) => {
         {/* PASSWORD */}
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='password'>Password</Form.Label>
-          <Form.Control type='password' name='password' placeholder="Password" onChange={handleChange} />
+          <Form.Control type='password' name='password' placeholder='Password' onChange={handleChange} />
         </Form.Group>
         {/* CONFIRM PASSWORD */}
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='confirmPassword'>Confirm Password</Form.Label>
-          <Form.Control type='password' name='confirmPassword' placeholder="Confirm Password" onChange={handleChange} />
+          <Form.Control type='password' name='confirmPassword' placeholder='Confirm Password' onChange={handleChange} />
         </Form.Group>
         {/* CONFIRM PASSWORD */}
-          <p className="mb-2" style={{display:(formState.password !== '' && formState.password !== formState.confirmPassword && formState.confirmPassword !== '') ? "block" : "none", color: "red"}}>Passwords don't match</p>
+        <p className='mb-2' style={{ display: formState.password !== '' && formState.password !== formState.confirmPassword && formState.confirmPassword !== '' ? 'block' : 'none', color: 'red' }}>
+          Passwords don't match
+        </p>
         {/* ABOUT ME */}
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='bio'>About Me</Form.Label>
@@ -69,13 +70,13 @@ const UserEditSettings = (props) => {
         {/* PROFILE PHOTO */}
         <Form.Group className='mb-2'>
           <Form.Label>Profile Photo</Form.Label>
-          <Form.Control type='file' name='picture' accept="image/*" onChange={handleFileChange} />
+          <Form.Control type='file' name='picture' accept='image/*' onChange={handleFileChange} />
         </Form.Group>
 
         {/* BANNER PHOTO */}
         <Form.Group className='mb-2'>
           <Form.Label>Profile Banner</Form.Label>
-          <Form.Control type='file' name='banner_picture' accept="image/*" onChange={handleFileChange} />
+          <Form.Control type='file' name='banner_picture' accept='image/*' onChange={handleFileChange} />
         </Form.Group>
         {/* PRIVACY RADIO */}
         <Form.Check className='mb-2' type='switch' id='custom-switch' name='privacy_mode' defaultChecked={props.userData.privacy_mode} onChange={(e) => setFormState({ ...formState, privacy_mode: e.target.checked })} label='Private' />

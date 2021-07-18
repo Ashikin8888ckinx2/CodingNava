@@ -9,25 +9,38 @@ export const GET_ME = gql`
       bio
       picture
       banner_picture
-      followers
-      following
+      followers {
+        username
+        picture
+      }
+      following {
+        username
+        picture
+      }
       privacy_mode
     }
   }
 `;
 
 export const GET_USER = gql`
-  query user($username: String!){
-    user(username: $username){
+  query user($username: String!) {
+    user(username: $username) {
       _id
       username
       email
       bio
       picture
       banner_picture
-      followers
-      following
-      bucketList{
+      followers {
+        username
+        picture
+      }
+      following {
+        username
+        picture
+      }
+      privacy_mode
+      bucketList {
         _id
         progress
         # I didn't include post here
@@ -36,12 +49,12 @@ export const GET_USER = gql`
   }
 `;
 
-export const GET_BUCKETLISTS = gql `
-  query bucketLists($username: String!){
-    bucketList(username: $username){
+export const GET_BUCKETLISTS = gql`
+  query bucketLists($username: String!) {
+    bucketList(username: $username) {
       _id
       progress
-      post{
+      post {
         _id
         description
         images
@@ -54,12 +67,12 @@ export const GET_BUCKETLISTS = gql `
   }
 `;
 
-export const GET_BUCKETLIST = gql `
-  query bucketList($listId: ID!){
-    bucketList(listId: $listId){
+export const GET_BUCKETLIST = gql`
+  query bucketList($listId: ID!) {
+    bucketList(listId: $listId) {
       _id
       progress
-      post{
+      post {
         _id
         description
         images

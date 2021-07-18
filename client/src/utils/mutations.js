@@ -34,7 +34,7 @@ export const UPDATE_USER = gql`
       privacy_mode
     }
   }
-`
+`;
 
 export const FOLLOW_USER = gql`
   mutation followUser($followId: ID!, $isFollowing: Boolean) {
@@ -51,7 +51,7 @@ export const FOLLOW_USER = gql`
       }
     }
   }
-`
+`;
 
 export const ADD_BUCKET_LIST = gql`
   mutation addBucketList($listData: BucketListInput!) {
