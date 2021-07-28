@@ -3,7 +3,6 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME, GET_USER } from '../../utils/queries';
 import { FOLLOW_USER, UPDATE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-
 //////////////////////////////////////////////////////////
 // PROFILE COMPONENTS
 //////////////////////////////////////////////////////////
@@ -14,17 +13,18 @@ import ProfileUserDetails from '../../components/Profile/UserDetails';
 // BOOTSTRAP COMPONENTS
 //////////////////////////////////////////////////////////
 import { Container, Row } from 'react-bootstrap';
+
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
 const Profile = () => {
-  const [update, { updateError, data:updateData }] = useMutation(UPDATE_USER, {
-    refetchQueries: [
-      GET_ME
-    ]
+  const [update, { updateError, data: updateData }] = useMutation(UPDATE_USER, {
+    refetchQueries: [GET_ME],
   });
   const [followUser, { error, followData }] = useMutation(FOLLOW_USER);
   let { username } = useParams();
+
+  // console.log(username);
 
   const { loading, data } = useQuery(username ? GET_USER : GET_ME, {
     variables: { username },
@@ -32,13 +32,28 @@ const Profile = () => {
 
   let userData = data?.user || data?.me || {};
 
-  const currentUserId = Auth.getProfile().data._id;
-  const isFollowing = userData.followers && userData.followers.includes(currentUserId);
+  // ///////////////////////////////////////////////////////////////////////////////
+  // TO CHECK IF CURRENT USER THATS LOGGED IN IS FOLLOWING THE USER THEY ARE VIEWING
+  //////////////////////////////////////////////////////////////////////////////////
 
+  const createArrayFilter = (user) => {
+    if (userData.followers.some((e) => e._id === user)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  const currentUserId = Auth.getProfile().data._id;
+  const isFollowing = userData.followers && createArrayFilter(currentUserId);
+
+  ///////////////////////////////////////////////////////////////
+
+  ///////////////////////////////////////////////////////////////
   // click function for following user
+  ///////////////////////////////////////////////////////////////
   const handleFollowClick = async () => {
     try {
-      const { data:followData } = await followUser({
+      const { data: followData } = await followUser({
         variables: { followId: userData._id, isFollowing },
       });
 
@@ -64,16 +79,16 @@ const Profile = () => {
     }
     try {
       // [1] useMutation[UPDATE_USER] to update user details
-      const { data:updateData } = await update({
+      const { data: updateData } = await update({
         variables: {
           userData: {
-            ...formData
+            ...formData,
           },
         },
       });
 
       userData = updateData.updateUser;
-      console.log(userData);
+      // console.log(userData);
     } catch (err) {
       console.error(err);
     }
@@ -93,7 +108,7 @@ const Profile = () => {
   return (
     <>
       <div className='rounded' style={editProfileCardStyle}>
-        <ProfileHeader userData={userData} updateProfile={updateProfileSubmit}/>
+        <ProfileHeader userData={userData} updateProfile={updateProfileSubmit} />
         <Container className='pb-2' fluid>
           <Row>
             <>
