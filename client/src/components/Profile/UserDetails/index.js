@@ -8,7 +8,7 @@ import FollowingModel from './FollowingModel';
 //////////////////////////////////////////////////////////
 // Bootstrap Components
 //////////////////////////////////////////////////////////
-import { PlusSquare, People, PersonPlus, Bucket } from 'react-bootstrap-icons';
+import { PlusSquare, People, PersonPlus, Bucket, DashSquare } from 'react-bootstrap-icons';
 import { Card, Col, Stack, Modal, Form } from 'react-bootstrap';
 
 //////////////////////////////////////////////////////////
@@ -16,6 +16,7 @@ import { Card, Col, Stack, Modal, Form } from 'react-bootstrap';
 
 const ProfileUserDetails = (props) => {
   // console.log(props.userData);
+  // console.log(props.isFollowing);
   ////////////////////////////////////////////////
   // MODAL STATES
   ////////////////////////////////////////////////
@@ -26,6 +27,7 @@ const ProfileUserDetails = (props) => {
   // FOR POPULATING THE ICONS UNDER THE USER DETAILS CARD
   // IF USER IS LOOKING AT HIS OWN PROFILE = SHOULD SHOW BUCKET ICON
   // IF USER IS LOOKING AT ANOTHER PERSONS PROFILE = IT SHOULD SHOW A FOLLOW / UNFOLLOW BUTTON
+
   const handleUserDetailIcons = () => {
     if (window.location.pathname === '/profile') {
       return (
@@ -41,10 +43,18 @@ const ProfileUserDetails = (props) => {
         <Stack gap={2} className='align-items-center justify-content-end' onClick={props.follow}>
           {/* IF USER IS NOT FOLLOWING, USE THE PLUSSQUARE  */}
           <>
-            <PlusSquare size={36} />
-            {/* {props.isFollowing ? 'Unfollow' : 'Follow'} */}
+            {props.isFollowing ? (
+              <>
+                <DashSquare size={36} />
+                Unfollow
+              </>
+            ) : (
+              <>
+                <PlusSquare size={36} />
+                Follow
+              </>
+            )}
           </>
-          {/* <><DashSquare size={36} />Unfollow</> */}
         </Stack>
       );
     }
