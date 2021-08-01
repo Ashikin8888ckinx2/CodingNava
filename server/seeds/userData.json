@@ -9,9 +9,6 @@
     "banner_picture": "https://source.unsplash.com/I0fDR8xtApA/970x250",
     "followers": [
       {
-        "_id": "5c8a1dfa2f8fb814b56fa181"
-      },
-      {
         "_id": "5c8a1dfa2f8fb814b56fa182"
       },
       {
@@ -22,9 +19,6 @@
       }
     ],
     "following": [
-      {
-        "_id": "5c8a1dfa2f8fb814b56fa181"
-      },
       {
         "_id": "5c8a1dfa2f8fb814b56fa182"
       },
@@ -46,9 +40,6 @@
     "banner_picture": "https://source.unsplash.com/yU4XRBasaDY/970x250",
     "followers": [
       {
-        "_id": "5c8a1d5b0190b214360dc057"
-      },
-      {
         "_id": "5c8a1dfa2f8fb814b56fa182"
       },
       {
@@ -59,9 +50,6 @@
       }
     ],
     "following": [
-      {
-        "_id": "5c8a1d5b0190b214360dc057"
-      },
       {
         "_id": "5c8a1dfa2f8fb814b56fa182"
       },
