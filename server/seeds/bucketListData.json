@@ -9,9 +9,6 @@
         "images": [],
         "likes": [
           {
-            "_id": "5c8a1dfa2f8fb814b56fa181"
-          },
-          {
             "_id": "5c8a1dfa2f8fb814b56fa182"
           },
           {
@@ -28,9 +25,6 @@
         "description": "Go bungee jumping",
         "images": [],
         "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa181"
-          },
           {
             "_id": "5c8a1dfa2f8fb814b56fa182"
           }
@@ -74,9 +68,6 @@
         "images": [],
         "likes": [
           {
-            "_id": "5c8a1dfa2f8fb814b56fa181"
-          },
-          {
             "_id": "5c8a1dfa2f8fb814b56fa182"
           }
         ],
@@ -94,9 +85,6 @@
         "description": "Chase a Tornado",
         "images": [],
         "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa181"
-          },
           {
             "_id": "5c8a1dfa2f8fb814b56fa184"
           }
@@ -134,9 +122,6 @@
         "images": [],
         "likes": [
           {
-            "_id": "5c8a1dfa2f8fb814b56fa181"
-          },
-          {
             "_id": "5c8a1dfa2f8fb814b56fa184"
           }
         ],
@@ -166,7 +151,7 @@
         "images": [],
         "likes": [
           {
-            "_id": "5c8a1dfa2f8fb814b56fa181"
+            "_id": "5c8a1dfa2f8fb814b56fa184"
           }
         ],
         "tags": ["Animals", "Travel"],
@@ -176,9 +161,6 @@
         "description": "See the Salmon Run",
         "images": [],
         "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa181"
-          },
           {
             "_id": "5c8a1dfa2f8fb814b56fa184"
           }
@@ -190,9 +172,6 @@
         "description": "Witness a Solar Eclipse",
         "images": [],
         "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa181"
-          },
           {
             "_id": "5c8a1dfa2f8fb814b56fa182"
           }
@@ -221,9 +200,6 @@
         "description": "Whale Watching",
         "images": [],
         "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa181"
-          },
           {
             "_id": "5c8a1dfa2f8fb814b56fa182"
           },
