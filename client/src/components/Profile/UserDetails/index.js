@@ -1,35 +1,40 @@
 import React, { useState } from 'react';
-import Auth from '../../../utils/auth';
 
 import '../Profile.css';
-
-import UserEditBucket from '../UserEditBucket';
+import CreateModel from './CreateModel';
+import FollowersModel from './FollowersModel';
+import FollowingModel from './FollowingModel';
 
 //////////////////////////////////////////////////////////
 // Bootstrap Components
 //////////////////////////////////////////////////////////
-import { Card, Col, Stack, Tab, Modal, Nav } from 'react-bootstrap';
-import { PlusSquare, DashSquare, People, PersonPlus, Bucket } from 'react-bootstrap-icons';
+import { PlusSquare, People, PersonPlus, Bucket, DashSquare } from 'react-bootstrap-icons';
+import { Card, Col, Stack, Modal, Form } from 'react-bootstrap';
+
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
 const ProfileUserDetails = (props) => {
+  // console.log(props.userData);
+  // console.log(props.isFollowing);
   ////////////////////////////////////////////////
   // MODAL STATES
   ////////////////////////////////////////////////
-
-  const [show, setShow] = useState(false);
+  const [create, setCreate] = useState(false);
+  const [followers, setFollowers] = useState(false);
+  const [following, setFollowing] = useState(false);
 
   // FOR POPULATING THE ICONS UNDER THE USER DETAILS CARD
   // IF USER IS LOOKING AT HIS OWN PROFILE = SHOULD SHOW BUCKET ICON
   // IF USER IS LOOKING AT ANOTHER PERSONS PROFILE = IT SHOULD SHOW A FOLLOW / UNFOLLOW BUTTON
+
   const handleUserDetailIcons = () => {
     if (window.location.pathname === '/profile') {
       return (
-        <Stack gap={2} className='align-items-center justify-content-end' onClick={() => setShow(true)}>
+        <Stack gap={2} className='align-items-center justify-content-end' onClick={() => setCreate(true)}>
           <>
             <Bucket size={36} />
-            Posts
+            Create
           </>
         </Stack>
       );
@@ -38,18 +43,28 @@ const ProfileUserDetails = (props) => {
         <Stack gap={2} className='align-items-center justify-content-end' onClick={props.follow}>
           {/* IF USER IS NOT FOLLOWING, USE THE PLUSSQUARE  */}
           <>
-            <PlusSquare size={36} />
-            {props.isFollowing ? "Unfollow" : "Follow"} 
+            {props.isFollowing ? (
+              <>
+                <DashSquare size={36} />
+                Unfollow
+              </>
+            ) : (
+              <>
+                <PlusSquare size={36} />
+                Follow
+              </>
+            )}
           </>
-          {/* <><DashSquare size={36} />Unfollow</> */}
         </Stack>
       );
     }
   };
+
+  ////////////////////////////////////////////////
   return (
     <>
       <Col sm={4} md={4} lg={4}>
-        <Card className='shadow'>
+        <Card className='shadow mb-2'>
           <Card.Body>
             <Card.Title className='text-dark'>{props.userData.username}</Card.Title>
             <Card.Subtitle className='mb-2 text-muted'>About Me</Card.Subtitle>
@@ -62,13 +77,13 @@ const ProfileUserDetails = (props) => {
                   {/* ////////////////////////////////////////////////// */}
                 </Card.Link>
                 <Card.Link href='#' className='text-decoration-none text-dark'>
-                  <Stack gap={2} className='align-items-center justify-content-end'>
+                  <Stack gap={2} className='align-items-center justify-content-end' onClick={() => setFollowers(true)}>
                     <People size={36} />
                     {props.userData.followers.length || 0}
                   </Stack>
                 </Card.Link>
                 <Card.Link href='#' className='text-decoration-none text-dark'>
-                  <Stack gap={2} className='align-items-center justify-content-end'>
+                  <Stack gap={2} className='align-items-center justify-content-end' onClick={() => setFollowing(true)}>
                     <PersonPlus size={36} />
                     {props.userData.following.length || 0}
                   </Stack>
@@ -79,26 +94,41 @@ const ProfileUserDetails = (props) => {
         </Card>
       </Col>
       {/* /////////////////////////////////////////////////// */}
-      {/* EDIT PROFILE MODAL */}
+      {/* USER BUCKETS */}
       {/* /////////////////////////////////////////////////// */}
-      <Modal show={show} onHide={() => setShow(false)} backdrop='static' keyboard={false} dialogClassName='modal-90w' className='modal-dialog-scrollable'>
-        <Tab.Container defaultActiveKey='BuckIts'>
-          {/* LOGIN/SIGNUP MODAL: HEADER */}
-          <Modal.Header closeButton>
-            <Modal.Title>
-              <h2 className='mb-0'>BuckIts</h2>
-            </Modal.Title>
-          </Modal.Header>
-          {/* LOGIN/SIGNUP MODAL: BODY */}
-          <Modal.Body>
-            <Tab.Content>
-              {/* TAB 1: Settings */}
-              <Tab.Pane eventKey='BuckIts'>
-                <UserEditBucket />
-              </Tab.Pane>
-            </Tab.Content>
-          </Modal.Body>
-        </Tab.Container>
+      {/* NEED TO CREATE FUNCTIONALITY TO ITERATE THROUGH THE USER BUCKETS */}
+      <Col sm={8} md={8} lg={8}>
+        <Card className='shadow mb-2'>
+          <Card.Header>
+            <h4>Visit all Eight Wonders of the World</h4>
+          </Card.Header>
+          <Card.Body>
+            <Form.Select size='md'>
+              <option>To Do</option>
+              <option>In Progress</option>
+              <option>Complete</option>
+            </Form.Select>
+          </Card.Body>
+        </Card>
+      </Col>
+
+      {/* /////////////////////////////////////////////////// */}
+      {/* CREATE MODAL */}
+      {/* /////////////////////////////////////////////////// */}
+      <Modal show={create} onHide={() => setCreate(false)} backdrop='static' keyboard={false} dialogClassName='modal-90w' className='modal-dialog-scrollable'>
+        <CreateModel />
+      </Modal>
+      {/* /////////////////////////////////////////////////// */}
+      {/* FOLLOWERS MODAL */}
+      {/* /////////////////////////////////////////////////// */}
+      <Modal show={followers} onHide={() => setFollowers(false)} backdrop='static' keyboard={false} className='modal-dialog-scrollable modal-md'>
+        <FollowersModel userFollowers={props.userData.followers} />
+      </Modal>
+      {/* /////////////////////////////////////////////////// */}
+      {/* FOLLOWING MODAL */}
+      {/* /////////////////////////////////////////////////// */}
+      <Modal show={following} onHide={() => setFollowing(false)} backdrop='static' keyboard={false} className='modal-dialog-scrollable modal-md'>
+        <FollowingModel />
       </Modal>
     </>
   );

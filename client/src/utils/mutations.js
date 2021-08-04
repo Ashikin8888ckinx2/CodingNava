@@ -34,24 +34,40 @@ export const UPDATE_USER = gql`
       privacy_mode
     }
   }
-`
+`;
 
 export const FOLLOW_USER = gql`
   mutation followUser($followId: ID!, $isFollowing: Boolean) {
     followUser(followId: $followId, isFollowing: $isFollowing) {
       followingUser {
         _id
-        followers
-        following
+        followers {
+          _id
+          username
+          picture
+        }
+        following {
+          _id
+          username
+          picture
+        }
       }
       followedUser {
         _id
-        followers
-        following
+        followers {
+          _id
+          username
+          picture
+        }
+        following {
+          _id
+          username
+          picture
+        }
       }
     }
   }
-`
+`;
 
 export const ADD_BUCKET_LIST = gql`
   mutation addBucketList($listData: BucketListInput!) {

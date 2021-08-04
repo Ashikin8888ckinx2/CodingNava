@@ -6,7 +6,7 @@ import Logout from './Logout';
 import Profile from './Profile';
 
 // Bootstrap Navbar
-import { Navbar, Nav, Container, Stack, Row, Col } from 'react-bootstrap';
+import { Navbar, Nav, Container, Stack, Row, Col, Form, FormControl, Button } from 'react-bootstrap';
 import { BucketFill } from 'react-bootstrap-icons';
 import { LinkContainer } from 'react-router-bootstrap';
 

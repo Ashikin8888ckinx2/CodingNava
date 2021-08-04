@@ -1,23 +1,215 @@
 [
-    {
-        "name": "My Bucket List",
-        "progress": "In Progress",
-        "createdBy": "123456789012",
-        "post": [
-            {
-                "description": "Visit all 50 states",
-                "images": [],
-                "likes": [],
-                "tags": ["travel", "USA"],
-                "comment_ids": []
-            },
-            {
-                "description": "See the Northern Lights",
-                "images": [],
-                "likes": [],
-                "tags": ["astronomy", "experience"],
-                "comment_ids": []
-            }
-        ]
-    }
+  {
+    "name": "My Bucket List",
+    "progress": "In Progress",
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "post": [
+      {
+        "description": "Visit all Eight Wonders of the World",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa182"
+          },
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa183"
+          },
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa184"
+          }
+        ],
+        "tags": ["Travel", "World"],
+        "comment_ids": []
+      },
+      {
+        "description": "Go bungee jumping",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa182"
+          }
+        ],
+        "tags": ["Adventure", "Experience"],
+        "comment_ids": []
+      },
+      {
+        "description": "Learn to play chess",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa183"
+          },
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa184"
+          }
+        ],
+        "tags": ["Personal", "Achievements"],
+        "comment_ids": []
+      },
+      {
+        "description": "Run a marathon, half marathon, or 5k",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa182"
+          },
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa183"
+          },
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa184"
+          }
+        ],
+        "tags": ["Personal", "Achievements"],
+        "comment_ids": []
+      },
+      {
+        "description": "Attend the Olympics",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa182"
+          }
+        ],
+        "tags": ["Sports", "Experience"],
+        "comment_ids": []
+      }
+    ]
+  },
+  {
+    "name": "My Bucket List",
+    "progress": "To Do",
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "post": [
+      {
+        "description": "Chase a Tornado",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa184"
+          }
+        ],
+        "tags": ["Adventure", "Weather"],
+        "comment_ids": []
+      },
+      {
+        "description": "Learn how to play an instrument",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa183"
+          },
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa184"
+          }
+        ],
+        "tags": ["Music", "Personal"],
+        "comment_ids": []
+      },
+      {
+        "description": "Go back to school for your Master’s or PhD",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa184"
+          }
+        ],
+        "tags": ["Financial", "Personal"],
+        "comment_ids": []
+      },
+      {
+        "description": "Buy your own home and pay off the mortgage",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa184"
+          }
+        ],
+        "tags": ["Family", "Personal"],
+        "comment_ids": []
+      },
+      {
+        "description": "Find something to laugh at every day",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa184"
+          }
+        ],
+        "tags": ["Health", "Emotions"],
+        "comment_ids": []
+      }
+    ]
+  },
+  {
+    "name": "My Bucket List",
+    "progress": "Complete",
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "post": [
+      {
+        "description": "Feed a Koala Bear",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa184"
+          }
+        ],
+        "tags": ["Animals", "Travel"],
+        "comment_ids": []
+      },
+      {
+        "description": "See the Salmon Run",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa184"
+          }
+        ],
+        "tags": ["Travel", "Timing"],
+        "comment_ids": []
+      },
+      {
+        "description": "Witness a Solar Eclipse",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa182"
+          }
+        ],
+        "tags": ["Galaxy", "Sky"],
+        "comment_ids": []
+      },
+      {
+        "description": "Watch a Caterpillar Turn into a Butterfly",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa182"
+          },
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa183"
+          },
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa184"
+          }
+        ],
+        "tags": ["Animals", "Life"],
+        "comment_ids": []
+      },
+      {
+        "description": "Whale Watching",
+        "images": [],
+        "likes": [
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa182"
+          },
+          {
+            "_id": "5c8a1dfa2f8fb814b56fa184"
+          }
+        ],
+        "tags": ["Ocean", "Sea"],
+        "comment_ids": []
+      }
+    ]
+  }
 ]
