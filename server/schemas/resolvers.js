@@ -25,6 +25,13 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
+    // Find following information
+    followingList: async (parent, { username }) => { 
+      return await User.findOne({ username }).populate('following');
+    },
+    followersList: async (parent, { username }) => {
+      return await User.findOne({ username }).populate('followers');
+    },
     // Find all bucket lists
     bucketLists: async () => {
       return BucketList.find();
