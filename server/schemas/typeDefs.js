@@ -82,6 +82,8 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
+    followingList(username: String!): User
+    followersList(username: String!): User 
     bucketLists(userId: String): [BucketList]
     bucketList(listId: ID!): BucketList
   }
