@@ -41,29 +41,13 @@ export const FOLLOW_USER = gql`
     followUser(followId: $followId, isFollowing: $isFollowing) {
       followingUser {
         _id
-        followers {
-          _id
-          username
-          picture
-        }
-        following {
-          _id
-          username
-          picture
-        }
+        followers
+        following
       }
       followedUser {
         _id
-        followers {
-          _id
-          username
-          picture
-        }
-        following {
-          _id
-          username
-          picture
-        }
+        followers
+        following
       }
     }
   }
