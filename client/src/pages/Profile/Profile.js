@@ -36,15 +36,8 @@ const Profile = () => {
   // TO CHECK IF CURRENT USER THATS LOGGED IN IS FOLLOWING THE USER THEY ARE VIEWING
   //////////////////////////////////////////////////////////////////////////////////
 
-  const createArrayFilter = (user) => {
-    if (userData.followers.some((e) => e._id === user)) {
-      return true;
-    } else {
-      return false;
-    }
-  };
   const currentUserId = Auth.getProfile().data._id;
-  const isFollowing = userData.followers && createArrayFilter(currentUserId);
+  const isFollowing = userData.followers && userData.followers.includes(currentUserId);
 
   ///////////////////////////////////////////////////////////////
 
