@@ -35,6 +35,16 @@ const typeDefs = gql`
     followedUser: User
   }
 
+  type UsernamePicture {
+    username: String
+    picture: String
+  }
+
+  type FollowUserInfo {
+    following: [UsernamePicture]
+    followers: [UsernamePicture]
+  }
+
   type BucketList {
     _id: ID!
     progress: String!
@@ -82,8 +92,8 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    followingList(username: String!): User
-    followersList(username: String!): User 
+    followingList(username: String!): FollowUserInfo
+    followersList(username: String!): FollowUserInfo
     bucketLists(userId: String): [BucketList]
     bucketList(listId: ID!): BucketList
   }

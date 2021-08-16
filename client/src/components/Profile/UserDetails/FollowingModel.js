@@ -3,7 +3,20 @@ import React from 'react';
 import { Card, Col, Tab, Modal, Row } from 'react-bootstrap';
 import { DashSquare } from 'react-bootstrap-icons';
 
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_FOLLOWING } from '../../../utils/queries';
+
+
 const FollowingModel = () => {
+  
+  let { username } = useParams();
+
+  const { loading, data } = useQuery(GET_FOLLOWING, {
+    variables: { username },
+  });
+  console.log(data);
+  
   return (
     <Tab.Container defaultActiveKey='Create'>
       <Modal.Header closeButton>
