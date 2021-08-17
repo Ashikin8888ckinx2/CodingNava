@@ -122,13 +122,13 @@ const ProfileUserDetails = (props) => {
       {/* FOLLOWERS MODAL */}
       {/* /////////////////////////////////////////////////// */}
       <Modal show={followers} onHide={() => setFollowers(false)} backdrop='static' keyboard={false} className='modal-dialog-scrollable modal-md'>
-        <FollowersModel userFollowers={props.userData.followers} />
+        <FollowersModel username={props.userData.username} />
       </Modal>
       {/* /////////////////////////////////////////////////// */}
       {/* FOLLOWING MODAL */}
       {/* /////////////////////////////////////////////////// */}
       <Modal show={following} onHide={() => setFollowing(false)} backdrop='static' keyboard={false} className='modal-dialog-scrollable modal-md'>
-        <FollowingModel />
+        <FollowingModel username={props.userData.username} />
       </Modal>
     </>
   );

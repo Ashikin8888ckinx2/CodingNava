@@ -3,20 +3,20 @@ import React from 'react';
 import { Card, Col, Tab, Modal, Row } from 'react-bootstrap';
 import { DashSquare } from 'react-bootstrap-icons';
 
-import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_FOLLOWING } from '../../../utils/queries';
 
 
-const FollowingModel = () => {
-  
-  let { username } = useParams();
+const FollowingModel = (props) => {
 
   const { loading, data } = useQuery(GET_FOLLOWING, {
-    variables: { username },
+    variables: { username: props.username },
   });
-  console.log(data);
-  
+
+  if (loading) {
+    return <h1>Loading</h1>
+  }
+
   return (
     <Tab.Container defaultActiveKey='Create'>
       <Modal.Header closeButton>
@@ -27,15 +27,16 @@ const FollowingModel = () => {
       <Modal.Body>
         <Tab.Content>
           <Tab.Pane eventKey='Create'>
-            <Col>
+            {data.followingList.following.map(user => (
+              <Col key={ user.username }>
               <Card className='shadow mb-2'>
                 <Card.Body>
                   <Row className='align-items-center'>
                     <Col>
-                      <Card.Img className='rounded' variant='left' src='https://source.unsplash.com/2rIs8OH5ng0/80x80' style={{ cursor: 'pointer' }} />
+                      <Card.Img className='rounded' variant='left' src={ user.picture || 'https://source.unsplash.com/2rIs8OH5ng0/80x80' } style={{ cursor: 'pointer' }} />
                     </Col>
                     <Col>
-                      <h3>Jennifer</h3>
+                      <h3>{ user.username }</h3>
                     </Col>
                     <Col>
                       <div className='d-flex justify-content-end'>
@@ -46,6 +47,7 @@ const FollowingModel = () => {
                 </Card.Body>
               </Card>
             </Col>
+            ))}
           </Tab.Pane>
         </Tab.Content>
       </Modal.Body>
