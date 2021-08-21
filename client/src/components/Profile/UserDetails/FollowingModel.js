@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Card, Col, Tab, Modal, Row } from 'react-bootstrap';
 import { DashSquare } from 'react-bootstrap-icons';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import { useQuery } from '@apollo/client';
 import { GET_FOLLOWING } from '../../../utils/queries';
@@ -29,6 +30,7 @@ const FollowingModel = (props) => {
           <Tab.Pane eventKey='Create'>
             {data.followingList.following.map(user => (
               <Col key={ user.username }>
+              <LinkContainer to={'/profile/' + user.username}>
               <Card className='shadow mb-2'>
                 <Card.Body>
                   <Row className='align-items-center'>
@@ -46,6 +48,7 @@ const FollowingModel = (props) => {
                   </Row>
                 </Card.Body>
               </Card>
+              </LinkContainer>
             </Col>
             ))}
           </Tab.Pane>
