@@ -41,9 +41,9 @@ const FollowingModel = (props) => {
                       <h3>{ user.username }</h3>
                     </Col>
                     <Col>
-                      <div className='d-flex justify-content-end'>
+                      {/* <div className='d-flex justify-content-end'>
                         <DashSquare size={36} style={{ cursor: 'pointer' }} />
-                      </div>
+                      </div> */}
                     </Col>
                   </Row>
                 </Card.Body>
