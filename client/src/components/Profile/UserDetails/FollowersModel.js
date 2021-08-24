@@ -2,7 +2,19 @@ import React from 'react';
 
 import { Card, Col, Tab, Modal, Row } from 'react-bootstrap';
 
-const FollowersModel = () => {
+import { useQuery } from '@apollo/client';
+import { GET_FOLLOWERS } from '../../../utils/queries';
+
+const FollowersModel = (props) => {
+
+  const { loading, data } = useQuery(GET_FOLLOWERS, {
+    variables: { username: props.username },
+  });
+
+  if (loading) {
+    return <h1>Loading</h1>
+  }
+
   return (
     <Tab.Container defaultActiveKey='Create'>
       <Modal.Header closeButton>

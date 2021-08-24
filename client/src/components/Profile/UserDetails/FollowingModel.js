@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Card, Col, Tab, Modal, Row } from 'react-bootstrap';
-import { DashSquare } from 'react-bootstrap-icons';
+// import { DashSquare } from 'react-bootstrap-icons';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import { useQuery } from '@apollo/client';
