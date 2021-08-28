@@ -25,20 +25,22 @@ const FollowersModel = (props) => {
       <Modal.Body>
         <Tab.Content>
           <Tab.Pane eventKey='Create'>
-            <Col>
-              <Card className='shadow mb-2'>
-                <Card.Body>
-                  <Row className='align-items-center'>
-                    <Col>
-                      <Card.Img className='rounded' variant='left' src='https://source.unsplash.com/2rIs8OH5ng0/80x80' style={{ cursor: 'pointer' }} />
-                    </Col>
-                    <Col>
-                      <h3>Jennifer</h3>
-                    </Col>
-                  </Row>
-                </Card.Body>
-              </Card>
-            </Col>
+            {data.followingList.following.map(user => (
+              <Col>
+                <Card className='shadow mb-2'>
+                  <Card.Body>
+                    <Row className='align-items-center'>
+                      <Col>
+                        <Card.Img className='rounded' variant='left' src={user.username || 'https://source.unsplash.com/2rIs8OH5ng0/80x80'} style={{ cursor: 'pointer' }} />
+                      </Col>
+                      <Col>
+                        <h3>{user.username}</h3>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
           </Tab.Pane>
         </Tab.Content>
       </Modal.Body>
