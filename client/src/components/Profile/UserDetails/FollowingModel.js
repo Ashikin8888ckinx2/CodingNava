@@ -30,26 +30,26 @@ const FollowingModel = (props) => {
           <Tab.Pane eventKey='Create'>
             {data.followingList.following.map(user => (
               <Col key={user.username}>
-              <LinkContainer to={'/profile/' + user.username}>
-              <Card className='shadow mb-2'>
-                <Card.Body>
-                  <Row className='align-items-center'>
-                    <Col>
-                      <Card.Img className='rounded' variant='left' src={user.picture || 'https://source.unsplash.com/2rIs8OH5ng0/80x80'} style={{ cursor: 'pointer' }} />
-                    </Col>
-                    <Col>
-                      <h3>{user.username}</h3>
-                    </Col>
-                    <Col>
-                      {/* <div className='d-flex justify-content-end'>
+                <LinkContainer to={'/profile/' + user.username}>
+                  <Card className='shadow mb-2'>
+                    <Card.Body>
+                      <Row className='align-items-center'>
+                        <Col>
+                          <Card.Img className='rounded' variant='left' src={user.picture || 'https://source.unsplash.com/2rIs8OH5ng0/80x80'} style={{ cursor: 'pointer' }} />
+                        </Col>
+                        <Col>
+                          <h3>{user.username}</h3>
+                        </Col>
+                        <Col>
+                          {/* <div className='d-flex justify-content-end'>
                         <DashSquare size={36} style={{ cursor: 'pointer' }} />
                       </div> */}
-                    </Col>
-                  </Row>
-                </Card.Body>
-              </Card>
-              </LinkContainer>
-            </Col>
+                        </Col>
+                      </Row>
+                    </Card.Body>
+                  </Card>
+                </LinkContainer>
+              </Col>
             ))}
           </Tab.Pane>
         </Tab.Content>
