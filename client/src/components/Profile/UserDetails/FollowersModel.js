@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Card, Col, Tab, Modal, Row } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import { useQuery } from '@apollo/client';
 import { GET_FOLLOWERS } from '../../../utils/queries';
@@ -27,18 +28,20 @@ const FollowersModel = (props) => {
           <Tab.Pane eventKey='Create'>
             {data.followingList.following.map(user => (
               <Col key={user.username}>
-                <Card className='shadow mb-2'>
-                  <Card.Body>
-                    <Row className='align-items-center'>
-                      <Col>
-                        <Card.Img className='rounded' variant='left' src={user.picture || 'https://source.unsplash.com/2rIs8OH5ng0/80x80'} style={{ cursor: 'pointer' }} />
-                      </Col>
-                      <Col>
-                        <h3>{user.username}</h3>
-                      </Col>
-                    </Row>
-                  </Card.Body>
-                </Card>
+                <LinkContainer to={'/profile/' + user.username}>
+                  <Card className='shadow mb-2'>
+                    <Card.Body>
+                      <Row className='align-items-center'>
+                        <Col>
+                          <Card.Img className='rounded' variant='left' src={user.picture || 'https://source.unsplash.com/2rIs8OH5ng0/80x80'} style={{ cursor: 'pointer' }} />
+                        </Col>
+                        <Col>
+                          <h3>{user.username}</h3>
+                        </Col>
+                      </Row>
+                    </Card.Body>
+                  </Card>
+                </LinkContainer>
               </Col>
             ))}
           </Tab.Pane>
