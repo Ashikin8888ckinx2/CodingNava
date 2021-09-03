@@ -26,7 +26,7 @@ const FollowersModel = (props) => {
       <Modal.Body>
         <Tab.Content>
           <Tab.Pane eventKey='Create'>
-            {data.followingList.following.map(user => (
+            {data.followersList.followers.map(user => (
               <Col key={user.username}>
                 <LinkContainer to={'/profile/' + user.username}>
                   <Card className='shadow mb-2'>
