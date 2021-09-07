@@ -1,12 +1,15 @@
 const { AuthenticationError } = require('apollo-server-express');
+const { GraphQLUpload } = require('graphql-upload');
+
 const { User, BucketList, Post, Comment } = require('../models');
 const { signToken } = require('../utils/auth');
-const { uploadImage } = require('../utils/imgur');
+const { uploadImage, setUpFile } = require('../utils/imgur');
 
 // Think about what action users can do with and without login
 // If things need to happen with login, then the Query needs context and auth error
 
 const resolvers = {
+  FileUpload: GraphQLUpload,
   Query: {
     // Access current user's profile
     me: async (parent, args, context) => {
@@ -66,9 +69,12 @@ const resolvers = {
       return { token, user };
     },
     updateUser: async (parent, { userData }, context) => {
+      console.log(userData);
       if (context.user) {
         if (userData.picture) {
-          userData.picture = await uploadImage(userData.picture);
+          const file = await setUpFile(await userData.picture); 
+          // console.log(file.toString());
+          userData.picture = await uploadImage(file);
         }
         if (userData.banner_picture) {
           userData.banner_picture = await uploadImage(userData.banner_picture);

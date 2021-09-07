@@ -3,6 +3,7 @@ const path = require('path');
 const { ApolloServer } = require('apollo-server-express');
 const db = require('./config/connection');
 const { typeDefs, resolvers } = require('./schemas');
+const { graphqlUploadExpress } = require('graphql-upload');
 
 // AUTH MIDDLEWARE
 const { authMiddleware } = require('./utils/auth');
@@ -14,7 +15,10 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware,
+  uploads: false,
 });
+
+app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
 
 server.applyMiddleware({ app });
 

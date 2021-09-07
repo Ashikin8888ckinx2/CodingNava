@@ -63,6 +63,7 @@ const Profile = () => {
   // ON FORM SUBMIT
   const updateProfileSubmit = async (event, formData) => {
     event.preventDefault();
+
     // [1] Check whether user is logged in by checking to see if there is a JWT token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -80,6 +81,10 @@ const Profile = () => {
         },
       });
 
+      // fetch('/graphql', {
+      //   body: formData,
+      //   method: 'POST',
+      // });
       userData = updateData.updateUser;
       // console.log(userData);
     } catch (err) {

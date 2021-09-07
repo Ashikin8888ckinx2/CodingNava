@@ -4,14 +4,12 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 const UserEditSettings = (props) => {
-  console.log(props);
 
   const [formState, setFormState] = useState({});
 
   // UPDATING "formState" BASED ON INPUT CHANGES
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name, value);
     setFormState({
       ...formState,
       [name]: value,
@@ -27,17 +25,45 @@ const UserEditSettings = (props) => {
     }
     delete formState.confirmPassword;
 
+    const formData = new FormData();
+
+    const operations = `{ "query": 
+    "mutation updateUser($userData: UpdateUserInput!) {
+      updateUser(userData: $userData) {
+        email
+        bio
+        picture
+        banner_picture
+        privacy_mode
+      }
+    }", "variables": { "userData": {} } }`;
+    formData.append("operations", operations);
+
+    const map = `{"0": ["variables.userData"]}`;
+    formData.append("map", map);
+    formData.append("0", { ...formState });
+
+    // Object.keys(formState).forEach((key) => {
+    //   formData.append(key, formState[key]);
+    // });
     props.updateProfile(event, formState);
   };
 
   // UPDATING "formState" BASED ON INPUT CHANGES
   const handleFileChange = (event) => {
     const { name, files } = event.target;
-    console.log(name, files[0]);
+    // 1,048,576 bytes is 1 mb, so multiplied by 10 is a limit of 10mb
+    const maxSize = 10 * 1048576;
+
     setFormState({
       ...formState,
       [name]: files[0],
     });
+
+    if (event.target.files[0].size > maxSize) {
+      event.target.value = "";
+      alert("File is too big. Needs to be 10MB or smaller");
+    };
   };
 
   return (

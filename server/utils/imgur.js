@@ -27,7 +27,7 @@ imgur.setAPIUrl('https://api.imgur.com/3/');
 const uploadImage = async (filePath) => {
     try {
         // A single image
-        const data = await imgur.uploadFile(filePath);
+        const data = await imgur.uploadBase64(filePath);
         console.log(data.link);
         return data.link;
     }
@@ -36,4 +36,16 @@ const uploadImage = async (filePath) => {
     }
 }
 
-module.exports = { uploadImage };
+const setUpFile = async (uploadedFile) => {
+    return new Promise((resolve) => {
+        const {createReadStream,filename,mimetype} = uploadedFile;
+        let file; 
+        createReadStream().on('data', (chunk) => {
+          file = chunk.toString('base64');
+        }).on('close', () => {
+          resolve(file);
+        }); 
+    });
+}
+
+module.exports = { uploadImage, setUpFile };
