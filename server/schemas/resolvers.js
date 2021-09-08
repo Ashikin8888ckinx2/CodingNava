@@ -73,11 +73,11 @@ const resolvers = {
       if (context.user) {
         if (userData.picture) {
           const file = await setUpFile(await userData.picture); 
-          // console.log(file.toString());
           userData.picture = await uploadImage(file);
         }
         if (userData.banner_picture) {
-          userData.banner_picture = await uploadImage(userData.banner_picture);
+          const file = await setUpFile(await userData.banner_picture); 
+          userData.banner_picture = await uploadImage(file);
         }
         const user = await User.findById({ _id: context.user._id });
         Object.assign(user, userData);
