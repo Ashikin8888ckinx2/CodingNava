@@ -15,8 +15,8 @@ const typeDefs = gql`
     bio: String
     picture: String
     banner_picture: String
-    followers: [User]
-    following: [User]
+    followers: [ID]
+    following: [ID]
     privacy_mode: Boolean
     bucketList: [BucketList]
   }
@@ -33,6 +33,16 @@ const typeDefs = gql`
   type FollowUser {
     followingUser: User
     followedUser: User
+  }
+
+  type UsernamePicture {
+    username: String
+    picture: String
+  }
+
+  type FollowUserInfo {
+    following: [UsernamePicture]
+    followers: [UsernamePicture]
   }
 
   type BucketList {
@@ -82,6 +92,8 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
+    followingList(username: String!): FollowUserInfo
+    followersList(username: String!): FollowUserInfo
     bucketLists(userId: String): [BucketList]
     bucketList(listId: ID!): BucketList
   }

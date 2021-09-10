@@ -9,14 +9,8 @@ export const GET_ME = gql`
       bio
       picture
       banner_picture
-      followers {
-        username
-        picture
-      }
-      following {
-        username
-        picture
-      }
+      followers
+      following
       privacy_mode
     }
   }
@@ -31,19 +25,35 @@ export const GET_USER = gql`
       bio
       picture
       banner_picture
-      followers {
-        username
-        picture
-      }
-      following {
-        username
-        picture
-      }
+      followers
+      following
       privacy_mode
       bucketList {
         _id
         progress
         # I didn't include post here
+      }
+    }
+  }
+`;
+
+export const GET_FOLLOWING = gql`
+  query followingList($username: String!) {
+    followingList(username: $username) {
+      following {
+        username
+        picture
+      }
+    }
+  }
+`;
+
+export const GET_FOLLOWERS = gql`
+  query followersList($username: String!) {
+    followersList(username: $username) {
+      followers {
+        username
+        picture
       }
     }
   }

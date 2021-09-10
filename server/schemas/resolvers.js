@@ -12,7 +12,7 @@ const resolvers = {
     me: async (parent, args, context) => {
       if (context.user) {
         // excludes password form User object
-        const userData = await User.findOne({ _id: context.user._id }).populate('followers').populate('following');
+        const userData = await User.findOne({ _id: context.user._id });
         return userData;
       }
       throw new AuthenticationError('Not logged in!');
@@ -24,6 +24,13 @@ const resolvers = {
     // Find a single user
     user: async (parent, { username }) => {
       return User.findOne({ username });
+    },
+    // Find following information
+    followingList: async (parent, { username }) => { 
+      return await User.findOne({ username }).populate('following');
+    },
+    followersList: async (parent, { username }) => {
+      return await User.findOne({ username }).populate('followers');
     },
     // Find all bucket lists
     bucketLists: async () => {
