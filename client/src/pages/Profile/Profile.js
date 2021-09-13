@@ -6,6 +6,7 @@ import Auth from '../../utils/auth';
 //////////////////////////////////////////////////////////
 // PROFILE COMPONENTS
 //////////////////////////////////////////////////////////
+
 import ProfileHeader from '../../components/Profile/Header';
 import ProfileUserDetails from '../../components/Profile/UserDetails';
 
