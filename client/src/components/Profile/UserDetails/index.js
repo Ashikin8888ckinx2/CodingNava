@@ -15,6 +15,8 @@ import { Card, Col, Stack, Modal, Form } from 'react-bootstrap';
 //////////////////////////////////////////////////////////
 
 const ProfileUserDetails = (props) => {
+  // console.log(`Props (components/profile/userDetails/index): ${props}`);
+  console.log('Props:', props);
   // console.log(props.userData);
   // console.log(props.isFollowing);
   ////////////////////////////////////////////////
@@ -60,6 +62,7 @@ const ProfileUserDetails = (props) => {
     }
   };
 
+  // console.log(`Props (components/profile/userDetails/index): ${props.userData}`);
   ////////////////////////////////////////////////
   return (
     <>
