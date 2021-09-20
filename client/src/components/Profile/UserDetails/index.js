@@ -8,14 +8,14 @@ import FollowingModel from './FollowingModel';
 //////////////////////////////////////////////////////////
 // Bootstrap Components
 //////////////////////////////////////////////////////////
-import { PlusSquare, People, PersonPlus, Bucket, DashSquare } from 'react-bootstrap-icons';
-import { Card, Col, Stack, Modal, Form } from 'react-bootstrap';
+import { PlusSquare, PlusLg, People, PersonPlus, Bucket, DashSquare } from 'react-bootstrap-icons';
+import { Card, Col, Stack, Modal, Form, Row } from 'react-bootstrap';
 
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
 const ProfileUserDetails = (props) => {
-  // console.log(props.userData);
+  // console.log(props);
   // console.log(props.isFollowing);
   ////////////////////////////////////////////////
   // MODAL STATES
@@ -64,7 +64,7 @@ const ProfileUserDetails = (props) => {
   return (
     <>
       <Col sm={4} md={4} lg={4}>
-        <Card className='shadow mb-2'>
+        <Card className='shadow mb-2 h-100'>
           <Card.Body>
             <Card.Title className='text-dark'>{props.userData.username}</Card.Title>
             <Card.Subtitle className='mb-2 text-muted'>About Me</Card.Subtitle>
@@ -98,9 +98,14 @@ const ProfileUserDetails = (props) => {
       {/* /////////////////////////////////////////////////// */}
       {/* NEED TO CREATE FUNCTIONALITY TO ITERATE THROUGH THE USER BUCKETS */}
       <Col sm={8} md={8} lg={8}>
-        <Card className='shadow mb-2'>
+        <Card className='shadow mb-2 h-100'>
           <Card.Header>
-            <h4>Visit all Eight Wonders of the World</h4>
+            <Stack direction='horizontal' gap={3} className='align-items-center justify-content-between'>
+              <div className='fs-4'>Buckit List</div>
+              <div>
+                <PlusLg size={36} style={{ cursor: 'pointer' }} />
+              </div>
+            </Stack>
           </Card.Header>
           <Card.Body>
             <Form.Select size='md'>
@@ -111,7 +116,6 @@ const ProfileUserDetails = (props) => {
           </Card.Body>
         </Card>
       </Col>
-
       {/* /////////////////////////////////////////////////// */}
       {/* CREATE MODAL */}
       {/* /////////////////////////////////////////////////// */}
