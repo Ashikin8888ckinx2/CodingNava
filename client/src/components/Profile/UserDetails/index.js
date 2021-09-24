@@ -111,11 +111,32 @@ const ProfileUserDetails = (props) => {
             </Stack>
           </Card.Header>
           <Card.Body>
-            <Form.Select size='md'>
-              <option>To Do</option>
-              <option>In Progress</option>
-              <option>Complete</option>
-            </Form.Select>
+            <Row className='align-items-center justify-content-between pb-2'>
+              <Col sm={4} md={4} lg={4}>
+                <Form.Select size='md'>
+                  <option>To Do</option>
+                  <option>In Progress</option>
+                  <option>Complete</option>
+                </Form.Select>
+              </Col>
+              <Col sm={8} md={8} lg={8}>
+                {/* We need the title's text rather than a form */}
+                <Form.Control type="text" placeholder="Visit 8 Wonders of the World" disabled className="bg-transparent" />
+              </Col>
+            </Row>
+            <Row className='align-items-center justify-content-between pb-2'>
+              <Col sm={4} md={4} lg={4}>
+                <Form.Select size='md'>
+                  <option>To Do</option>
+                  <option>In Progress</option>
+                  <option>Complete</option>
+                </Form.Select>
+              </Col>
+              <Col sm={8} md={8} lg={8}>
+                {/* We need the title's text rather than a form */}
+                <Form.Control type="text" placeholder="Visit 8 Wonders of the World" disabled className="bg-transparent" />
+              </Col>
+            </Row>
           </Card.Body>
         </Card>
       </Col>
