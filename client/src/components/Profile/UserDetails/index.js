@@ -4,6 +4,7 @@ import '../Profile.css';
 import CreateModel from './CreateModel';
 import FollowersModel from './FollowersModel';
 import FollowingModel from './FollowingModel';
+import PostModal from './PostModal';
 
 //////////////////////////////////////////////////////////
 // Bootstrap Components
@@ -25,6 +26,7 @@ const ProfileUserDetails = (props) => {
   const [create, setCreate] = useState(false);
   const [followers, setFollowers] = useState(false);
   const [following, setFollowing] = useState(false);
+  const [post, setPost] = useState(false);
 
   // FOR POPULATING THE ICONS UNDER THE USER DETAILS CARD
   // IF USER IS LOOKING AT HIS OWN PROFILE = SHOULD SHOW BUCKET ICON
@@ -106,24 +108,13 @@ const ProfileUserDetails = (props) => {
             <Stack direction='horizontal' gap={3} className='align-items-center justify-content-between'>
               <div className='fs-4'>Buckit List</div>
               <div>
-                <PlusLg size={36} style={{ cursor: 'pointer' }} />
+                {/* Create function to create bucket list */}
+                <PlusLg size={36} style={{ cursor: 'pointer' }} onClick={() => setPost(true)} />
               </div>
             </Stack>
           </Card.Header>
           <Card.Body>
-            <Row className='align-items-center justify-content-between pb-2'>
-              <Col sm={4} md={4} lg={4}>
-                <Form.Select size='md'>
-                  <option>To Do</option>
-                  <option>In Progress</option>
-                  <option>Complete</option>
-                </Form.Select>
-              </Col>
-              <Col sm={8} md={8} lg={8}>
-                {/* We need the title's text rather than a form */}
-                <Form.Control type="text" placeholder="Visit 8 Wonders of the World" disabled className="bg-transparent" />
-              </Col>
-            </Row>
+            {/* Incorporate mapping functionality to render bucket lists on user click create */}
             <Row className='align-items-center justify-content-between pb-2'>
               <Col sm={4} md={4} lg={4}>
                 <Form.Select size='md'>
@@ -157,6 +148,12 @@ const ProfileUserDetails = (props) => {
       {/* /////////////////////////////////////////////////// */}
       <Modal show={following} onHide={() => setFollowing(false)} backdrop='static' keyboard={false} className='modal-dialog-scrollable modal-md'>
         <FollowingModel username={props.userData.username} />
+      </Modal>
+      {/* /////////////////////////////////////////////////// */}
+      {/* POST MODAL */}
+      {/* /////////////////////////////////////////////////// */}
+      <Modal show={post} onHide={() => setPost(false)} backdrop='static' keyboard={false} className='modal-dialog-scrollable modal-md'>
+        <PostModal />
       </Modal>
     </>
   );
