@@ -32,7 +32,6 @@ const Profile = () => {
   });
 
   let userData = data?.user || data?.me || {};
-  console.log(`userData (pages/profile/profile): ${userData}`);
   // ///////////////////////////////////////////////////////////////////////////////
   // TO CHECK IF CURRENT USER THATS LOGGED IN IS FOLLOWING THE USER THEY ARE VIEWING
   //////////////////////////////////////////////////////////////////////////////////
@@ -99,7 +98,6 @@ const Profile = () => {
     fontFamily: 'Rubik',
   };
 
-  
   return (
     <>
       <div className='rounded' style={editProfileCardStyle}>
