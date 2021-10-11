@@ -55,7 +55,7 @@ const UserEditSettings = (props) => {
     // 1,048,576 bytes is 1 mb, so multiplied by 10 is a limit of 10mb
     const maxSize = 10 * 1048576;
 
-    if (event.target.files[0].size > maxSize) {
+    if (event.target.files[0] && event.target.files[0].size > maxSize) {
       event.target.value = "";
       return alert("File is too big. Needs to be 10MB or smaller");
     };

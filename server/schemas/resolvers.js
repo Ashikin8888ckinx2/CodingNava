@@ -3,7 +3,7 @@ const { GraphQLUpload } = require('graphql-upload');
 
 const { User, BucketList, Post, Comment } = require('../models');
 const { signToken } = require('../utils/auth');
-const { uploadImage, setUpFile } = require('../utils/imgur');
+const { uploadImage } = require('../utils/cloudinary');
 
 // Think about what action users can do with and without login
 // If things need to happen with login, then the Query needs context and auth error
@@ -69,15 +69,14 @@ const resolvers = {
       return { token, user };
     },
     updateUser: async (parent, { userData }, context) => {
-      console.log(userData);
       if (context.user) {
         if (userData.picture) {
-          const file = await setUpFile(await userData.picture); 
-          userData.picture = await uploadImage(file);
+          const file = await uploadImage(await userData.picture); 
+          userData.picture = file.url;
         }
         if (userData.banner_picture) {
-          const file = await setUpFile(await userData.banner_picture); 
-          userData.banner_picture = await uploadImage(file);
+          const file = await uploadImage(await userData.banner_picture); 
+          userData.banner_picture = file.url;
         }
         const user = await User.findById({ _id: context.user._id });
         Object.assign(user, userData);
@@ -88,7 +87,7 @@ const resolvers = {
     },
     followUser: async (parent, { followId, isFollowing }, context) => {
       if (context.user) {
-        if (context.user._id == followId) {
+        if (context.user._id == followId) { 
           throw new Error("Can't follow yourself");
         }
         const action = isFollowing ? '$pull' : '$addToSet';
