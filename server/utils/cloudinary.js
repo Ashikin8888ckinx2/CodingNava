@@ -1,9 +1,10 @@
 var cloudinary = require('cloudinary').v2;
+require("dotenv").config();
 
 cloudinary.config({
     cloud_name: "codingnav",
-    api_key: "188557862644144",
-    api_secret: "RVuAlOvLwf9hRp2JQ9ifmCXvDGU",
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET,
     secure: true
 });
 
