@@ -1,3 +1,34 @@
 .modal-90w {
   min-width: 70% !important;
 }
+
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ////////////////////////////////////////////// */
+/* BUCKIT LIST FORM */
+/* ////////////////////////////////////////////// */
+
+.scrollForm {
+  padding: 6px 12px 6px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+/* PLUS BUTTON */
+.buckitListBtnStyle {
+  background-color: #0d6efd !important;
+  border-color: #0d6efd !important;
+}
+
+.buckitListBtnStyle:hover {
+  background-color: #0d6efd !important;
+  border-color: #0d6efd !important;
+  transform: scale(1.1);
+  transition: transform 0.15s ease;
+}
