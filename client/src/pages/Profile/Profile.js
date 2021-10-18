@@ -108,11 +108,7 @@ const Profile = () => {
       <div className='rounded' style={editProfileCardStyle}>
         <ProfileHeader userData={userData} updateProfile={updateProfileSubmit} />
         <Container className='pb-2' fluid>
-          <Row>
-            <>
-              <ProfileUserDetails userData={userData} follow={handleFollowClick} isFollowing={isFollowing} />
-            </>
-          </Row>
+          <ProfileUserDetails userData={userData} follow={handleFollowClick} isFollowing={isFollowing} />
         </Container>
       </div>
     </>
