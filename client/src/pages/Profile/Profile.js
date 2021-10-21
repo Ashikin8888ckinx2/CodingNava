@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { Redirect } from "react-router";
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME, GET_USER } from '../../utils/queries';
 import { FOLLOW_USER, UPDATE_USER } from '../../utils/mutations';
@@ -32,11 +33,16 @@ const Profile = () => {
   });
 
   let userData = data?.user || data?.me || {};
+
+  if (!Auth.loggedIn() && !username) {
+    return <Redirect to="/" />
+  }
+
   // ///////////////////////////////////////////////////////////////////////////////
   // TO CHECK IF CURRENT USER THATS LOGGED IN IS FOLLOWING THE USER THEY ARE VIEWING
   //////////////////////////////////////////////////////////////////////////////////
 
-  const currentUserId = Auth.getProfile().data._id;
+  const currentUserId = Auth.loggedIn() ? Auth.getProfile().data._id : null;
   const isFollowing = userData.followers && userData.followers.includes(currentUserId);
 
   ///////////////////////////////////////////////////////////////
