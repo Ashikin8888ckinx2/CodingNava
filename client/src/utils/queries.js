@@ -37,6 +37,15 @@ export const GET_USER = gql`
   }
 `;
 
+export const SEARCH_USERS = gql`
+  query user($searchUser: String!) {
+    user(searchUser: $searchUser) {
+      username
+      picture
+    }
+  }
+`;
+
 export const GET_FOLLOWING = gql`
   query followingList($username: String!) {
     followingList(username: $username) {
