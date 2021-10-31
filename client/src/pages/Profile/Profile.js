@@ -32,9 +32,10 @@ const Profile = () => {
     variables: { username },
   });
 
-  let userData = data?.user || data?.me || {};
+  console.log(data);
+  let userData = data?.user || data?.me || null;
 
-  if (!Auth.loggedIn() && !username) {
+  if ((!Auth.loggedIn() && !username) || (!loading && userData == null)) {
     return <Redirect to="/" />
   }
 
@@ -43,7 +44,7 @@ const Profile = () => {
   //////////////////////////////////////////////////////////////////////////////////
 
   const currentUserId = Auth.loggedIn() ? Auth.getProfile().data._id : null;
-  const isFollowing = userData.followers && userData.followers.includes(currentUserId);
+  const isFollowing = userData && userData.followers && userData.followers.includes(currentUserId);
 
   ///////////////////////////////////////////////////////////////
 
@@ -87,12 +88,8 @@ const Profile = () => {
         },
       });
 
-      // fetch('/graphql', {
-      //   body: formData,
-      //   method: 'POST',
-      // });
       userData = updateData.updateUser;
-      // console.log(userData);
+
     } catch (err) {
       console.error(err);
     }

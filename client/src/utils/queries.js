@@ -12,6 +12,7 @@ export const GET_ME = gql`
       followers
       following
       privacy_mode
+      bucketList
     }
   }
 `;
@@ -28,11 +29,7 @@ export const GET_USER = gql`
       followers
       following
       privacy_mode
-      bucketList {
-        _id
-        progress
-        # I didn't include post here
-      }
+      bucketList
     }
   }
 `;

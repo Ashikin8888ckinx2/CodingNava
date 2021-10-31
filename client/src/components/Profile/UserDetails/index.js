@@ -18,7 +18,7 @@ import { Card, Col, Stack, Modal, Row } from 'react-bootstrap';
 //////////////////////////////////////////////////////////
 
 const ProfileUserDetails = (props) => {
-  // console.log('Props:', props);
+  console.log('Props:', props);
   // console.log(props.userData);
   // console.log(props.isFollowing);
   ////////////////////////////////////////////////

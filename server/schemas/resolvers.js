@@ -14,7 +14,7 @@ const resolvers = {
     // Access current user's profile
     me: async (parent, args, context) => {
       if (context.user) {
-        // excludes password form User object
+        // excludes password form User object 
         const userData = await User.findOne({ _id: context.user._id });
         return userData;
       }
