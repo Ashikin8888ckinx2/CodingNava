@@ -1,19 +1,19 @@
-// Create Modal for BucketList
+// Buckit List Entry Modal for BucketList
 import React from 'react';
 
 import { Card, Col, Tab, Modal, Form, Button, Row } from 'react-bootstrap';
 
 const PostModal = () => {
   return (
-    <Tab.Container defaultActiveKey='Create'>
+    <Tab.Container defaultActiveKey='Buckit List Entry'>
       <Modal.Header closeButton>
         <Modal.Title>
-          <h2 className='mb-0'>Create</h2>
+          <h2 className='mb-0'>Buckit List Entry</h2>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Tab.Content>
-          <Tab.Pane eventKey='Create'>
+          <Tab.Pane eventKey='Buckit List Entry'>
             <Col>
               <Card className='shadow'>
                 <Card.Body>
