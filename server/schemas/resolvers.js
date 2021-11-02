@@ -100,10 +100,26 @@ const resolvers = {
       }
       throw new AuthenticationError('User not logged in');
     },
+    deleteBucketList: async (parent, { listId }, context) => {
+      // check if logged in, then delete a bucket list from a user's profile
+      if (context.user) {
+        const updatedUser = await User.findByIdAndUpdate({ _id: context.user._id }, { $pull: { bucketList: { listId } } }, { new: true });
+        return updatedUser;
+      }
+      throw new AuthenticationError('User not logged in');
+    },
     addPost: async (parent, { postData }, context) => {
       // check if logged in, then add a post to a user's bucket list
       if (context.user) {
         const updatedBucketList = await BucketList.findByIdAndUpdate({ _id: context.user.bucketList._id }, { $push: { post: { postData } } }, { new: true });
+        return updatedBucketList;
+      }
+      throw new AuthenticationError('User not logged in');
+    },
+    deletePost: async (parent, { postId }, context) => {
+      // check if logged in then delete a post from a user's bucket list
+      if (context.user) {
+        const updatedBucketList = await BucketList.findByIdAndUpdate({ _id: context.user.bucketList._id }, { $pull: { post: { postId } } }, { new: true });
         return updatedBucketList;
       }
       throw new AuthenticationError('User not logged in');
@@ -113,22 +129,6 @@ const resolvers = {
       if (context.user) {
         const updatedPost = await Post.findByIdAndUpdate({ _id: context.user.bucketlist.post._id }, { $push: { comment: { commentData } } }, { new: true });
         return updatedPost;
-      }
-      throw new AuthenticationError('User not logged in');
-    },
-    deleteBucketList: async (parent, { listId }, context) => {
-      // check if logged in, then delete a bucket list from a user's profile
-      if (context.user) {
-        const updatedUser = await User.findByIdAndUpdate({ _id: context.user._id }, { $pull: { bucketList: { listId } } }, { new: true });
-        return updatedUser;
-      }
-      throw new AuthenticationError('User not logged in');
-    },
-    deletePost: async (parent, { postId }, context) => {
-      // check if logged in then delete a post from a user's bucket list
-      if (context.user) {
-        const updatedBucketList = await BucketList.findByIdAndUpdate({ _id: context.user.bucketList._id }, { $pull: { post: { postId } } }, { new: true });
-        return updatedBucketList;
       }
       throw new AuthenticationError('User not logged in');
     },
