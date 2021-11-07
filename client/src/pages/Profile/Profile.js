@@ -99,7 +99,6 @@ const Profile = () => {
     fontFamily: 'Rubik',
   };
 
-  
   return (
     <>
       <div className='rounded' style={editProfileCardStyle}>
