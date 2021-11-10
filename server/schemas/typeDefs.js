@@ -18,7 +18,7 @@ const typeDefs = gql`
     followers: [ID]
     following: [ID]
     privacy_mode: Boolean
-    bucketList: [BucketList]
+    bucketList: [ID]
   }
 
   input UpdateUserInput {
@@ -47,12 +47,14 @@ const typeDefs = gql`
 
   type BucketList {
     _id: ID!
+    name: String!
     progress: String!
     createdBy: String
     post: [Post]
   }
 
   input BucketListInput {
+    name: String!
     progress: String!
   }
 
@@ -92,8 +94,10 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
+
     followingList(username: String!): FollowUserInfo
     followersList(username: String!): FollowUserInfo
+
     bucketLists(userId: String): [BucketList]
     bucketList(listId: ID!): BucketList
   }
@@ -102,13 +106,20 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String, username: String, password: String!): Auth
     updateUser(userData: UpdateUserInput!): User
+
     followUser(followId: ID!, isFollowing: Boolean): FollowUser
+
     addBucketList(listData: BucketListInput!): User
-    addPost(postData: PostInput!): BucketList
-    addComment(commentData: CommentInput!): Post
     deleteBucketList(listId: ID!): User
+    editBucketList(listId: ID!, listData: BucketListInput!): BucketList
+    
+    addPost(postData: PostInput!): BucketList
     deletePost(postId: ID!): BucketList
+    editPost(postId: ID! postData: PostInput!): BucketList
+    
+    addComment(commentData: CommentInput!): Post
     deleteComment(commentId: ID!): Post
+    editComment(commentId: ID!, commentData: CommentInput!): Post
   }
 `;
 
