@@ -80,18 +80,18 @@ const ProfileUserDetails = (props) => {
                     {handleUserDetailIcons()}
                     {/* ////////////////////////////////////////////////// */}
                   </Card.Link>
-                  <Card.Link href='#' className='text-decoration-none text-dark'>
+                  {/* <Card.Link href='#' className='text-decoration-none text-dark'>
                     <Stack gap={2} className='align-items-center justify-content-end' onClick={() => setFollowers(true)}>
                       <People size={36} />
                       {props.userData.followers.length || 0}
                     </Stack>
-                  </Card.Link>
-                  <Card.Link href='#' className='text-decoration-none text-dark'>
+                  </Card.Link> */}
+                  {/* <Card.Link href='#' className='text-decoration-none text-dark'>
                     <Stack gap={2} className='align-items-center justify-content-end' onClick={() => setFollowing(true)}>
                       <PersonPlus size={36} />
                       {props.userData.following.length || 0}
                     </Stack>
-                  </Card.Link>
+                  </Card.Link> */}
                 </Stack>
               </Card.Footer>
             </Card.Body>
@@ -114,19 +114,22 @@ const ProfileUserDetails = (props) => {
             </Card.Header>
             <Card.Body>
               {/* Incorporate mapping functionality to render bucket lists on user click create */}
-              <Row className='align-items-center justify-content-between pb-2'>
-                <Col sm={4} md={4} lg={4}>
-                  <Form.Select size='md'>
-                    <option>To Do</option>
-                    <option>In Progress</option>
-                    <option>Complete</option>
-                  </Form.Select>
-                </Col>
-                <Col sm={8} md={8} lg={8}>
-                  {/* We need the title's text rather than a form */}
-                  <Form.Control type='text' placeholder='Visit 8 Wonders of the World' disabled className='bg-transparent' />
-                </Col>
-              </Row>
+              {props.userData.bucketList.map(list =>(
+                <Row className='align-items-center justify-content-between pb-2'>
+                  <Col sm={4} md={4} lg={4}>
+                    <Form.Select size='md'>
+                      <option>To Do</option>
+                      <option>In Progress</option>
+                      <option>Complete</option>
+                    </Form.Select>
+                  </Col>
+                  <Col sm={8} md={8} lg={8}>
+                    {/* We need the title's text rather than a form */}
+                    <Form.Control type='text' placeholder={list} disabled className='bg-transparent' />
+                  </Col>
+                </Row>
+                
+              ))}
             </Card.Body>
           </Card>
         </Col>
