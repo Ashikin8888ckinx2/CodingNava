@@ -99,7 +99,7 @@ const typeDefs = gql`
     followersList(username: String!): FollowUserInfo
 
     bucketLists(userId: String): [BucketList]
-    bucketList(listId: ID!): BucketList
+    getBucketList(_id: String!): BucketList
   }
 
   type Mutation {

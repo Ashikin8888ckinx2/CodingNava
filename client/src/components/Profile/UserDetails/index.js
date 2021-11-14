@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useQuery, useMutation } from '@apollo/client';
 
 import '../Profile.css';
 import CreateModel from './CreateModel';
@@ -6,6 +7,7 @@ import FollowersModel from './FollowersModel';
 import FollowingModel from './FollowingModel';
 import PostModal from './PostModal';
 import BuckitCards from './BuckitCards';
+import { GET_BUCKETLIST } from '../../../utils/queries';
 
 //////////////////////////////////////////////////////////
 // Bootstrap Components
@@ -27,6 +29,14 @@ const ProfileUserDetails = (props) => {
   const [followers, setFollowers] = useState(false);
   const [following, setFollowing] = useState(false);
   const [post, setPost] = useState(false);
+  
+  console.log('id', props.userData.bucketList[0]);
+
+  // Read in bucket list data from
+  const { loading, data } = useQuery(GET_BUCKETLIST, {
+    variables: { id: props.userData.bucketList[0] },
+  });
+  console.log(data);
 
   // FOR POPULATING THE ICONS UNDER THE USER DETAILS CARD
   // IF USER IS LOOKING AT HIS OWN PROFILE = SHOULD SHOW BUCKET ICON
@@ -115,8 +125,9 @@ const ProfileUserDetails = (props) => {
             <Card.Body>
               {/* Incorporate mapping functionality to render bucket lists on user click create */}
               {props.userData.bucketList.map(list =>(
-                <Row className='align-items-center justify-content-between pb-2'>
+                <Row key={list} className='align-items-center justify-content-between pb-2'>
                   <Col sm={4} md={4} lg={4}>
+                    {/* onChange, edit bucket list */}
                     <Form.Select size='md'>
                       <option>To Do</option>
                       <option>In Progress</option>
@@ -124,7 +135,7 @@ const ProfileUserDetails = (props) => {
                     </Form.Select>
                   </Col>
                   <Col sm={8} md={8} lg={8}>
-                    {/* We need the title's text rather than a form */}
+                    {/* Read in data from GET_BUCKETLIST data.getBucketList.bucketlist.name */}
                     <Form.Control type='text' placeholder={list} disabled className='bg-transparent' />
                   </Col>
                 </Row>

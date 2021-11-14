@@ -37,8 +37,8 @@ const resolvers = {
       return BucketList.find();
     },
     // Find a single bucket list
-    bucketList: async (parent, args) => {
-      return BucketList.findOne(args._id);
+    getBucketList: async (parent, { _id }) => {
+      return await BucketList.findOne({ _id });
     },
   },
   Mutation: {
@@ -107,6 +107,21 @@ const resolvers = {
         return updatedUser;
       }
       throw new AuthenticationError('User not logged in');
+    },
+    editBucketList: async(parent, { listId, listData }, context) =>{
+      // check if logged in, then allow user to edit bucket list
+      if (context.user) {
+        const updatedList = await BucketList.findByIdAndUpdate(
+          { _id: listId },
+          { 
+            name: listData.name,
+            progress: listData.progress, 
+
+          }
+        );
+
+        return updatedList;
+      }
     },
     addPost: async (parent, { postData }, context) => {
       // check if logged in, then add a post to a user's bucket list
