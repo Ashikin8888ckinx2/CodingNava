@@ -19,7 +19,7 @@ db.once('open', async ()=>{
             let bucketList = await BucketList.create(bucketListData[i]);
             
             // update user with newly created bucket list id
-            const newUser = await User.findByIdAndUpdate(
+            await User.findByIdAndUpdate(
                 bucketList.createdBy,
                 {$push: {bucketList: Types.ObjectId(bucketList._id)}},
                 {new: true}

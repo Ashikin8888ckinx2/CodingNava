@@ -33,8 +33,8 @@ const resolvers = {
       return await User.findOne({ username }).populate('followers');
     },
     // Find all bucket lists
-    bucketLists: async () => {
-      return BucketList.find();
+    getBucketLists: async (parent, { id }) => {
+      return BucketList.find({ createdBy: id });
     },
     // Find a single bucket list
     getBucketList: async (parent, { _id }) => {

@@ -98,7 +98,7 @@ const typeDefs = gql`
     followingList(username: String!): FollowUserInfo
     followersList(username: String!): FollowUserInfo
 
-    bucketLists(userId: String): [BucketList]
+    getBucketLists(id:String!): [BucketList]
     getBucketList(_id: String!): BucketList
   }
 

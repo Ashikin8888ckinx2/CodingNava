@@ -57,15 +57,12 @@ export const GET_FOLLOWERS = gql`
 `;
 
 export const GET_BUCKETLISTS = gql`
-  query bucketLists($userId: String!) {
-    bucketLists(userId: $userId) {
-      bucketList {
+  query getBucketLists($id: String!) {
+    getBucketLists(id: $id) {
         _id
         name
         progress
         createdBy
-        # I did not include the comments here
-      }
     }
   }
 `;

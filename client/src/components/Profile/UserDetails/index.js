@@ -7,7 +7,7 @@ import FollowersModel from './FollowersModel';
 import FollowingModel from './FollowingModel';
 import PostModal from './PostModal';
 import BuckitCards from './BuckitCards';
-import { GET_BUCKETLIST } from '../../../utils/queries';
+import { GET_BUCKETLISTS } from '../../../utils/queries';
 
 //////////////////////////////////////////////////////////
 // Bootstrap Components
@@ -29,12 +29,12 @@ const ProfileUserDetails = (props) => {
   const [followers, setFollowers] = useState(false);
   const [following, setFollowing] = useState(false);
   const [post, setPost] = useState(false);
-  
-  console.log('id', props.userData.bucketList[0]);
 
-  // Read in bucket list data from
-  const { loading, data } = useQuery(GET_BUCKETLIST, {
-    variables: { id: props.userData.bucketList[0] },
+  console.log(props.userData._id)
+
+  // Read in bucket list data from server
+  const { loading, data } = useQuery(GET_BUCKETLISTS, {
+    variables: { id: props.userData._id },
   });
   console.log(data);
 
@@ -124,8 +124,8 @@ const ProfileUserDetails = (props) => {
             </Card.Header>
             <Card.Body>
               {/* Incorporate mapping functionality to render bucket lists on user click create */}
-              {props.userData.bucketList.map(list =>(
-                <Row key={list} className='align-items-center justify-content-between pb-2'>
+              {data.getBucketLists.map(list =>(
+                <Row key={list._id} className='align-items-center justify-content-between pb-2'>
                   <Col sm={4} md={4} lg={4}>
                     {/* onChange, edit bucket list */}
                     <Form.Select size='md'>
@@ -136,7 +136,7 @@ const ProfileUserDetails = (props) => {
                   </Col>
                   <Col sm={8} md={8} lg={8}>
                     {/* Read in data from GET_BUCKETLIST data.getBucketList.bucketlist.name */}
-                    <Form.Control type='text' placeholder={list} disabled className='bg-transparent' />
+                    <Form.Control type='text' placeholder={list.name} disabled className='bg-transparent' />
                   </Col>
                 </Row>
                 
