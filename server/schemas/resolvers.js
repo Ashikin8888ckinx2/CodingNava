@@ -19,11 +19,11 @@ const resolvers = {
     },
     // Find all users
     users: async () => {
-      return User.find();
+      return User.find().populate('bucketList');
     },
     // Find a single user
     user: async (parent, { username }) => {
-      return User.findOne({ username });
+      return User.findOne({ username }).populate('bucketList');
     },
     // Find following information
     followingList: async (parent, { username }) => { 

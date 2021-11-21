@@ -18,7 +18,7 @@ const typeDefs = gql`
     followers: [ID]
     following: [ID]
     privacy_mode: Boolean
-    bucketList: [ID]
+    bucketList: [BucketList]
   }
 
   input UpdateUserInput {

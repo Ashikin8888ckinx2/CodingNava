@@ -30,13 +30,7 @@ const ProfileUserDetails = (props) => {
   const [following, setFollowing] = useState(false);
   const [post, setPost] = useState(false);
 
-  console.log(props.userData._id)
-
-  // Read in bucket list data from server
-  const { loading, data } = useQuery(GET_BUCKETLISTS, {
-    variables: { id: props.userData._id },
-  });
-  console.log(data);
+  console.log(props)
 
   // FOR POPULATING THE ICONS UNDER THE USER DETAILS CARD
   // IF USER IS LOOKING AT HIS OWN PROFILE = SHOULD SHOW BUCKET ICON
@@ -122,26 +116,7 @@ const ProfileUserDetails = (props) => {
                 </div>
               </Stack>
             </Card.Header>
-            <Card.Body>
-              {/* Incorporate mapping functionality to render bucket lists on user click create */}
-              {data.getBucketLists.map(list =>(
-                <Row key={list._id} className='align-items-center justify-content-between pb-2'>
-                  <Col sm={4} md={4} lg={4}>
-                    {/* onChange, edit bucket list */}
-                    <Form.Select size='md'>
-                      <option>To Do</option>
-                      <option>In Progress</option>
-                      <option>Complete</option>
-                    </Form.Select>
-                  </Col>
-                  <Col sm={8} md={8} lg={8}>
-                    {/* Read in data from GET_BUCKETLIST data.getBucketList.bucketlist.name */}
-                    <Form.Control type='text' placeholder={list.name} disabled className='bg-transparent' />
-                  </Col>
-                </Row>
-                
-              ))}
-            </Card.Body>
+            
           </Card>
         </Col>
       </Row>
