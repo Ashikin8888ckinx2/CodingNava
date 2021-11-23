@@ -12,10 +12,7 @@ export const GET_ME = gql`
       followers
       following
       privacy_mode
-      bucketList{
-        name
-        progress
-      }
+      bucketList
     }
   }
 `;
@@ -32,11 +29,7 @@ export const GET_USER = gql`
       followers
       following
       privacy_mode
-      bucketList{
-        name
-        progress
-        post
-      }
+      bucketList
     }
   }
 `;
@@ -66,10 +59,17 @@ export const GET_FOLLOWERS = gql`
 export const GET_BUCKETLISTS = gql`
   query getBucketLists($id: String!) {
     getBucketLists(id: $id) {
+      _id
+      name
+      progress
+      createdBy
+      post {
         _id
-        name
-        progress
-        createdBy
+        description
+        images
+        tags
+        date_created
+      }
     }
   }
 `;
