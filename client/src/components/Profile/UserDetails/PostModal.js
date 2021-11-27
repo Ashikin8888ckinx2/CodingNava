@@ -1,4 +1,4 @@
-// Create Modal for BucketList
+// Buckit List Entry Modal for BucketList
 import React from 'react';
 
 import { Card, Col, Tab, Modal, Form, Button } from 'react-bootstrap';

@@ -28,6 +28,8 @@ const ProfileUserDetails = (props) => {
   const [followers, setFollowers] = useState(false);
   const [following, setFollowing] = useState(false);
 
+  console.log(props)
+
   // FOR POPULATING THE ICONS UNDER THE USER DETAILS CARD
   // IF USER IS LOOKING AT HIS OWN PROFILE = SHOULD SHOW BUCKET ICON
   // IF USER IS LOOKING AT ANOTHER PERSONS PROFILE = IT SHOULD SHOW A FOLLOW / UNFOLLOW BUTTON
@@ -80,18 +82,18 @@ const ProfileUserDetails = (props) => {
                     {handleUserDetailIcons()}
                     {/* ////////////////////////////////////////////////// */}
                   </Card.Link>
-                  <Card.Link href='#' className='text-decoration-none text-dark'>
+                  {/* <Card.Link href='#' className='text-decoration-none text-dark'>
                     <Stack gap={2} className='align-items-center justify-content-end' onClick={() => setFollowers(true)}>
                       <People size={36} />
                       {props.userData.followers.length || 0}
                     </Stack>
-                  </Card.Link>
-                  <Card.Link href='#' className='text-decoration-none text-dark'>
+                  </Card.Link> */}
+                  {/* <Card.Link href='#' className='text-decoration-none text-dark'>
                     <Stack gap={2} className='align-items-center justify-content-end' onClick={() => setFollowing(true)}>
                       <PersonPlus size={36} />
                       {props.userData.following.length || 0}
                     </Stack>
-                  </Card.Link>
+                  </Card.Link> */}
                 </Stack>
               </Card.Footer>
             </Card.Body>
