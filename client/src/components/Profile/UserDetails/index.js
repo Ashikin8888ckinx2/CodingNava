@@ -18,9 +18,7 @@ import { Card, Col, Stack, Modal, Row } from 'react-bootstrap';
 //////////////////////////////////////////////////////////
 
 const ProfileUserDetails = (props) => {
-  console.log('Props:', props);
-  // console.log(props.userData);
-  // console.log(props.isFollowing);
+
   ////////////////////////////////////////////////
   // MODAL STATES
   ////////////////////////////////////////////////
@@ -86,7 +84,7 @@ const ProfileUserDetails = (props) => {
                       {props.userData.followers.length || 0}
                     </Stack>
                   </Card.Link>
-                  <Card.Link href='#' className='text-decoration-none text-dark'>
+                   <Card.Link href='#' className='text-decoration-none text-dark'>
                     <Stack gap={2} className='align-items-center justify-content-end' onClick={() => setFollowing(true)}>
                       <PersonPlus size={36} />
                       {props.userData.following.length || 0}

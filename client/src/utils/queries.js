@@ -66,37 +66,28 @@ export const GET_FOLLOWERS = gql`
 `;
 
 export const GET_BUCKETLISTS = gql`
-  query bucketLists($username: String!) {
-    bucketList(username: $username) {
+  query getBucketLists($id: String!) {
+    getBucketLists(id: $id) {
       _id
+      name
       progress
+      createdBy
       post {
         _id
         description
         images
-        likes
         tags
         date_created
-        # I did not include the comments here
       }
     }
   }
 `;
 
 export const GET_BUCKETLIST = gql`
-  query bucketList($listId: ID!) {
-    bucketList(listId: $listId) {
-      _id
-      progress
-      post {
-        _id
-        description
-        images
-        likes
-        tags
-        date_created
-        # I did not include the comments here
-      }
+  query getBucketList($id: String!) {
+    getBucketList(_id: $id) {
+        name
+        progress
     }
   }
 `;

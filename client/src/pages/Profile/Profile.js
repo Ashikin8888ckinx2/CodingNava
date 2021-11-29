@@ -26,13 +26,11 @@ const Profile = () => {
   const [followUser, { error, followData }] = useMutation(FOLLOW_USER);
   let { username } = useParams();
 
-  // console.log(username);
 
   const { loading, data } = useQuery(username ? GET_USER : GET_ME, {
     variables: { username },
   });
 
-  console.log(data);
   let userData = data?.user || data?.me || null;
 
   if ((!Auth.loggedIn() && !username) || (!loading && userData == null)) {
