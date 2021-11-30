@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { Redirect } from "react-router";
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME, GET_USER } from '../../utils/queries';
 import { FOLLOW_USER, UPDATE_USER } from '../../utils/mutations';
@@ -25,20 +26,23 @@ const Profile = () => {
   const [followUser, { error, followData }] = useMutation(FOLLOW_USER);
   let { username } = useParams();
 
-  // console.log(username);
 
   const { loading, data } = useQuery(username ? GET_USER : GET_ME, {
     variables: { username },
   });
 
-  let userData = data?.user || data?.me || {};
-  console.log('userData (pages/profile/profile): ', userData);
+  let userData = data?.user || data?.me || null;
+
+  if ((!Auth.loggedIn() && !username) || (!loading && userData == null)) {
+    return <Redirect to="/" />
+  }
+
   // ///////////////////////////////////////////////////////////////////////////////
   // TO CHECK IF CURRENT USER THATS LOGGED IN IS FOLLOWING THE USER THEY ARE VIEWING
   //////////////////////////////////////////////////////////////////////////////////
 
-  const currentUserId = Auth.getProfile().data._id;
-  const isFollowing = userData.followers && userData.followers.includes(currentUserId);
+  const currentUserId = Auth.loggedIn() ? Auth.getProfile().data._id : null;
+  const isFollowing = userData && userData.followers && userData.followers.includes(currentUserId);
 
   ///////////////////////////////////////////////////////////////
 
@@ -64,6 +68,7 @@ const Profile = () => {
   // ON FORM SUBMIT
   const updateProfileSubmit = async (event, formData) => {
     event.preventDefault();
+
     // [1] Check whether user is logged in by checking to see if there is a JWT token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -82,7 +87,7 @@ const Profile = () => {
       });
 
       userData = updateData.updateUser;
-      // console.log(userData);
+
     } catch (err) {
       console.error(err);
     }

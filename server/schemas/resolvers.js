@@ -1,25 +1,28 @@
 const { AuthenticationError } = require('apollo-server-express');
+const { GraphQLUpload } = require('graphql-upload');
+
 const { User, BucketList, Post, Comment } = require('../models');
 const { signToken } = require('../utils/auth');
-const { uploadImage } = require('../utils/imgur');
+const { uploadImage } = require('../utils/cloudinary');
 
 // Think about what action users can do with and without login
 // If things need to happen with login, then the Query needs context and auth error
 
 const resolvers = {
+  FileUpload: GraphQLUpload,
   Query: {
     // Access current user's profile
     me: async (parent, args, context) => {
       if (context.user) {
-        // excludes password form User object
+        // excludes password form User object 
         const userData = await User.findOne({ _id: context.user._id });
         return userData;
       }
       throw new AuthenticationError('Not logged in!');
     },
     // Find all users
-    users: async () => {
-      return User.find();
+    users: async (parent, { searchUser }) => {
+      return User.find({ username : { "$regex": searchUser, "$options": "i" } });
     },
     // Find a single user
     user: async (parent, { username }) => {
@@ -68,10 +71,12 @@ const resolvers = {
     updateUser: async (parent, { userData }, context) => {
       if (context.user) {
         if (userData.picture) {
-          userData.picture = await uploadImage(userData.picture);
+          const file = await uploadImage(await userData.picture); 
+          userData.picture = file.url;
         }
         if (userData.banner_picture) {
-          userData.banner_picture = await uploadImage(userData.banner_picture);
+          const file = await uploadImage(await userData.banner_picture); 
+          userData.banner_picture = file.url;
         }
         const user = await User.findById({ _id: context.user._id });
         Object.assign(user, userData);
@@ -82,7 +87,7 @@ const resolvers = {
     },
     followUser: async (parent, { followId, isFollowing }, context) => {
       if (context.user) {
-        if (context.user._id == followId) {
+        if (context.user._id == followId) { 
           throw new Error("Can't follow yourself");
         }
         const action = isFollowing ? '$pull' : '$addToSet';

@@ -3,18 +3,24 @@ const path = require('path');
 const { ApolloServer } = require('apollo-server-express');
 const db = require('./config/connection');
 const { typeDefs, resolvers } = require('./schemas');
+const { graphqlUploadExpress } = require('graphql-upload');
+
+require('dotenv').config();
 
 // AUTH MIDDLEWARE
 const { authMiddleware } = require('./utils/auth');
 
-const app = express();
+const app = express(); 
 const PORT = process.env.PORT || 3001;
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware,
+  uploads: false,
 });
+
+app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
 
 server.applyMiddleware({ app });
 
