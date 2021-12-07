@@ -1,11 +1,11 @@
 [
   {
-    "name": "My Bucket List",
+    "name": "Visit all Seven Wonders of the World",
     "progress": "In Progress",
     "createdBy": "5c8a1d5b0190b214360dc057",
     "post": [
       {
-        "description": "Visit all Eight Wonders of the World",
+        "description": "I visited the piramids of Giza!",
         "images": [],
         "likes": [
           {
@@ -22,7 +22,7 @@
         "comment_ids": []
       },
       {
-        "description": "Go bungee jumping",
+        "description": "Planning a trip to the Taj Mahal",
         "images": [],
         "likes": [
           {
@@ -33,26 +33,9 @@
         "comment_ids": []
       },
       {
-        "description": "Learn to play chess",
+        "description": "Anyone want to go Machu Picchu?",
         "images": [],
         "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa183"
-          },
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa184"
-          }
-        ],
-        "tags": ["Personal", "Achievements"],
-        "comment_ids": []
-      },
-      {
-        "description": "Run a marathon, half marathon, or 5k",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa182"
-          },
           {
             "_id": "5c8a1dfa2f8fb814b56fa183"
           },
@@ -77,7 +60,7 @@
     ]
   },
   {
-    "name": "My Bucket List",
+    "name": "Face my fears!",
     "progress": "To Do",
     "createdBy": "5c8a1d5b0190b214360dc057",
     "post": [
@@ -93,7 +76,7 @@
         "comment_ids": []
       },
       {
-        "description": "Learn how to play an instrument",
+        "description": "Go bungee jumping",
         "images": [],
         "likes": [
           {
@@ -127,27 +110,16 @@
         ],
         "tags": ["Family", "Personal"],
         "comment_ids": []
-      },
-      {
-        "description": "Find something to laugh at every day",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa184"
-          }
-        ],
-        "tags": ["Health", "Emotions"],
-        "comment_ids": []
       }
     ]
   },
   {
-    "name": "My Bucket List",
+    "name": "Witness all the eclipses",
     "progress": "Complete",
     "createdBy": "5c8a1d5b0190b214360dc057",
     "post": [
       {
-        "description": "Feed a Koala Bear",
+        "description": "I saw the total solar eclipse in 2017",
         "images": [],
         "likes": [
           {
@@ -158,18 +130,7 @@
         "comment_ids": []
       },
       {
-        "description": "See the Salmon Run",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa184"
-          }
-        ],
-        "tags": ["Travel", "Timing"],
-        "comment_ids": []
-      },
-      {
-        "description": "Witness a Solar Eclipse",
+        "description": "Don't forget to watch the lunar eclipse this Friday!",
         "images": [],
         "likes": [
           {
@@ -180,24 +141,7 @@
         "comment_ids": []
       },
       {
-        "description": "Watch a Caterpillar Turn into a Butterfly",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa182"
-          },
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa183"
-          },
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa184"
-          }
-        ],
-        "tags": ["Animals", "Life"],
-        "comment_ids": []
-      },
-      {
-        "description": "Whale Watching",
+        "description": "Did you know there's such thing as an annular solar eclipse?",
         "images": [],
         "likes": [
           {
