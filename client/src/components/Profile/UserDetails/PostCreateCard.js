@@ -13,11 +13,15 @@ const PostCreateCard = () => {
   const [post, setPost] = useState(false);
 
   const userId = Auth.getProfile().data._id;
-    const { data } = useQuery(GET_BUCKETLISTS, {
+  console.log(userId);
+  const { loading, error, data } = useQuery(GET_BUCKETLISTS, {
     variables: { id: userId },
   });
 
   console.log(data);
+
+  if (loading) return null;
+  if (error) return 'error';
 
   return (
     <>
@@ -34,20 +38,23 @@ const PostCreateCard = () => {
             </Stack>
           </Card.Header>
           <Card.Body>
-            <Row className='d-flex flex-row g-2'>
-              <Stack direction='horizontal' gap={2}>
-                <Col xs={4} sm={4} md={3} lg={2}>
-                  <Form.Select className='pe-4'>
-                    <option value='To Do'>To Do</option>
-                    <option value='In Progress'>In Progress</option>
-                    <option value='Complete'>Complete</option>
-                  </Form.Select>
-                </Col>
-                <Col xs={8} sm={8} md={9} lg={10}>
-                  <div className='scrollForm'>Visit 7 Wonders of the World Need to make this scrollable</div>
-                </Col>
-              </Stack>
-            </Row>
+            {data.getBucketLists.map(item => (
+              <Row className='d-flex flex-row g-2' key={item._id}>
+                <Stack direction='horizontal' gap={2}>
+                  <Col xs={4} sm={4} md={3} lg={2}>
+                    <Form.Select className='pe-4'>
+                      <option value='To Do'>To Do</option>
+                      <option value='In Progress'>In Progress</option>
+                      <option value='Complete'>Complete</option>
+                    </Form.Select>
+                  </Col>
+                  <Col xs={8} sm={8} md={9} lg={10}>
+                    <div className='scrollForm'>{item.name}</div>
+                  </Col>
+                </Stack>
+              </Row>
+
+            ))}
           </Card.Body>
         </Card>
       </Col>
