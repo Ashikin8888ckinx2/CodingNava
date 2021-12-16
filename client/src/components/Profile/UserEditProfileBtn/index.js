@@ -25,27 +25,6 @@ const UserEditSettings = (props) => {
     }
     delete formState.confirmPassword;
 
-    const formData = new FormData();
-
-    const operations = `{ "query": 
-    "mutation updateUser($userData: UpdateUserInput!) {
-      updateUser(userData: $userData) {
-        email
-        bio
-        picture
-        banner_picture
-        privacy_mode
-      }
-    }", "variables": { "userData": {} } }`;
-    formData.append("operations", operations);
-
-    const map = `{"0": ["variables.userData"]}`;
-    formData.append("map", map);
-    formData.append("0", { ...formState });
-
-    // Object.keys(formState).forEach((key) => {
-    //   formData.append(key, formState[key]);
-    // });
     props.updateProfile(event, formState);
   };
 
