@@ -15,14 +15,13 @@ const BuckitCards = (props) => {
               </div>
             </Row>
           </Card.Title>
-
           {/* CARD BODY */}
           <Card.Body className='py-0'>
             <div className='fs-4 pb-3'>
               <Card.Text className='fs-5'>Visit 7 wonders of the world</Card.Text>
             </div>
             <div className='pb-3'>
-              <Card.Img className='' src='https://source.unsplash.com/RktLzQoDe9Y/200x100' />
+              <Card.Img className='BuckitCardImage' src='https://source.unsplash.com/jj4iWf9L23w' />
             </div>
             <div className='fs-6 pb-3'>
               <Card.Text>This summer I took a trip to Egypt to cross off one of my bucket list items</Card.Text>

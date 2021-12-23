@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 import '../Profile.css';
-import CreateModel from './CreateModel';
-import FollowersModel from './FollowersModel';
-import FollowingModel from './FollowingModel';
+import CreateModel from './CreateModal';
+import FollowersModel from './FollowersModal';
+import FollowingModel from './FollowingModal';
 // import PostModal from './PostModal';
 import PostCreateCard from './PostCreateCard';
 import BuckitCards from './BuckitCards';
@@ -18,7 +18,6 @@ import { Card, Col, Stack, Modal, Row } from 'react-bootstrap';
 //////////////////////////////////////////////////////////
 
 const ProfileUserDetails = (props) => {
-
   ////////////////////////////////////////////////
   // MODAL STATES
   ////////////////////////////////////////////////
@@ -84,7 +83,7 @@ const ProfileUserDetails = (props) => {
                       {props.userData.followers.length || 0}
                     </Stack>
                   </Card.Link>
-                   <Card.Link href='#' className='text-decoration-none text-dark'>
+                  <Card.Link href='#' className='text-decoration-none text-dark'>
                     <Stack gap={2} className='align-items-center justify-content-end' onClick={() => setFollowing(true)}>
                       <PersonPlus size={36} />
                       {props.userData.following.length || 0}

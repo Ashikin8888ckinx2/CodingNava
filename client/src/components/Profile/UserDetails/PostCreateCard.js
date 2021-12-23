@@ -18,8 +18,6 @@ const PostCreateCard = () => {
     variables: { id: userId },
   });
 
-  console.log(data);
-
   if (loading) return null;
   if (error) return 'error';
 
@@ -38,11 +36,11 @@ const PostCreateCard = () => {
             </Stack>
           </Card.Header>
           <Card.Body>
-            {data.getBucketLists.map(item => (
-              <Row className='d-flex flex-row g-2' key={item._id}>
+            {data.getBucketLists.map((item, index) => (
+              <Row className='d-flex flex-row g-2 pb-2' key={index}>
                 <Stack direction='horizontal' gap={2}>
                   <Col xs={4} sm={4} md={3} lg={2}>
-                    <Form.Select className='pe-4'>
+                    <Form.Select className='pe-4' defaultValue={item.progress}>
                       <option value='To Do'>To Do</option>
                       <option value='In Progress'>In Progress</option>
                       <option value='Complete'>Complete</option>
@@ -53,7 +51,6 @@ const PostCreateCard = () => {
                   </Col>
                 </Stack>
               </Row>
-
             ))}
           </Card.Body>
         </Card>

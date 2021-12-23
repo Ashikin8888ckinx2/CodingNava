@@ -2,21 +2,14 @@ import React from 'react';
 import Auth from '../../../utils/auth';
 
 // BOOTSTRAP COMPONENTS
-import { Nav } from 'react-bootstrap';
+import { Nav, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { BoxArrowLeft } from 'react-bootstrap-icons';
 
 const LogoutButton = () => {
   return (
     <LinkContainer to='/'>
-      <Nav.Link
-        onClick={Auth.logout}
-        style={{
-          color: 'white',
-        }}
-      >
-        {/* Logout Icon */}
-        <BoxArrowLeft size={36} />
+      <Nav.Link onClick={Auth.logout}>
+        <Button variant='danger'>Logout</Button>
       </Nav.Link>
     </LinkContainer>
   );

@@ -7,13 +7,12 @@ import { useQuery } from '@apollo/client';
 import { GET_FOLLOWERS } from '../../../utils/queries';
 
 const FollowersModel = (props) => {
-
   const { loading, data } = useQuery(GET_FOLLOWERS, {
     variables: { username: props.username },
   });
 
   if (loading) {
-    return <h1>Loading</h1>
+    return <h1>Loading</h1>;
   }
 
   return (
@@ -26,7 +25,7 @@ const FollowersModel = (props) => {
       <Modal.Body>
         <Tab.Content>
           <Tab.Pane eventKey='Create'>
-            {data.followersList.followers.map(user => (
+            {data.followersList.followers.map((user) => (
               <Col key={user.username}>
                 <LinkContainer to={'/profile/' + user.username}>
                   <Card className='shadow mb-2'>
