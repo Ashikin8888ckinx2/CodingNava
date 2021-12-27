@@ -2,158 +2,16 @@
   {
     "name": "Visit all Seven Wonders of the World",
     "progress": "In Progress",
-    "createdBy": "5c8a1d5b0190b214360dc057",
-    "post": [
-      {
-        "description": "I visited the piramids of Giza!",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa182"
-          },
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa183"
-          },
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa184"
-          }
-        ],
-        "tags": ["Travel", "World"],
-        "comment_ids": []
-      },
-      {
-        "description": "Planning a trip to the Taj Mahal",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa182"
-          }
-        ],
-        "tags": ["Adventure", "Experience"],
-        "comment_ids": []
-      },
-      {
-        "description": "Anyone want to go Machu Picchu?",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa183"
-          },
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa184"
-          }
-        ],
-        "tags": ["Personal", "Achievements"],
-        "comment_ids": []
-      },
-      {
-        "description": "Attend the Olympics",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa182"
-          }
-        ],
-        "tags": ["Sports", "Experience"],
-        "comment_ids": []
-      }
-    ]
+    "createdBy": "5c8a1d5b0190b214360dc057"
   },
   {
     "name": "Face my fears!",
     "progress": "To Do",
-    "createdBy": "5c8a1d5b0190b214360dc057",
-    "post": [
-      {
-        "description": "Chase a Tornado",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa184"
-          }
-        ],
-        "tags": ["Adventure", "Weather"],
-        "comment_ids": []
-      },
-      {
-        "description": "Go bungee jumping",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa183"
-          },
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa184"
-          }
-        ],
-        "tags": ["Music", "Personal"],
-        "comment_ids": []
-      },
-      {
-        "description": "Go back to school for your Master’s or PhD",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa184"
-          }
-        ],
-        "tags": ["Financial", "Personal"],
-        "comment_ids": []
-      },
-      {
-        "description": "Buy your own home and pay off the mortgage",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa184"
-          }
-        ],
-        "tags": ["Family", "Personal"],
-        "comment_ids": []
-      }
-    ]
+    "createdBy": "5c8a1d5b0190b214360dc057"
   },
   {
     "name": "Witness all the eclipses",
     "progress": "Complete",
-    "createdBy": "5c8a1d5b0190b214360dc057",
-    "post": [
-      {
-        "description": "I saw the total solar eclipse in 2017",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa184"
-          }
-        ],
-        "tags": ["Animals", "Travel"],
-        "comment_ids": []
-      },
-      {
-        "description": "Don't forget to watch the lunar eclipse this Friday!",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa182"
-          }
-        ],
-        "tags": ["Galaxy", "Sky"],
-        "comment_ids": []
-      },
-      {
-        "description": "Did you know there's such thing as an annular solar eclipse?",
-        "images": [],
-        "likes": [
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa182"
-          },
-          {
-            "_id": "5c8a1dfa2f8fb814b56fa184"
-          }
-        ],
-        "tags": ["Ocean", "Sea"],
-        "comment_ids": []
-      }
-    ]
+    "createdBy": "5c8a1d5b0190b214360dc057"
   }
 ]
