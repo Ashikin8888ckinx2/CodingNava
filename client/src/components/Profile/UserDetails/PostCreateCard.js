@@ -42,7 +42,7 @@ const PostCreateCard = () => {
               <Row className='d-flex flex-row g-2' key={item._id}>
                 <Stack direction='horizontal' gap={2}>
                   <Col xs={4} sm={4} md={3} lg={2}>
-                    <Form.Select className='pe-4'>
+                    <Form.Select className='pe-4' defaultValue={item.progress}>
                       <option value='To Do'>To Do</option>
                       <option value='In Progress'>In Progress</option>
                       <option value='Complete'>Complete</option>

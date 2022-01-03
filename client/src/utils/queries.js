@@ -72,13 +72,7 @@ export const GET_BUCKETLISTS = gql`
       name
       progress
       createdBy
-      post {
-        _id
-        description
-        images
-        tags
-        date_created
-      }
+      post
     }
   }
 `;
