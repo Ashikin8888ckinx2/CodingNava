@@ -3,5 +3,6 @@
 module.exports = {
     User: require("./User"),
     BucketList: require("./BucketList"),
+    Post: require("./Post"),
     Comment: require("./Comment")
 };

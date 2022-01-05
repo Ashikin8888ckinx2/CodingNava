@@ -1,14 +1,16 @@
 const db = require('../config/connection');
 const { Types } = require('mongoose');
 
-const {User, BucketList, Comment} = require('../models');
+const {User, BucketList, Post, Comment} = require('../models');
 const userData = require('./userData.json');
 const bucketListData = require('./bucketListData.json');
+const postData = require('./postData.json');
 
 db.once('open', async ()=>{
     try{
         await User.deleteMany({});
         await BucketList.deleteMany({});
+        await Post.deleteMany({});
         await Comment.deleteMany({});
         
         // Create user
@@ -17,6 +19,14 @@ db.once('open', async ()=>{
         for(let i=0; i < bucketListData.length; i++) {
             // Create bucketlist and get bucketListId
             let bucketList = await BucketList.create(bucketListData[i]);
+            let post = await Post.create(postData[i]);
+
+            await BucketList.findByIdAndUpdate(
+                bucketList._id,
+                {$push: {post: Types.ObjectId(post._id)}},
+                {new: true}
+            )
+
             
             // update user with newly created bucket list id
             await User.findByIdAndUpdate(

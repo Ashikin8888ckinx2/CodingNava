@@ -1,0 +1,149 @@
+[
+    {
+    "description": "I visited the piramids of Giza!",
+    "images": [],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa183"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ],
+    "tags": ["Travel", "World"],
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
+  },
+  {
+    "description": "Planning a trip to the Taj Mahal",
+    "images": [],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      }
+    ],
+    "tags": ["Adventure", "Experience"],
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
+  },
+  {
+    "description": "Anyone want to go Machu Picchu?",
+    "images": [],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa183"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ],
+    "tags": ["Personal", "Achievements"],
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
+  },
+  {
+    "description": "Attend the Olympics",
+    "images": [],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      }
+    ],
+    "tags": ["Sports", "Experience"],
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
+  },
+  {
+    "description": "Chase a Tornado",
+    "images": [],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ],
+    "tags": ["Adventure", "Weather"],
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
+  },
+  {
+    "description": "Go bungee jumping",
+    "images": [],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa183"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ],
+    "tags": ["Music", "Personal"],
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
+  },
+  {
+    "description": "Go back to school for your Master’s or PhD",
+    "images": [],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ],
+    "tags": ["Financial", "Personal"],
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
+  },
+  {
+    "description": "Buy your own home and pay off the mortgage",
+    "images": [],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ],
+    "tags": ["Family", "Personal"],
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
+  },
+  {
+    "description": "I saw the total solar eclipse in 2017",
+    "images": [],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ],
+    "tags": ["Animals", "Travel"],
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
+  },
+  {
+    "description": "Don't forget to watch the lunar eclipse this Friday!",
+    "images": [],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      }
+    ],
+    "tags": ["Galaxy", "Sky"],
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
+  },
+  {
+    "description": "Did you know there's such thing as an annular solar eclipse?",
+    "images": [],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa184"
+      }
+    ],
+    "tags": ["Ocean", "Sea"],
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
+  }
+]
