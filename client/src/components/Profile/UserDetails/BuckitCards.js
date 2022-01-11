@@ -18,6 +18,8 @@ const BuckitCards = (props) => {
   if (loading) return null;
   if (error) return 'error';
 
+  // TODO: create more fields in the post data
+
   return (
     <>
       {data.getPosts.map((post, index) => (
