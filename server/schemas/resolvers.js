@@ -35,7 +35,7 @@ const resolvers = {
     followersList: async (parent, { username }) => {
       return await User.findOne({ username }).populate('followers');
     },
-    // Find all bucket lists
+    // Find bucket lists based on user
     getBucketLists: async (parent, { id }) => {
       return BucketList.find({ createdBy: id });
     },
@@ -43,6 +43,10 @@ const resolvers = {
     getBucketList: async (parent, { _id }) => {
       return await BucketList.findOne({ _id });
     },
+    // Find posts based on user or bucketlist
+    getPosts: async (parent, { userId }) =>{
+      return await Post.find( { createdBy: userId } ).sort({ date_created: -1 });
+    }
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -131,7 +135,10 @@ const resolvers = {
     addPost: async (parent, { postData }, context) => {
       // check if logged in, then add a post to a user's bucket list
       if (context.user) {
-        const updatedBucketList = await BucketList.findByIdAndUpdate({ _id: context.user.bucketList._id }, { $push: { post: { postData } } }, { new: true });
+        const updatedBucketList = await BucketList.findByIdAndUpdate(
+          { _id: context.user.bucketList._id }, 
+          { $push: { post: { postData } } }, 
+          { new: true });
         return updatedBucketList;
       }
       throw new AuthenticationError('User not logged in');

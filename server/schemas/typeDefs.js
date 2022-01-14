@@ -46,7 +46,7 @@ const typeDefs = gql`
     name: String!
     progress: String!
     createdBy: String
-    post: [Post]
+    post: [ID]
   }
   input BucketListInput {
     name: String!
@@ -56,9 +56,10 @@ const typeDefs = gql`
     _id: ID!
     description: String!
     images: [String]
-    likes: [User]
+    likes: [ID]
     tags: [String]
     date_created: String!
+    createdBy: String!
     comment: [Comment]
   }
   input PostInput {
@@ -68,7 +69,7 @@ const typeDefs = gql`
   }
   type Comment {
     comment: String!
-    likes: [User]
+    likes: [ID]
     date_created: String!
   }
   input CommentInput {
@@ -87,6 +88,7 @@ const typeDefs = gql`
     followersList(username: String!): FollowUserInfo
     getBucketLists(id:String!): [BucketList]
     getBucketList(_id: String!): BucketList
+    getPosts(userId: String): [Post]
   }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
