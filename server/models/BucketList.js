@@ -17,7 +17,11 @@ const BucketListSchema = new Schema({
         ref: "User"
     },
     // Returns a list of posts
-    post: [PostSchema]
+    post: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Post' 
+        // But wouldn't post need to be a model here instead of a schema?
+    }]
 });
 
 const BucketList = mongoose.model('BucketList', BucketListSchema);
