@@ -8,7 +8,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 const LogoutButton = () => {
   return (
     <LinkContainer to='/'>
-      <Nav.Link onClick={Auth.logout}>
+      <Nav.Link onClick={Auth.logout} className='navLogout'>
         <Button variant='danger'>Logout</Button>
       </Nav.Link>
     </LinkContainer>

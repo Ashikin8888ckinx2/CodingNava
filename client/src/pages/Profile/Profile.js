@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { Redirect } from "react-router";
+import { Redirect } from 'react-router';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME, GET_USER } from '../../utils/queries';
 import { FOLLOW_USER, UPDATE_USER } from '../../utils/mutations';
@@ -26,7 +26,6 @@ const Profile = () => {
   const [followUser, { error, followData }] = useMutation(FOLLOW_USER);
   let { username } = useParams();
 
-
   const { loading, data } = useQuery(username ? GET_USER : GET_ME, {
     variables: { username },
   });
@@ -34,7 +33,7 @@ const Profile = () => {
   let userData = data?.user || data?.me || null;
 
   if ((!Auth.loggedIn() && !username) || (!loading && userData == null)) {
-    return <Redirect to="/" />
+    return <Redirect to='/' />;
   }
 
   // ///////////////////////////////////////////////////////////////////////////////
@@ -87,7 +86,6 @@ const Profile = () => {
       });
 
       userData = updateData.updateUser;
-
     } catch (err) {
       console.error(err);
     }

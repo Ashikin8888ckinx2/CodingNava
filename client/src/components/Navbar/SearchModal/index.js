@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SearchModel = () => {
-  return <div>a</div>;
+  return <div></div>;
 };
 
 export default SearchModel;

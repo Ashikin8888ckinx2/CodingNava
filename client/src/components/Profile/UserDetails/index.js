@@ -108,7 +108,7 @@ const ProfileUserDetails = (props) => {
       {/* //////////////////////////////////////////////////////////////// */}
 
       <Row>
-        <BuckitCards userData={props}/>
+        <BuckitCards userData={props} />
       </Row>
 
       {/* //////////////////////////////////////////////////////////////// */}
@@ -124,13 +124,13 @@ const ProfileUserDetails = (props) => {
       {/* /////////////////////////////////////////////////// */}
       {/* FOLLOWERS MODAL */}
       {/* /////////////////////////////////////////////////// */}
-      <Modal show={followers} onHide={() => setFollowers(false)} backdrop='static' keyboard={false} className='modal-dialog-scrollable modal-md'>
+      <Modal show={followers} onHide={() => setFollowers(false)} backdrop='static' keyboard={false} className='modal-dialog-scrollable' size='xl'>
         <FollowersModel username={props.userData.username} />
       </Modal>
       {/* /////////////////////////////////////////////////// */}
       {/* FOLLOWING MODAL */}
       {/* /////////////////////////////////////////////////// */}
-      <Modal show={following} onHide={() => setFollowing(false)} backdrop='static' keyboard={false} className='modal-dialog-scrollable modal-md'>
+      <Modal show={following} onHide={() => setFollowing(false)} backdrop='static' keyboard={false} className='modal-dialog-scrollable' size='xl'>
         <FollowingModel username={props.userData.username} />
       </Modal>
     </>

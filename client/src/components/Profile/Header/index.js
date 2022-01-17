@@ -8,54 +8,11 @@ import { useViewport } from '../../../utils/hooks';
 import '../Profile.css';
 
 const ProfileHeader = (props) => {
-  const { width } = useViewport();
-
   ////////////////////////////////////////////////
   // MODAL STATES
   ////////////////////////////////////////////////
 
   const [show, setShow] = useState(false);
-
-  ////////////////////////////////////////////////
-  //   CSS STYLING
-  ////////////////////////////////////////////////
-  const handleMouseIn = (e) => {
-    e.target.style.background = '#F0E9D2';
-    e.target.style.borderColor = '#F0E9D2';
-    e.target.style.color = '#181D31';
-  };
-
-  const handleMouseOut = (e) => {
-    e.target.style.background = '#E6DDC4';
-    e.target.style.borderColor = '#E6DDC4';
-    e.target.style.color = '#181D31';
-  };
-
-  let editProfileBtnStyle = {
-    backgroundColor: '#E6DDC4',
-    borderColor: '#E6DDC4',
-    color: '#181D31',
-    fontFamily: 'Bebas Neue',
-    letterSpacing: 1.3,
-  };
-
-  ////////////////////////////////////////////////
-  //   EDIT PROFILE BTN
-  ////////////////////////////////////////////////
-
-  const editProfileBtn = (size) => {
-    if (window.location.pathname === '/profile') {
-      return (
-        <Col xs={3} style={{ textAlign: 'right' }}>
-          <Button variant='primary' size={size} style={editProfileBtnStyle} onMouseOver={handleMouseIn} onMouseOut={handleMouseOut} onClick={() => setShow(true)}>
-            Edit Profile
-          </Button>
-        </Col>
-      );
-    }
-  };
-
-  ////////////////////////////////////////////////
 
   return (
     <>
@@ -63,21 +20,20 @@ const ProfileHeader = (props) => {
         <Row>
           <Col>
             <Card className='bg-dark text-white rounded'>
-              <Card.Img src={props.userData.banner_picture || 'https://source.unsplash.com/I0fDR8xtApA/970x250'} alt='Image of Astronaut ' />
-              <Card.ImgOverlay>
+              <Card.Img className='UserBannerImage' src={props.userData.banner_picture || 'https://source.unsplash.com/I0fDR8xtApA'} alt='Image of Astronaut ' />
+              <Card.ImgOverlay className='BannerContainer'>
                 <Container className='p-0' fluid>
-                  <Row className='justify-content-between'>
-                    <Col xs={3}>
-                      <Image src={props.userData.picture || 'https://source.unsplash.com/XHVpWcr5grQ/252x252'} fluid thumbnail rounded />
+                  <Row className='d-flex justify-content-between'>
+                    <Col xs={3} sm={3} md={3} lg={3}>
+                      <Image className='UserProfileImage' src={props.userData.picture || 'https://source.unsplash.com/XHVpWcr5grQ'} thumbnail rounded />
                     </Col>
                     {/* IF WINDOW SIZE IS LESS THAN xs=0-768 pixels */}
-                    {width < 768 && editProfileBtn('sm')}
 
-                    {/* IF WINDOW SIZE IS GREATER THAN 768px & LESS THAN 1200px */}
-                    {width >= 768 && width < 1200 && editProfileBtn('md')}
-
-                    {/* IF WINDOW SIZE IS GREATER THAN 1200px */}
-                    {width >= 1200 && editProfileBtn('lg')}
+                    <Col style={{ textAlign: 'right' }}>
+                      <Button className='editProfileBtnStyle' onClick={() => setShow(true)}>
+                        Edit Profile
+                      </Button>
+                    </Col>
                   </Row>
                 </Container>
               </Card.ImgOverlay>
@@ -85,6 +41,7 @@ const ProfileHeader = (props) => {
           </Col>
         </Row>
       </Container>
+
       {/* /////////////////////////////////////////////////// */}
       {/* EDIT PROFILE MODAL */}
       {/* /////////////////////////////////////////////////// */}

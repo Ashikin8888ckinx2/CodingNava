@@ -9,6 +9,26 @@ a:focus:not(:focus-visible) {
 }
 
 /* ////////////////////////////////////////////// */
+/* EDIT BUTTON */
+/* ////////////////////////////////////////////// */
+
+.editProfileBtnStyle {
+  background-color: #e6ddc4 !important;
+  border: 1px solid #e6ddc4 !important;
+  color: #181d31 !important;
+  width: 10rem !important;
+  height: 3rem !important;
+  font-size: 18px !important;
+  padding: 0 !important;
+}
+
+.editProfileBtnStyle:hover {
+  background-color: #b9b29d !important;
+  border: 1px solid #b9b29d !important;
+  color: #181d31 !important;
+}
+
+/* ////////////////////////////////////////////// */
 /* BUCKIT LIST FORM */
 /* ////////////////////////////////////////////// */
 
@@ -33,9 +53,91 @@ a:focus:not(:focus-visible) {
   transition: transform 0.15s ease;
 }
 
-.BuckitCardImage {
-  width: '100%' !important;
-  height: 200px !important;
+/* ////////////////////////////////////////////// */
+/* USER PROFILE IMAGES = BANNER + PROFILE */
+/* ////////////////////////////////////////////// */
+
+.BannerContainer {
+  padding: 0 !important;
+  padding-top: 1.58vw !important;
+  padding-left: 1.58vw !important;
+  padding-right: 1.58vw !important;
+}
+
+.UserBannerImage {
+  width: 100% !important;
+  height: 25vw !important;
   object-fit: cover;
-  /* contain */
+}
+
+.UserProfileImage {
+  width: 100% !important;
+  height: 22vw !important;
+  object-fit: cover;
+}
+
+/* ////////////////////////////////////////////// */
+/* FOLLOWERS + FOLLOWING IMAGES */
+/* ////////////////////////////////////////////// */
+
+.UserFollowImage {
+  width: 100% !important;
+  height: 30vw !important;
+  object-fit: cover;
+}
+
+/* ////////////////////////////////////////////// */
+/* BUCKIT CARD IMAGES */
+/* ////////////////////////////////////////////// */
+
+.BuckitCardImage {
+  width: 100% !important;
+  height: 20vw !important;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 1200px) {
+}
+
+@media only screen and (max-width: 1023px) {
+  .editProfileBtnStyle {
+    width: 7rem !important;
+    height: 2.6rem !important;
+    font-size: 16px !important;
+    padding: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .editProfileBtnStyle {
+    width: 7rem !important;
+    height: 2.4rem !important;
+    font-size: 14px !important;
+    padding: 0 !important;
+  }
+
+  .UserFollowImage {
+    width: 100% !important;
+    height: 22vw !important;
+    object-fit: cover;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .editProfileBtnStyle {
+    width: 6rem !important;
+    height: 2.2rem !important;
+    font-size: 14px !important;
+    padding: 0 !important;
+  }
+
+  .BuckitCardImage {
+    width: 100% !important;
+    height: 60vw !important;
+    object-fit: cover;
+  }
+
+  .navLinks {
+    padding-left: 2rem !important;
+  }
 }
