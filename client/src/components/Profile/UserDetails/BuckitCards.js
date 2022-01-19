@@ -1,12 +1,12 @@
 import React from 'react';
 import { Card, Col, Stack, Row, Image } from 'react-bootstrap';
+import '../Profile.css';
 
 import { GET_POSTS } from '../../../utils/queries';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import Auth from '../../../utils/auth';
 
 const BuckitCards = (props) => {
-
   const userId = Auth.getProfile().data._id;
   console.log(userId);
   const { loading, error, data } = useQuery(GET_POSTS, {
@@ -24,7 +24,7 @@ const BuckitCards = (props) => {
     <>
       {data.getPosts.map((post, index) => (
         <Col className='pb-2' sm={4} md={4} lg={4} key={index}>
-          <Card className='shadow'>
+          <Card className='shadow h-100'>
             {/* CARD HEADER */}
             <Card.Title>
               <Row className='p-2'>
@@ -41,7 +41,7 @@ const BuckitCards = (props) => {
                 <Card.Text className='fs-5'>{post.description}</Card.Text>
               </div>
               <div className='pb-3'>
-                <Card.Img className='' src='https://source.unsplash.com/RktLzQoDe9Y/200x100' />
+                <Card.Img className='BuckitCardImage rounded' src='https://source.unsplash.com/a2BiBn_0Gvg' />
               </div>
               <div className='fs-6 pb-3'>
                 <Card.Text>This summer I took a trip to Egypt to cross off one of my bucket list items</Card.Text>
@@ -61,7 +61,6 @@ const BuckitCards = (props) => {
             </Card.Footer>
           </Card>
         </Col>
-
       ))}
     </>
   );

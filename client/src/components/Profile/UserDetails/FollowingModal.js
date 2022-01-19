@@ -7,15 +7,13 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { useQuery } from '@apollo/client';
 import { GET_FOLLOWING } from '../../../utils/queries';
 
-
 const FollowingModel = (props) => {
-
   const { loading, data } = useQuery(GET_FOLLOWING, {
     variables: { username: props.username },
   });
 
   if (loading) {
-    return <h1>Loading</h1>
+    return <h1>Loading</h1>;
   }
 
   return (
@@ -27,25 +25,15 @@ const FollowingModel = (props) => {
       </Modal.Header>
       <Modal.Body>
         <Tab.Content>
-          <Tab.Pane eventKey='Create'>
-            {data.followingList.following.map(user => (
-              <Col key={user.username}>
+          <Tab.Pane eventKey='Create' className='d-flex flex-wrap'>
+            {data.followingList.following.map((user) => (
+              <Col key={user.username} xs={6} sm={6} md={6} lg={6}>
                 <LinkContainer to={'/profile/' + user.username}>
                   <Card className='shadow mb-2'>
-                    <Card.Body>
-                      <Row className='align-items-center'>
-                        <Col>
-                          <Card.Img className='rounded' variant='left' src={user.picture || 'https://source.unsplash.com/2rIs8OH5ng0/80x80'} style={{ cursor: 'pointer' }} />
-                        </Col>
-                        <Col>
-                          <h3>{user.username}</h3>
-                        </Col>
-                        <Col>
-                          {/* <div className='d-flex justify-content-end'>
-                        <DashSquare size={36} style={{ cursor: 'pointer' }} />
-                      </div> */}
-                        </Col>
-                      </Row>
+                    <Card.Body className='d-flex flex-wrap justify-content-around'>
+                      <Card.Img className='UserFollowImage rounded' variant='left' src={user.picture || 'https://source.unsplash.com/2rIs8OH5ng0'} style={{ cursor: 'pointer' }} />
+
+                      <div class='fs-3'>{user.username}</div>
                     </Card.Body>
                   </Card>
                 </LinkContainer>

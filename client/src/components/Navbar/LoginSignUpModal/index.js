@@ -3,30 +3,26 @@ import Login from '../LoginForm';
 import Signup from '../SignUpForm';
 
 // BOOTSTRAP COMPONENTS
-import { Modal, Nav, Tab } from 'react-bootstrap';
-import { BoxArrowRight } from 'react-bootstrap-icons';
+import { Modal, Nav, Tab, Button } from 'react-bootstrap';
 
 const LoginSignUpModal = () => {
   const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [model, setModel] = useState('login');
 
   return (
     <div>
-      <Nav.Link
-        onClick={handleShow}
-        style={{
-          color: 'white',
-        }}
-      >
-        {/* Login/Sign Up Icon */}
-        <BoxArrowRight size={36} />
+      <Nav.Link onClick={() => setShow(true)} className='p-2'>
+        <Button variant='primary' onClick={() => setModel('login')}>
+          Login
+        </Button>{' '}
+        <Button variant='warning' onClick={() => setModel('signup')}>
+          Sign Up
+        </Button>
       </Nav.Link>
 
       {/* LOGIN/SIGNUP MODAL */}
-      <Modal show={show} onHide={handleClose} backdrop='static' keyboard={false}>
-        <Tab.Container id='left-tabs-example' defaultActiveKey='login'>
+      <Modal show={show} onHide={() => setShow(false)} backdrop='static' keyboard={false}>
+        <Tab.Container id='left-tabs-example' defaultActiveKey={model}>
           {/* LOGIN/SIGNUP MODAL: HEADER */}
           <Modal.Header closeButton>
             <Modal.Title>
@@ -37,7 +33,7 @@ const LoginSignUpModal = () => {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey='signup' type='submit'>
+                  <Nav.Link variant='success' type='submit' eventKey='signup'>
                     <span className='p-2'>Sign Up</span>
                   </Nav.Link>
                 </Nav.Item>
