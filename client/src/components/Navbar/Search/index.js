@@ -3,6 +3,7 @@ import SearchModal from '../SearchModal';
 import '../Navbar.css';
 
 import { Form, FormControl, Button, Modal } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import { Search } from 'react-bootstrap-icons';
 
@@ -24,7 +25,9 @@ const SearchBtnForm = () => {
   // FOR SEARCH ICON TOGGLE
   /////////////////////////////////////////////////////////
   const toggle = () => {
-    setShowSearch((wasOpened) => !wasOpened);
+    setTimeout(() => {
+      setShowSearch((wasOpened) => !wasOpened);
+    }, 100);
   };
 
   const handleSearchComponent = () => {
@@ -46,13 +49,10 @@ const SearchBtnForm = () => {
       <Search size={34} className='navSearchIcon' onClick={toggle} style={{ cursor: 'pointer' }} />
 
       {/* /////////////////////////////////////////////////// */}
-      {/* FOLLOWING MODAL */}
+      {/* SEARCH MODAL */}
       {/* /////////////////////////////////////////////////// */}
       <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Search Result</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>CREATE USER SEARCH CARDS</Modal.Body>
+        <SearchModal />
       </Modal>
     </>
   );
