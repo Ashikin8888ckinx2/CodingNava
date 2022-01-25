@@ -28,13 +28,13 @@ const FollowersModel = (props) => {
         <Tab.Content>
           <Tab.Pane eventKey='Create' className='d-flex flex-wrap'>
             {data.followersList.followers.map((user) => (
-              <Col key={user.username} xs={6} sm={6} md={6} lg={6}>
+              <Col key={user.username} xs={4} sm={4} md={4} lg={4}>
                 <LinkContainer to={'/profile/' + user.username}>
                   <Card className='shadow m-1'>
-                    <Card.Body className='d-flex flex-wrap justify-content-around'>
+                    <Card.Body className='d-flex flex-wrap justify-content-around p-2'>
                       <Card.Img className='UserFollowImage rounded' variant='left' src={user.picture || 'https://source.unsplash.com/2rIs8OH5ng0'} style={{ cursor: 'pointer' }} />
 
-                      <div class='fs-3'>{user.username}</div>
+                      <div class='UserFollowUsername pt-1'>{user.username}</div>
                     </Card.Body>
                   </Card>
                 </LinkContainer>

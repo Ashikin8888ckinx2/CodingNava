@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Login from '../LoginForm';
 import Signup from '../SignUpForm';
 
+import '../Navbar.css';
+
 // BOOTSTRAP COMPONENTS
 import { Modal, Nav, Tab, Button } from 'react-bootstrap';
 
@@ -12,10 +14,10 @@ const LoginSignUpModal = () => {
   return (
     <div>
       <Nav.Link onClick={() => setShow(true)} className='p-2'>
-        <Button variant='primary' onClick={() => setModel('login')}>
+        <Button variant='primary' className='navLogin' onClick={() => setModel('login')}>
           Login
         </Button>{' '}
-        <Button variant='warning' onClick={() => setModel('signup')}>
+        <Button variant='warning' className='navSignup' onClick={() => setModel('signup')}>
           Sign Up
         </Button>
       </Nav.Link>

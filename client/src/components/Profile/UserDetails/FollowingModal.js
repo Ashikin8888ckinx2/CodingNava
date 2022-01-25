@@ -30,10 +30,10 @@ const FollowingModel = (props) => {
               <Col key={user.username} xs={6} sm={6} md={6} lg={6}>
                 <LinkContainer to={'/profile/' + user.username}>
                   <Card className='shadow mb-2'>
-                    <Card.Body className='d-flex flex-wrap justify-content-around'>
+                    <Card.Body className='d-flex flex-wrap justify-content-around p-2'>
                       <Card.Img className='UserFollowImage rounded' variant='left' src={user.picture || 'https://source.unsplash.com/2rIs8OH5ng0'} style={{ cursor: 'pointer' }} />
 
-                      <div class='fs-3'>{user.username}</div>
+                      <div class='UserFollowUsername pt-1'>{user.username}</div>
                     </Card.Body>
                   </Card>
                 </LinkContainer>

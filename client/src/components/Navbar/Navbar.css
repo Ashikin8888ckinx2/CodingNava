@@ -7,7 +7,58 @@
   margin-left: 8px !important;
 }
 
-@media only screen and (max-width: 575px) {
+.navSignup {
+  margin-left: 4px !important;
+}
+
+.navLogin {
+  margin-left: 4px !important;
+}
+/* ////////////////////////////////////////////////// */
+/* SEARCH  */
+/* ////////////////////////////////////////////////// */
+
+.SearchModalTitle {
+  font-size: 36px !important;
+}
+
+.UserSearchImage {
+  width: 100% !important;
+  height: 19vw !important;
+  object-fit: cover;
+}
+
+.UserSearchUsername {
+  font-size: 24px !important;
+}
+
+/* ////////////////////////////////////////////////// */
+/* MEDIA QUERIES */
+/* ////////////////////////////////////////////////// */
+@media only screen and (max-width: 1200px) {
+}
+
+@media only screen and (max-width: 1023px) {
+  .SearchModalTitle {
+    font-size: 32px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .UserSearchImage {
+    height: 17vw !important;
+  }
+
+  .UserSearchUsername {
+    font-size: 22px !important;
+  }
+
+  .SearchModalTitle {
+    font-size: 30px !important;
+  }
+}
+
+@media only screen and (max-width: 500px) {
   .navSearchIcon {
     margin-top: 8px !important;
     margin-left: 12px !important;
@@ -24,5 +75,21 @@
 
   .navLogout {
     margin-left: 12px !important;
+  }
+
+  /* SEARCH */
+
+  .SearchModalTitle {
+    font-size: 20px !important;
+  }
+
+  .UserSearchImage {
+    width: 100% !important;
+    height: 19vw !important;
+    object-fit: cover;
+  }
+
+  .UserSearchUsername {
+    font-size: 9px !important;
   }
 }
