@@ -14,10 +14,6 @@ const BuckitCards = (props) => {
     variables: { userId },
   });
 
-  console.log('BuckitCards data: ', data);
-  console.log('Props', props);
-  console.log('Date', moment(Date(data.getPosts.description)).format('ll'))
-
   if (loading) return null;
   if (error) return 'error';
 
