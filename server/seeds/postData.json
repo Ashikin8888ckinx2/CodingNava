@@ -21,7 +21,9 @@
   {
     "title": "Planning a trip to the Taj Mahal",
     "description": "Need recommendations for flights, hotels, food, etc",
-    "images": [],
+    "images": [
+      "https://source.unsplash.com/XHVpWcr5grQ/60x60"
+    ],
     "likes": [
       {
         "_id": "5c8a1dfa2f8fb814b56fa182"
@@ -34,7 +36,9 @@
   {
     "title": "Anyone want to go Machu Picchu?",
     "description": "Let me know if anyone wants to join!",
-    "images": [],
+    "images": [
+      "https://source.unsplash.com/XHVpWcr5grQ/60x60"
+    ],
     "likes": [
       {
         "_id": "5c8a1dfa2f8fb814b56fa183"
@@ -50,7 +54,9 @@
   {
     "title": "Attend the Olympics",
     "description": "I've always wanted to see the events live!", 
-    "images": [],
+    "images": [
+      "https://source.unsplash.com/XHVpWcr5grQ/60x60"
+    ],
     "likes": [
       {
         "_id": "5c8a1dfa2f8fb814b56fa182"

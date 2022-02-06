@@ -9,15 +9,14 @@ import Auth from '../../../utils/auth';
 
 const BuckitCards = (props) => {
   const userId = Auth.getProfile().data._id;
-  console.log(userId);
+  
+  // Load in post data
   const { loading, error, data } = useQuery(GET_POSTS, {
     variables: { userId },
   });
-
+  // Handle errors for post data
   if (loading) return null;
   if (error) return 'error';
-
-  // TODO: create more fields in the post data
 
   return (
     <>
@@ -28,7 +27,7 @@ const BuckitCards = (props) => {
             <Card.Title>
               <Row className='p-2'>
                 <div className='d-flex align-items-center' gap={2}>
-                  <Image src='https://source.unsplash.com/XHVpWcr5grQ/60x60' roundedCircle />
+                  <Image src={post.images} roundedCircle />
                   <h5 className='mb-0'>{props.userData.userData.username}</h5>
                 </div>
                 <p>Created {
@@ -58,8 +57,9 @@ const BuckitCards = (props) => {
             {/* HEADER /////////////// ROW #6 */}
             <Card.Footer className='bg-transparent m-2 p-2'>
               <Stack direction='horizontal' gap={3} className='align-items-center justify-content-start'>
-                <div>#{post.tags[0]}</div>
-                <div>#{post.tags[1]}</div>
+                {post.tags.map((tag, i) => (
+                  <div key={i}>#{tag}</div>
+                ))}
               </Stack>
             </Card.Footer>
           </Card>
