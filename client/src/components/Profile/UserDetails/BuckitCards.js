@@ -9,6 +9,7 @@ import Auth from '../../../utils/auth';
 
 const BuckitCards = (props) => {
   const userId = Auth.getProfile().data._id;
+  const userData = props.userData.userData;
   
   // Load in post data
   const { loading, error, data } = useQuery(GET_POSTS, {
@@ -27,8 +28,8 @@ const BuckitCards = (props) => {
             <Card.Title>
               <Row className='p-2'>
                 <div className='d-flex align-items-center' gap={2}>
-                  <Image src={post.images} roundedCircle />
-                  <h5 className='mb-0'>{props.userData.userData.username}</h5>
+                  <Image src={userData.picture + '/60x60'} roundedCircle />
+                  <h5 className='mb-0'>{userData.username}</h5>
                 </div>
                 <p>Created {
                   moment(Date(data.getPosts.description))
@@ -43,7 +44,7 @@ const BuckitCards = (props) => {
                 <Card.Text className='fs-5'>{post.title}</Card.Text>
               </div>
               <div className='pb-3'>
-                <Card.Img className='BuckitCardImage rounded' src='https://source.unsplash.com/a2BiBn_0Gvg' />
+                <Card.Img className='BuckitCardImage rounded' src={post.images} />
               </div>
               <div className='fs-6 pb-3'>
                 <Card.Text>{post.description}</Card.Text>
