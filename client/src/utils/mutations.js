@@ -62,10 +62,7 @@ export const ADD_BUCKET_LIST = gql`
       bio
       picture
       banner_picture
-      bucketList {
-        _id
-        progress
-      }
+      bucketList
     }
   }
 `;

@@ -104,7 +104,20 @@ const resolvers = {
     addBucketList: async (parent, { listData }, context) => {
       // Check if logged in, then add bucket list to a user's profile
       if (context.user) {
-        const updatedUser = await User.findByIdAndUpdate({ _id: context.user._id }, { $push: { bucketList: { listData } } }, { new: true });
+        // Create a new bucket list with listData
+        const newBucketList = await BucketList.create({
+          name: listData.name,
+          progress: listData.progress,
+          createdBy: context.user
+        })
+
+        // Push bucket list id into User array
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id }, 
+          { $push: { bucketList: newBucketList._id } }, 
+          { new: true });
+
+        // Return user
         return updatedUser;
       }
       throw new AuthenticationError('User not logged in');
