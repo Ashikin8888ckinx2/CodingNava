@@ -89,6 +89,7 @@ export const GET_BUCKETLIST = gql`
 export const GET_POSTS = gql`
   query getPosts($userId: String!){
     getPosts(userId: $userId){
+      title
       description
       images
       likes
