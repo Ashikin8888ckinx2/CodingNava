@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import UserEditSettings from '../UserEditProfileBtn';
 
 import { Card, Container, Row, Col, Image, Button, Modal, Tab } from 'react-bootstrap';
-import { useViewport } from '../../../utils/hooks';
 
 import '../Profile.css';
 
