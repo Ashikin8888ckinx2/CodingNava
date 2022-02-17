@@ -9,14 +9,9 @@ import Auth from '../../../utils/auth';
 
 const BuckitCards = (props) => {
   const userId = Auth.getProfile().data._id;
-  console.log(userId);
   const { loading, error, data } = useQuery(GET_POSTS, {
     variables: { userId },
   });
-
-  console.log('BuckitCards data: ', data);
-  console.log('Props', props);
-  console.log('Date', moment(Date(data.getPosts.description)).format('ll'))
 
   if (loading) return null;
   if (error) return 'error';
@@ -35,10 +30,7 @@ const BuckitCards = (props) => {
                   <Image src='https://source.unsplash.com/XHVpWcr5grQ/60x60' roundedCircle />
                   <h5 className='mb-0'>{props.userData.userData.username}</h5>
                 </div>
-                <p>Created {
-                  moment(Date(data.getPosts.description))
-                    .format('ll')
-                }</p>
+                <p>Created {moment(Date(data.getPosts.description)).format('ll')}</p>
               </Row>
             </Card.Title>
 

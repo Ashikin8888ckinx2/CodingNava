@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import PostModal from './PostModal';
 import '../Profile.css';
 import { GET_BUCKETLISTS } from '../../../utils/queries';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import Auth from '../../../utils/auth';
 
 import { Card, Col, Form, Button, Row, Stack, Modal } from 'react-bootstrap';
@@ -13,7 +13,6 @@ const PostCreateCard = () => {
   const [post, setPost] = useState(false);
 
   const userId = Auth.getProfile().data._id;
-  console.log(userId);
   const { loading, error, data } = useQuery(GET_BUCKETLISTS, {
     variables: { id: userId },
   });

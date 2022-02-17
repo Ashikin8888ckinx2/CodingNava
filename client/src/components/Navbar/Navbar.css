@@ -1,3 +1,11 @@
+.BucketBrand:hover {
+  -moz-transform: rotate(28deg);
+  -webkit-transform: rotate(28deg);
+  -o-transform: rotate(28deg);
+  -ms-transform: rotate(28deg);
+  transform: rotate(28deg);
+}
+
 .navSearchIcon {
   margin-top: 8px !important;
   margin-left: 12px !important;
