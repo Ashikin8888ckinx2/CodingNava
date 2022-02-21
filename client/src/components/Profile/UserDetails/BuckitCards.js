@@ -31,10 +31,7 @@ const BuckitCards = (props) => {
                   <Image src={userData.picture + '/60x60'} roundedCircle />
                   <h5 className='mb-0'>{userData.username}</h5>
                 </div>
-                <p>Created {
-                  moment(Date(data.getPosts.description))
-                    .format('ll')
-                }</p>
+                <p>Created {moment(Date(data.getPosts.description)).format('ll')}</p>
               </Row>
             </Card.Title>
 
