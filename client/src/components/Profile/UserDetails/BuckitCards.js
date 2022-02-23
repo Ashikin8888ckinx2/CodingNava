@@ -9,14 +9,15 @@ import Auth from '../../../utils/auth';
 
 const BuckitCards = (props) => {
   const userId = Auth.getProfile().data._id;
+  const userData = props.userData.userData;
+  
+  // Load in post data
   const { loading, error, data } = useQuery(GET_POSTS, {
     variables: { userId },
   });
-
+  // Handle errors for post data
   if (loading) return null;
   if (error) return 'error';
-
-  // TODO: create more fields in the post data
 
   return (
     <>
@@ -27,8 +28,8 @@ const BuckitCards = (props) => {
             <Card.Title>
               <Row className='p-2'>
                 <div className='d-flex align-items-center' gap={2}>
-                  <Image src='https://source.unsplash.com/XHVpWcr5grQ/60x60' roundedCircle />
-                  <h5 className='mb-0'>{props.userData.userData.username}</h5>
+                  <Image src={userData.picture + '/60x60'} roundedCircle />
+                  <h5 className='mb-0'>{userData.username}</h5>
                 </div>
                 <p>Created {moment(Date(data.getPosts.description)).format('ll')}</p>
               </Row>
@@ -40,7 +41,7 @@ const BuckitCards = (props) => {
                 <Card.Text className='fs-5'>{post.title}</Card.Text>
               </div>
               <div className='pb-3'>
-                <Card.Img className='BuckitCardImage rounded' src='https://source.unsplash.com/a2BiBn_0Gvg' />
+                <Card.Img className='BuckitCardImage rounded' src={post.images} />
               </div>
               <div className='fs-6 pb-3'>
                 <Card.Text>{post.description}</Card.Text>
@@ -54,8 +55,9 @@ const BuckitCards = (props) => {
             {/* HEADER /////////////// ROW #6 */}
             <Card.Footer className='bg-transparent m-2 p-2'>
               <Stack direction='horizontal' gap={3} className='align-items-center justify-content-start'>
-                <div>#{post.tags[0]}</div>
-                <div>#{post.tags[1]}</div>
+                {post.tags.map((tag, i) => (
+                  <div key={i}>#{tag}</div>
+                ))}
               </Stack>
             </Card.Footer>
           </Card>

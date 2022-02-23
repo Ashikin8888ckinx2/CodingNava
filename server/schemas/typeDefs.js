@@ -51,6 +51,7 @@ const typeDefs = gql`
   input BucketListInput {
     name: String!
     progress: String!
+    createdBy: String!
   }
   type Post {
     _id: ID!
@@ -96,14 +97,18 @@ const typeDefs = gql`
     login(email: String, username: String, password: String!): Auth
     updateUser(userData: UpdateUserInput!): User
     followUser(followId: ID!, isFollowing: Boolean): FollowUser
+    
+    # Add, edit, delete Bucket List items
     addBucketList(listData: BucketListInput!): User
     deleteBucketList(listId: ID!): User
     editBucketList(listId: ID!, listData: BucketListInput!): BucketList
     
+    # Add, edit, delete Post items
     addPost(postData: PostInput!): BucketList
     deletePost(postId: ID!): BucketList
     editPost(postId: ID! postData: PostInput!): BucketList
     
+    # Add, edit, delete, Comment items
     addComment(commentData: CommentInput!): Post
     deleteComment(commentId: ID!): Post
     editComment(commentId: ID!, commentData: CommentInput!): Post
