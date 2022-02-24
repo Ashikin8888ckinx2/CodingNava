@@ -9,7 +9,7 @@ function RainDrop(props) {
     if (emojisToRender.length > 20) {
       emojisToRender.shift();
     }
-    const offset = Math.floor(Math.random() * 1000);
+    const offset = Math.floor(Math.random() * 2000);
     const key = offset + Math.random() * 1000000;
 
     const emoji = '💧';

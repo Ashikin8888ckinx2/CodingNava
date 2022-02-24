@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card, Col, Tab, Modal, Row } from 'react-bootstrap';
+import { Card, Col, Tab, Modal } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import { useQuery } from '@apollo/client';
@@ -14,7 +14,7 @@ const FollowersModel = (props) => {
   });
 
   if (loading) {
-    return <h1>Loading</h1>;
+    return null;
   }
 
   return (
@@ -34,7 +34,7 @@ const FollowersModel = (props) => {
                     <Card.Body className='d-flex flex-wrap justify-content-around p-2'>
                       <Card.Img className='UserFollowImage rounded' variant='left' src={user.picture || 'https://source.unsplash.com/2rIs8OH5ng0'} style={{ cursor: 'pointer' }} />
 
-                      <div class='UserFollowUsername pt-1'>{user.username}</div>
+                      <div className='UserFollowUsername pt-1'>{user.username}</div>
                     </Card.Body>
                   </Card>
                 </LinkContainer>
