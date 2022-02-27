@@ -1,15 +1,19 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import React from 'react';
+
+import { Row, Container } from 'react-bootstrap';
+
+import HomeCards from '../../components/Home/HomeCards';
 
 const Home = () => {
   return (
     <>
-      <Container fluid>
-        <Row>
-          <Col>
-            <div>Home Page</div>
-          </Col>
-        </Row>
-      </Container>
+      <div className='rounded'>
+        <Container className='pb-2' fluid>
+          <Row>
+            <HomeCards />
+          </Row>
+        </Container>
+      </div>
     </>
   );
 };
