@@ -4,7 +4,6 @@ import '../Profile.css';
 import CreateModel from './CreateModal';
 import FollowersModel from './FollowersModal';
 import FollowingModel from './FollowingModal';
-// import PostModal from './PostModal';
 import PostCreateCard from './PostCreateCard';
 import BuckitCards from './BuckitCards';
 

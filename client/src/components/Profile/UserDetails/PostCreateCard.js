@@ -59,7 +59,7 @@ const PostCreateCard = () => {
       {/* POST MODAL */}
       {/* /////////////////////////////////////////////////// */}
       <Modal show={post} onHide={() => setPost(false)} backdrop='static' keyboard={false} className='modal-dialog-scrollable modal-md'>
-        <PostModal />
+        <PostModal userId={userId} />
       </Modal>
     </>
   );
