@@ -68,20 +68,14 @@ export const ADD_BUCKET_LIST = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postData: PostInput!) {
-    addPost(postData: $postData) {
-      _id
-      progress
-      post {
-        _id
-        description
-        images
-        likes
-        tags
-        date_created
-      }
-    }
+  mutation addPost($postData: PostInput!, $listName: String!){
+  addPost(postData: $postData, listName: $listName){
+    _id
+    name
+    createdBy
+    post
   }
+}
 `;
 
 export const ADD_COMMENT = gql`
