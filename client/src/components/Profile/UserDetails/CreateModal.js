@@ -4,7 +4,6 @@ import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../../../utils/mutations';
 
 const CreateModel = (props) => {
-  console.log(props);
   const [formState, setFormState] = useState({});
   const [addPost, { data, loading, error }] = useMutation(ADD_POST);
 
@@ -18,7 +17,10 @@ const CreateModel = (props) => {
     setFormState({
       ...formState,
       [name]: value,
+      createdBy: props.bucketLists[0].createdBy
     });
+
+    console.log(formState);
   }
 
   // Handle form submit
@@ -27,7 +29,14 @@ const CreateModel = (props) => {
 
     addPost({
       variables: {
-        postData: formState
+        postData: {
+          title: formState.title,
+          description: formState.description,
+          images: formState.images,
+          tags: formState.tags,
+          createdBy: formState.createdBy
+        },
+        listName: formState.listName
       }
     })
   }
@@ -49,33 +58,33 @@ const CreateModel = (props) => {
                     <Form onSubmit={handleFormSubmit}>
                       <Row>
                         <Form.Group className='mb-3'>
-                          <Form.Control type='text' placeholder='Title' />
+                          <Form.Control type='text' name='title' placeholder='Title' onChange={handleChange} />
                         </Form.Group>
                       </Row>
                       <Form.Group className='mb-3'>
-                        <Form.Control as='textarea' placeholder='Description' rows={3} />
+                        <Form.Control as='textarea' name='description' placeholder='Description' rows={3} onChange={handleChange} />
                       </Form.Group>
 
                       {/* PROFILE PHOTO */}
                       <Form.Group className='mb-3'>
                         <Form.Label>Buckit Image</Form.Label>
-                        <Form.Control type='file' name='picture' />
+                        <Form.Control type='file' name='images' onChange={handleChange} />
                       </Form.Group>
                       <Row>
                         <Col>
                           <Form.Group className='mb-3'>
-                            <Form.Control type='text' placeholder='Tags #1' />
+                            <Form.Control type='text' name='tags' placeholder='Tags #1' onChange={handleChange} />
                           </Form.Group>
                         </Col>
                         <Col>
                           <Form.Group className='mb-3'>
-                            <Form.Control type='text' placeholder='Tags #2' />
+                            <Form.Control type='text' name='tags' placeholder='Tags #2' onChange={handleChange} />
                           </Form.Group>
                         </Col>
                       </Row>
                       <Row>
                         <Col>
-                          <Form.Select className='pe-4' >
+                          <Form.Select className='pe-4' name='listName' onChange={handleChange} >
                             {props.bucketLists.map((list, index) =>(
                             <option value={list.name} key={index}>{list.name}</option>
                             ))}
