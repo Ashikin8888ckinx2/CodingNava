@@ -9,6 +9,79 @@ a:focus:not(:focus-visible) {
 }
 
 /* ////////////////////////////////////////////// */
+/* BUCKIT CARDS */
+/* ////////////////////////////////////////////// */
+
+.BuckitCardTitleContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 16px 16px 0px 16px !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.BuckitCardImageUsername {
+  display: flex;
+  flex-direction: row;
+  justify-content: start !important;
+  align-items: center !important;
+  grid-gap: 0.5rem !important;
+  gap: 0.5rem !important;
+}
+
+.BuckitCardProfileImage {
+}
+
+.BuckitCardUsername {
+  font-size: 19px !important;
+  margin-bottom: 0 !important;
+}
+
+.BuckitCardDate {
+  font-size: 19px !important;
+}
+
+.BuckitCardBodyContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 16px 0px 16px !important;
+}
+
+.BuckitCardBodyTitle {
+  font-size: 19px !important;
+  padding: 0px 0px 8px 0px !important;
+}
+
+.BuckitCardImage {
+  width: 100% !important;
+  height: 20vw !important;
+  object-fit: cover;
+}
+
+.BuckitCardBodyDescription {
+  font-size: 19px !important;
+  padding: 8px 0px 8px 0px !important;
+}
+
+.BuckitCardBodyStatus {
+  font-size: 19px !important;
+  padding: 0px 0px 8px 16px !important;
+}
+
+.BuckitCardBodyStatus span {
+  color: #0d6efd;
+}
+
+.BuckitCardFooter {
+  display: flex;
+  flex-direction: row;
+  font-size: 16px !important;
+  grid-gap: 0.5rem !important;
+  gap: 0.5rem !important;
+}
+
+/* ////////////////////////////////////////////// */
 /* EDIT BUTTON */
 /* ////////////////////////////////////////////// */
 
@@ -18,7 +91,7 @@ a:focus:not(:focus-visible) {
   color: #181d31 !important;
   width: 8rem !important;
   height: 2.8rem !important;
-  font-size: 18px !important;
+  font-size: 16px !important;
   padding: 0 !important;
 }
 
@@ -40,17 +113,9 @@ a:focus:not(:focus-visible) {
   white-space: nowrap;
 }
 
-/* PLUS BUTTON */
-.buckitListBtnStyle {
-  background-color: #0d6efd !important;
-  border-color: #0d6efd !important;
-}
-
-.buckitListBtnStyle:hover {
-  background-color: #0d6efd !important;
-  border-color: #0d6efd !important;
-  transform: scale(1.1);
-  transition: transform 0.15s ease;
+.BuckitListPlus {
+  padding: 8px 4px 8px 4px !important;
+  font-size: 20px !important;
 }
 
 /* ////////////////////////////////////////////// */
@@ -94,12 +159,6 @@ a:focus:not(:focus-visible) {
 /* BUCKIT CARD IMAGES */
 /* ////////////////////////////////////////////// */
 
-.BuckitCardImage {
-  width: 100% !important;
-  height: 20vw !important;
-  object-fit: cover;
-}
-
 @media only screen and (max-width: 1200px) {
 }
 
@@ -107,8 +166,7 @@ a:focus:not(:focus-visible) {
   .editProfileBtnStyle {
     width: 7rem !important;
     height: 2.6rem !important;
-    font-size: 16px !important;
-    padding: 0 !important;
+    font-size: 100% !important;
   }
 
   .UserFollowImage {
@@ -117,6 +175,13 @@ a:focus:not(:focus-visible) {
 
   .UserFollowUsername {
     font-size: 20px !important;
+  }
+
+  /* ----------------------------------------- */
+  /* BUCKIT CARD */
+  /* ----------------------------------------- */
+  .BuckitCardDate {
+    padding-top: 0.8rem !important;
   }
 }
 
@@ -134,20 +199,65 @@ a:focus:not(:focus-visible) {
   .UserFollowUsername {
     font-size: 20px !important;
   }
+
+  /* ----------------------------------------- */
+  /* POST BUCKIT LIST */
+  /* ----------------------------------------- */
+  .BuckitListPlus {
+    font-size: 18px !important;
+  }
+
+  /* ----------------------------------------- */
+  /* BUCKIT CARD */
+  /* ----------------------------------------- */
+  .BuckitCardImageUsername {
+    flex-wrap: wrap;
+    justify-content: center !important ;
+  }
+
+  .BuckitCardFooter {
+    flex-wrap: wrap;
+  }
+
+  .BuckitCardDate,
+  .BuckitCardBodyTitle,
+  .BuckitCardBodyDescription,
+  .BuckitCardBodyStatus {
+    font-size: 16px !important;
+  }
+
+  .BuckitCardFooter {
+    font-size: 14px !important;
+  }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (min-width: 481px) and (max-width: 575px) {
+  /* ----------------------------------------- */
+  /* BUCKIT CARD */
+  /* ----------------------------------------- */
+  .BuckitCardImage {
+    width: 100% !important;
+    height: 60vw !important;
+    object-fit: cover;
+  }
+
+  .BuckitCardUsername,
+  .BuckitCardDate {
+    font-size: 18px !important;
+    padding-top: 0px !important;
+  }
+
+  .BuckitCardFooter {
+    font-size: 16px !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
   .editProfileBtnStyle {
     width: 6rem !important;
     height: 2.2rem !important;
     font-size: 14px !important;
     padding: 0 !important;
-  }
-
-  .BuckitCardImage {
-    width: 100% !important;
-    height: 60vw !important;
-    object-fit: cover;
   }
 
   .navLinks {
@@ -160,5 +270,14 @@ a:focus:not(:focus-visible) {
 
   .UserFollowUsername {
     font-size: 14px !important;
+  }
+
+  /* ----------------------------------------- */
+  /* BUCKIT CARD */
+  /* ----------------------------------------- */
+  .BuckitCardImage {
+    width: 100% !important;
+    height: 60vw !important;
+    object-fit: cover;
   }
 }

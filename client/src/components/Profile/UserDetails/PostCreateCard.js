@@ -7,7 +7,6 @@ import { useQuery } from '@apollo/client';
 import Auth from '../../../utils/auth';
 
 import { Card, Col, Form, Button, Row, Stack, Modal } from 'react-bootstrap';
-import { PlusLg } from 'react-bootstrap-icons';
 
 const PostCreateCard = () => {
   const [post, setPost] = useState(false);
@@ -30,7 +29,8 @@ const PostCreateCard = () => {
               <div className='fs-4'>Buckit List</div>
               <Button onClick={() => setPost(true)} className='buckitListBtnStyle'>
                 {/* Create function to create bucket list */}
-                <PlusLg size={30} />
+                {/* <PlusLg size={30} /> */}
+                <span className='BuckitListPlus'>+</span>
               </Button>
             </Stack>
           </Card.Header>
