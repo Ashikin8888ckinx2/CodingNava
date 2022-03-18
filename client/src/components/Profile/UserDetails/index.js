@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 
 import '../Profile.css';
+
 import CreateModel from './CreateModal';
 import FollowersModel from './FollowersModal';
 import FollowingModel from './FollowingModal';

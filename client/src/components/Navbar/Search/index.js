@@ -5,8 +5,6 @@ import '../Navbar.css';
 import { Form, FormControl, Button, Modal } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-import { Search } from 'react-bootstrap-icons';
-
 const SearchBtnForm = () => {
   const [showSearch, setShowSearch] = useState(false);
 
@@ -46,7 +44,10 @@ const SearchBtnForm = () => {
   return (
     <>
       {showSearch ? handleSearchComponent() : null}
-      <Search size={34} className='navSearchIcon' onClick={toggle} style={{ cursor: 'pointer' }} />
+
+      <span className='NavSearchEmoji' onClick={toggle}>
+        🔎
+      </span>
 
       {/* /////////////////////////////////////////////////// */}
       {/* SEARCH MODAL */}

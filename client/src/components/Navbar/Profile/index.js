@@ -8,9 +8,8 @@ import { PersonCircle } from 'react-bootstrap-icons';
 const ProfileButton = () => {
   return (
     <LinkContainer to='/profile'>
-      <Nav.Link>
-        {/* Profile Icon */}
-        <PersonCircle size={36} className='navProfile' />
+      <Nav.Link className='NavProfileIcon'>
+        <PersonCircle />
       </Nav.Link>
     </LinkContainer>
   );

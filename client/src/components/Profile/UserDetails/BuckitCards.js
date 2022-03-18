@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Stack, Row, Image } from 'react-bootstrap';
+import { Card, Col, Image } from 'react-bootstrap';
 import moment from 'moment';
 import '../Profile.css';
 
@@ -10,7 +10,7 @@ import Auth from '../../../utils/auth';
 const BuckitCards = (props) => {
   const userId = Auth.getProfile().data._id;
   const userData = props.userData.userData;
-  
+
   // Load in post data
   const { loading, error, data } = useQuery(GET_POSTS, {
     variables: { userId },
@@ -26,39 +26,33 @@ const BuckitCards = (props) => {
           <Card className='shadow h-100'>
             {/* CARD HEADER */}
             <Card.Title>
-              <Row className='p-2'>
-                <div className='d-flex align-items-center' gap={2}>
-                  <Image src={userData.picture + '/60x60'} roundedCircle />
-                  <h5 className='mb-0'>{userData.username}</h5>
+              <div className='BuckitCardTitleContainer'>
+                <div className='BuckitCardImageUsername'>
+                  <Image className='BuckitCardProfileImage' src={userData.picture + '/60x60'} roundedCircle />
+                  <p className='BuckitCardUsername '>{userData.username}</p>
                 </div>
-                <p>Created {moment(Date(data.getPosts.description)).format('ll')}</p>
-              </Row>
+                <div className='BuckitCardDate'>{moment(Date(data.getPosts.description)).format('ll')}</div>
+              </div>
             </Card.Title>
 
             {/* CARD BODY */}
-            <Card.Body className='py-0'>
-              <div className='fs-4 pb-3'>
-                <Card.Text className='fs-5'>{post.title}</Card.Text>
-              </div>
-              <div className='pb-3'>
-                <Card.Img className='BuckitCardImage rounded' src={post.images} />
-              </div>
-              <div className='fs-6 pb-3'>
-                <Card.Text>{post.description}</Card.Text>
-              </div>
-              <div>
-                <Card.Text>
-                  Status: <span className='text-primary'>In Progress</span>
-                </Card.Text>
-              </div>
+            <Card.Body className='BuckitCardBodyContainer'>
+              <div className='BuckitCardBodyTitle'>{post.title} </div>
+              <Card.Img className='BuckitCardImage rounded' src={post.images} />
+              <div className='BuckitCardBodyDescription'>{post.description}</div>
             </Card.Body>
+
+            <div className='BuckitCardBodyStatus'>
+              Status: <span>In Progress</span>
+            </div>
+
             {/* HEADER /////////////// ROW #6 */}
-            <Card.Footer className='bg-transparent m-2 p-2'>
-              <Stack direction='horizontal' gap={3} className='align-items-center justify-content-start'>
+            <Card.Footer className='bg-transparent'>
+              <div className='BuckitCardFooter'>
                 {post.tags.map((tag, i) => (
                   <div key={i}>#{tag}</div>
                 ))}
-              </Stack>
+              </div>
             </Card.Footer>
           </Card>
         </Col>

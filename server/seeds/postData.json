@@ -1,8 +1,8 @@
 [
-    {
+  {
     "title": "I visited the pyramids of Giza!",
     "description": "This summer, I visited the pyramids of Giza!  They were incredible!",
-    "images": [],
+    "images": ["https://source.unsplash.com/CJ4mbwSK3EY"],
     "likes": [
       {
         "_id": "5c8a1dfa2f8fb814b56fa182"
@@ -21,9 +21,7 @@
   {
     "title": "Planning a trip to the Taj Mahal",
     "description": "Need recommendations for flights, hotels, food, etc",
-    "images": [
-      "https://source.unsplash.com/XHVpWcr5grQ/60x60"
-    ],
+    "images": ["https://source.unsplash.com/OntE_3_pKks"],
     "likes": [
       {
         "_id": "5c8a1dfa2f8fb814b56fa182"
@@ -36,9 +34,7 @@
   {
     "title": "Anyone want to go Machu Picchu?",
     "description": "Let me know if anyone wants to join!",
-    "images": [
-      "https://source.unsplash.com/XHVpWcr5grQ/60x60"
-    ],
+    "images": ["https://source.unsplash.com/xsm6EJM1mP4"],
     "likes": [
       {
         "_id": "5c8a1dfa2f8fb814b56fa183"
@@ -53,10 +49,8 @@
   },
   {
     "title": "Attend the Olympics",
-    "description": "I've always wanted to see the events live!", 
-    "images": [
-      "https://source.unsplash.com/XHVpWcr5grQ/60x60"
-    ],
+    "description": "I've always wanted to see the events live!",
+    "images": ["https://source.unsplash.com/OntE_3_pKks"],
     "likes": [
       {
         "_id": "5c8a1dfa2f8fb814b56fa182"
@@ -97,7 +91,7 @@
   },
   {
     "title": "Go back to school for your Master’s or PhD",
-    "description": "I want to study web development and computer science", 
+    "description": "I want to study web development and computer science",
     "images": [],
     "likes": [
       {
