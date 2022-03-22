@@ -65,9 +65,11 @@ const typeDefs = gql`
     comment: [Comment]
   }
   input PostInput {
+    title: String!
     description: String!
     images: [String]
-    date_created: String!
+    tags: [String]
+    createdBy: String!
   }
   type Comment {
     comment: String!
@@ -104,7 +106,7 @@ const typeDefs = gql`
     editBucketList(listId: ID!, listData: BucketListInput!): BucketList
     
     # Add, edit, delete Post items
-    addPost(postData: PostInput!): BucketList
+    addPost(postData: PostInput!, listName: String!): BucketList
     deletePost(postId: ID!): BucketList
     editPost(postId: ID! postData: PostInput!): BucketList
     
