@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useQuery } from '@apollo/client';
 
 import '../Profile.css';
 
@@ -7,6 +8,8 @@ import FollowersModel from './FollowersModal';
 import FollowingModel from './FollowingModal';
 import PostCreateCard from './PostCreateCard';
 import BuckitCards from './BuckitCards';
+import { GET_BUCKETLISTS } from '../../../utils/queries';
+import Auth from '../../../utils/auth';
 
 //////////////////////////////////////////////////////////
 // Bootstrap Components
@@ -24,6 +27,14 @@ const ProfileUserDetails = (props) => {
   const [create, setCreate] = useState(false);
   const [followers, setFollowers] = useState(false);
   const [following, setFollowing] = useState(false);
+
+  const userId = Auth.getProfile().data._id;
+  const { loading, error, data } = useQuery(GET_BUCKETLISTS, {
+    variables: { id: userId },
+  });
+
+  if (loading) return null;
+  if (error) return 'error';
 
   // FOR POPULATING THE ICONS UNDER THE USER DETAILS CARD
   // IF USER IS LOOKING AT HIS OWN PROFILE = SHOULD SHOW BUCKET ICON
@@ -119,7 +130,7 @@ const ProfileUserDetails = (props) => {
       {/* CREATE MODAL */}
       {/* /////////////////////////////////////////////////// */}
       <Modal show={create} onHide={() => setCreate(false)} backdrop='static' keyboard={false} dialogClassName='modal-90w' className='modal-dialog-scrollable'>
-        <CreateModel />
+        <CreateModel bucketLists={data.getBucketLists}/>
       </Modal>
       {/* /////////////////////////////////////////////////// */}
       {/* FOLLOWERS MODAL */}

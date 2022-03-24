@@ -1,9 +1,37 @@
 // Buckit List Entry Modal for BucketList
-import React from 'react';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { ADD_BUCKET_LIST } from '../../../utils/mutations';
 
 import { Card, Col, Tab, Modal, Form, Button } from 'react-bootstrap';
 
-const PostModal = () => {
+const PostModal = (props) => {
+  const [formState, setFormState] = useState({});
+  const [addBucketList, { data, loading, error }] = useMutation(ADD_BUCKET_LIST);
+
+  if (loading) return 'Submitting...';
+  if (error) return `${error.message}`;
+
+  // Update form state with values from user input
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+      createdBy: props.userId
+    });
+  }
+
+  // Handle form submit
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    addBucketList({
+      variables: { listData: formState }
+    })
+  }
+
   return (
     <Tab.Container defaultActiveKey='Buckit List Entry'>
       <Modal.Header closeButton>
@@ -18,12 +46,14 @@ const PostModal = () => {
               <Card className='shadow'>
                 <Card.Body>
                   <Card.Title>
-                    <Form>
+                    <Form onSubmit={handleFormSubmit}>
                       <Form.Group className='mb-3'>
-                        <Form.Control type='text' placeholder='Buckit List Entry' />
+                        <Form.Control type='text' name='name' placeholder='Buckit List Entry' onChange={handleChange} />
                       </Form.Group>
+                      <Button variant='primary' type='submit' name='progress' value='To Do' onClick={handleChange}>To Do</Button>
+                      <Button variant='warning' type='submit' name='progress' value='In Progress' onClick={handleChange}>In Progress</Button>
+                      <Button variant='success' type='submit' name='progress' value='Complete' onClick={handleChange}>Complete</Button>{' '}
                     </Form>
-                    <Button variant='primary'>To Do</Button> <Button variant='warning'>In Progress</Button> <Button variant='success'>Complete</Button>{' '}
                   </Card.Title>
                 </Card.Body>
               </Card>
