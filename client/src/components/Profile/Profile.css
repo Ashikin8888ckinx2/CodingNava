@@ -9,6 +9,68 @@ a:focus:not(:focus-visible) {
 }
 
 /* ////////////////////////////////////////////// */
+/* USER DETAILS CARD */
+/* ////////////////////////////////////////////// */
+
+.UserDetailsCardHeader {
+  background-color: transparent !important;
+  border-bottom: none !important;
+  padding-bottom: 0px !important;
+}
+
+.UserDetailsCardUsername {
+  color: black;
+  font-size: 24px !important;
+  background-color: none !important;
+  margin: 0px !important;
+  padding: 8px 0px 0px 0px !important;
+}
+
+.UserDetailsCardSubTitle {
+  margin-bottom: 4px !important;
+  font-size: 20px !important;
+  color: #6c757d !important;
+  opacity: 0.9;
+}
+
+.UserDetailsCardBio {
+  font-size: 18px !important;
+}
+
+.UserDetailsFooterContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around !important;
+  align-items: center !important;
+  background-color: transparent !important;
+  padding: 16px 8px 16px 8px !important;
+}
+
+.UserDetailsFooterContainer div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  grid-gap: 0.5rem !important;
+  gap: 0.5rem !important;
+}
+
+.UserDetailsFooterContainer div svg {
+  color: #99154e;
+  cursor: pointer;
+  font-size: 2.4rem !important;
+}
+
+.UserDetailsFooterContainer div svg:hover {
+  color: #f43b86;
+  transition: color 0.15s ease;
+}
+
+.UserDetailsFooterContainer div span {
+  font-size: 1.1rem !important;
+}
+
+/* ////////////////////////////////////////////// */
 /* BUCKIT CARDS */
 /* ////////////////////////////////////////////// */
 
@@ -34,12 +96,12 @@ a:focus:not(:focus-visible) {
 }
 
 .BuckitCardUsername {
-  font-size: 19px !important;
+  font-size: 21px !important;
   margin-bottom: 0 !important;
 }
 
 .BuckitCardDate {
-  font-size: 19px !important;
+  font-size: 18px !important;
 }
 
 .BuckitCardBodyContainer {
@@ -70,7 +132,7 @@ a:focus:not(:focus-visible) {
 }
 
 .BuckitCardBodyStatus span {
-  color: #0d6efd;
+  color: #55b3b1;
 }
 
 .BuckitCardFooter {

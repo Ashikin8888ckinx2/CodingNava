@@ -19,18 +19,18 @@ const PostModal = (props) => {
     setFormState({
       ...formState,
       [name]: value,
-      createdBy: props.userId
+      createdBy: props.userId,
     });
-  }
+  };
 
   // Handle form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     addBucketList({
-      variables: { listData: formState }
-    })
-  }
+      variables: { listData: formState },
+    });
+  };
 
   return (
     <Tab.Container defaultActiveKey='Buckit List Entry'>
@@ -50,9 +50,15 @@ const PostModal = (props) => {
                       <Form.Group className='mb-3'>
                         <Form.Control type='text' name='name' placeholder='Buckit List Entry' onChange={handleChange} />
                       </Form.Group>
-                      <Button variant='primary' type='submit' name='progress' value='To Do' onClick={handleChange}>To Do</Button>
-                      <Button variant='warning' type='submit' name='progress' value='In Progress' onClick={handleChange}>In Progress</Button>
-                      <Button variant='success' type='submit' name='progress' value='Complete' onClick={handleChange}>Complete</Button>{' '}
+                      <Button variant='primary' type='submit' name='progress' value='To Do' onClick={handleChange}>
+                        To Do
+                      </Button>{' '}
+                      <Button variant='warning' type='submit' name='progress' value='In Progress' onClick={handleChange}>
+                        In Progress
+                      </Button>{' '}
+                      <Button variant='success' type='submit' name='progress' value='Complete' onClick={handleChange}>
+                        Complete
+                      </Button>{' '}
                     </Form>
                   </Card.Title>
                 </Card.Body>

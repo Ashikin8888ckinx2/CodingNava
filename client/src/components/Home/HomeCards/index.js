@@ -32,7 +32,7 @@ const HomeCards = () => {
           <Card.Footer className='bg-transparent'>
             <div className='BuckitCardFooter'>
               <div>#Travel</div>
-              <div>#World"</div>
+              <div>#World</div>
             </div>
           </Card.Footer>
         </Card>

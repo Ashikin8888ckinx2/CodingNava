@@ -1,7 +1,8 @@
 import React from 'react';
 import { Card, Col, Image } from 'react-bootstrap';
-import moment from 'moment';
 import '../Profile.css';
+
+import { convertDate } from '../../../utils/dateConvert.js';
 
 import { GET_POSTS } from '../../../utils/queries';
 import { useQuery } from '@apollo/client';
@@ -15,6 +16,9 @@ const BuckitCards = (props) => {
   const { loading, error, data } = useQuery(GET_POSTS, {
     variables: { userId },
   });
+
+  console.log(userData);
+
   // Handle errors for post data
   if (loading) return null;
   if (error) return 'error';
@@ -31,7 +35,8 @@ const BuckitCards = (props) => {
                   <Image className='BuckitCardProfileImage' src={userData.picture + '/60x60'} roundedCircle />
                   <p className='BuckitCardUsername '>{userData.username}</p>
                 </div>
-                <div className='BuckitCardDate'>{moment(Date(data.getPosts.description)).format('ll')}</div>
+
+                <div className='BuckitCardDate'>{convertDate(post.date_created * 1)}</div>
               </div>
             </Card.Title>
 

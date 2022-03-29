@@ -99,7 +99,7 @@ const Profile = () => {
   // CSS STYLING
   //////////////////////////////////////////////////////////////
   let editProfileCardStyle = {
-    fontFamily: 'Rubik',
+    fontFamily: 'Arvo',
   };
 
   return (
