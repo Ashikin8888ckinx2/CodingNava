@@ -22,14 +22,14 @@ const resolvers = {
     },
     // Find all users
     users: async (parent, { searchUser }) => {
-      return User.find({ username : { "$regex": searchUser, "$options": "i" } });
+      return User.find({ username: { "$regex": searchUser, "$options": "i" } });
     },
     // Find a single user
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
     // Find following information
-    followingList: async (parent, { username }) => { 
+    followingList: async (parent, { username }) => {
       return await User.findOne({ username }).populate('following');
     },
     followersList: async (parent, { username }) => {
@@ -43,9 +43,13 @@ const resolvers = {
     getBucketList: async (parent, { _id }) => {
       return await BucketList.findOne({ _id });
     },
+    // Find all posts based for homepage
+    getAllPosts: async (parent) => {
+      return await Post.find().sort({ date_created: -1 }).populate('createdBy');
+    },
     // Find posts based on user or bucketlist
-    getPosts: async (parent, { userId }) =>{
-      return await Post.find( { createdBy: userId } ).sort({ date_created: -1 });
+    getPosts: async (parent, { userId }) => {
+      return await Post.find({ createdBy: userId }).sort({ date_created: -1 });
     }
   },
   Mutation: {
@@ -75,11 +79,11 @@ const resolvers = {
     updateUser: async (parent, { userData }, context) => {
       if (context.user) {
         if (userData.picture) {
-          const file = await uploadImage(await userData.picture); 
+          const file = await uploadImage(await userData.picture);
           userData.picture = file.url;
         }
         if (userData.banner_picture) {
-          const file = await uploadImage(await userData.banner_picture); 
+          const file = await uploadImage(await userData.banner_picture);
           userData.banner_picture = file.url;
         }
         const user = await User.findById({ _id: context.user._id });
@@ -91,7 +95,7 @@ const resolvers = {
     },
     followUser: async (parent, { followId, isFollowing }, context) => {
       if (context.user) {
-        if (context.user._id == followId) { 
+        if (context.user._id == followId) {
           throw new Error("Can't follow yourself");
         }
         const action = isFollowing ? '$pull' : '$addToSet';
@@ -113,8 +117,8 @@ const resolvers = {
 
         // Push bucket list id into User array
         const updatedUser = await User.findByIdAndUpdate(
-          { _id: context.user._id }, 
-          { $push: { bucketList: newBucketList._id } }, 
+          { _id: context.user._id },
+          { $push: { bucketList: newBucketList._id } },
           { new: true });
 
         // Return user
@@ -130,14 +134,14 @@ const resolvers = {
       }
       throw new AuthenticationError('User not logged in');
     },
-    editBucketList: async(parent, { listId, listData }, context) =>{
+    editBucketList: async (parent, { listId, listData }, context) => {
       // check if logged in, then allow user to edit bucket list
       if (context.user) {
         const updatedList = await BucketList.findByIdAndUpdate(
           { _id: listId },
-          { 
+          {
             name: listData.name,
-            progress: listData.progress, 
+            progress: listData.progress,
 
           }
         );
@@ -148,25 +152,25 @@ const resolvers = {
     addPost: async (parent, { postData, listName }, context) => {
       // check if logged in, then add a post to a user's bucket list
       // if (context.user) {
-        // Create new post
-        const newPost = await Post.create({
-          title: postData.title,
-          description: postData.description,
-          // May have to create a for loop for the images and tags
-          images: postData.images,
-          tags: postData.tags,
-          // createdBy: context.user
-          createdBy: postData.createdBy
-        })
-        // Push post ID into BucketList
-        const updatedBucketList = await BucketList.findOneAndUpdate(
-          { name: listName }, 
-          { $push: { post: newPost._id } }, 
-          { new: true }
-        );
-        
-        // Return updated bucket list
-        return updatedBucketList;
+      // Create new post
+      const newPost = await Post.create({
+        title: postData.title,
+        description: postData.description,
+        // May have to create a for loop for the images and tags
+        images: postData.images,
+        tags: postData.tags,
+        // createdBy: context.user
+        createdBy: postData.createdBy
+      })
+      // Push post ID into BucketList
+      const updatedBucketList = await BucketList.findOneAndUpdate(
+        { name: listName },
+        { $push: { post: newPost._id } },
+        { new: true }
+      );
+
+      // Return updated bucket list
+      return updatedBucketList;
       // }
       // throw new AuthenticationError('User not logged in');
     },
