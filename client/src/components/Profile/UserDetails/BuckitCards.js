@@ -17,8 +17,6 @@ const BuckitCards = (props) => {
     variables: { userId },
   });
 
-  console.log(userData);
-
   // Handle errors for post data
   if (loading) return null;
   if (error) return 'error';
