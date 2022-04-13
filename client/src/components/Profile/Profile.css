@@ -50,18 +50,18 @@ a:focus:not(:focus-visible) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   grid-gap: 0.5rem !important;
   gap: 0.5rem !important;
 }
 
-.UserDetailsFooterContainer div svg {
+.UserDetailsFooterContainer div i {
   color: #99154e;
   cursor: pointer;
   font-size: 2.4rem !important;
 }
 
-.UserDetailsFooterContainer div svg:hover {
+.UserDetailsFooterContainer div i:hover {
   color: #f43b86;
   transition: color 0.15s ease;
 }
@@ -86,7 +86,7 @@ a:focus:not(:focus-visible) {
 .BuckitCardImageUsername {
   display: flex;
   flex-direction: row;
-  justify-content: start !important;
+  justify-content: flex-start !important;
   align-items: center !important;
   grid-gap: 0.5rem !important;
   gap: 0.5rem !important;

@@ -11,7 +11,6 @@ import RainDrop from '../../utils/animation';
 
 // Bootstrap Navbar
 import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
-import { BucketFill } from 'react-bootstrap-icons';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const MainNavBar = () => {
@@ -37,8 +36,9 @@ const MainNavBar = () => {
               <LinkContainer to='/'>
                 <Navbar.Brand href='/' className='NavBrandContainer'>
                   <div>
-                    <BucketFill onMouseOver={() => toggle()} onMouseOut={() => toggle()} />
+                    <i className='fab fa-bitbucket' onMouseOver={() => toggle()} onMouseOut={() => toggle()}></i>
                   </div>
+
                   <span>Buck It</span>
                 </Navbar.Brand>
               </LinkContainer>

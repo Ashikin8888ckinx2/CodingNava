@@ -14,7 +14,6 @@ import Auth from '../../../utils/auth';
 //////////////////////////////////////////////////////////
 // Bootstrap Components
 //////////////////////////////////////////////////////////
-import { PlusSquare, People, PersonPlus, Bucket, DashSquare } from 'react-bootstrap-icons';
 import { Card, Col, Modal, Row } from 'react-bootstrap';
 
 //////////////////////////////////////////////////////////
@@ -46,7 +45,7 @@ const ProfileUserDetails = (props) => {
     if (window.location.pathname === '/profile') {
       return (
         <div>
-          <Bucket onClick={() => setCreate(true)} />
+          <i className='fab fa-bitbucket' onClick={() => setCreate(true)}></i>
           Create
         </div>
       );
@@ -55,12 +54,12 @@ const ProfileUserDetails = (props) => {
         <div onClick={props.follow}>
           {props.isFollowing ? (
             <>
-              <DashSquare />
+              <i className='far fa-minus-square'></i>
               <span>Unfollow</span>
             </>
           ) : (
             <>
-              <PlusSquare />
+              <i className='far fa-plus-square'></i>
               <span>Follow</span>
             </>
           )}
@@ -89,11 +88,13 @@ const ProfileUserDetails = (props) => {
             <Card.Footer className='UserDetailsFooterContainer'>
               {handleUserDetailIcons()}
               <div>
-                <People onClick={() => setFollowers(true)} />
+                <i className='fa fa-users' onClick={() => setFollowers(true)}></i>
+                {/* <People onClick={() => setFollowers(true)} /> */}
                 <span>{props.userData.followers.length || 0}</span>
               </div>
               <div>
-                <PersonPlus onClick={() => setFollowing(true)} />
+                <i className='fa fa-user-plus' onClick={() => setFollowing(true)}></i>
+                {/* <PersonPlus onClick={() => setFollowing(true)} /> */}
                 <span>{props.userData.following.length || 0}</span>
               </div>
             </Card.Footer>

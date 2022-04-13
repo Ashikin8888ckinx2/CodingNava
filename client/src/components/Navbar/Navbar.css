@@ -21,19 +21,19 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 8px !important;
-  grid-gap: 0.5rem !important;
-  gap: 0.5rem !important;
+  margin-left: 16px !important;
+  grid-gap: 0.7rem !important;
+  gap: 0.7rem !important;
 }
 
-.NavBrandContainer svg {
+.NavBrandContainer i {
   font-size: 2.6rem !important;
   vertical-align: middle;
   color: #fff;
 }
 
-.NavBrandContainer svg:hover {
-  color: #ff007f;
+.NavBrandContainer i:hover {
+  color: #99154e;
   -moz-transform: rotate(28deg);
   -webkit-transform: rotate(28deg);
   -o-transform: rotate(28deg);
@@ -56,14 +56,14 @@
   padding: 8px 8px 8px 8px !important;
 }
 
-.NavProfileIcon svg {
-  color: #fed049;
+.NavProfileIcon i {
+  color: #1e4766;
   margin: 0px !important;
   font-size: 2.4rem !important;
 }
 
-.NavProfileIcon svg:hover {
-  color: #d2ad3d;
+.NavProfileIcon i:hover {
+  color: #296491;
   transition: color 0.15s ease;
 }
 
