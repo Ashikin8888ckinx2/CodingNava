@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Card, Image } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import { useQuery } from '@apollo/client';
 import { GET_ALL_POSTS } from '../../../utils/queries';
@@ -21,10 +22,12 @@ const HomeCards = () => {
             {/* CARD HEADER */}
             <Card.Title>
               <div className='BuckitCardTitleContainer'>
-                <div className='BuckitCardImageUsername'>
-                  <Image className='BuckitCardProfileImage' src={post.createdBy.picture} width= "60px" roundedCircle />
-                  <p className='BuckitCardUsername '>{post.createdBy.username}</p>
-                </div>
+                <LinkContainer to={'/profile/' + post.createdBy.username}>
+                  <div className='BuckitCardImageUsername'>
+                    <Image className='BuckitCardProfileImage' src={post.createdBy.picture} width="60px" roundedCircle />
+                    <p className='BuckitCardUsername '>{post.createdBy.username}</p>
+                  </div>
+                </LinkContainer>
                 <div className='BuckitCardDate'>{convertDate(post.date_created)}</div>
               </div>
             </Card.Title>
@@ -50,7 +53,8 @@ const HomeCards = () => {
           </Card>
 
         </Col>
-      ))}
+      ))
+      }
     </>
   );
 };
