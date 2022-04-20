@@ -110,7 +110,10 @@ export const GET_POSTS = gql`
       likes
       tags
       date_created
-      createdBy
+      createdBy {
+        username
+        picture
+      }
       comment{
         comment
         likes
