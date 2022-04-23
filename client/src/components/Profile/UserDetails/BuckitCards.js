@@ -9,14 +9,13 @@ import { useQuery } from '@apollo/client';
 import Auth from '../../../utils/auth';
 
 const BuckitCards = (props) => {
-  const userId = Auth.getProfile().data._id;
   const userData = props.userData.userData;
 
   // Load in post data
   const { loading, error, data } = useQuery(GET_POSTS, {
-    variables: { userId },
+    variables: { userId: userData._id },
   });
-
+console.log(data);
   // Handle errors for post data
   if (loading) return null;
   console.log(error);
