@@ -9,14 +9,15 @@ import { convertDate } from '../../../utils/dateConvert';
 const HomeCards = () => {
 
   const { loading, data } = useQuery(GET_ALL_POSTS);
-  console.log(data);
+
   if (loading) {
     return null;
   }
+  
   return (
     <>
-      {data.getAllPosts.map((post) => (
-        <Col className='pb-2' sm={4} md={4} lg={4}>
+      {data.getAllPosts.map((post, i) => (
+        <Col className='pb-2' sm={4} md={4} lg={4} key={i}>
 
           <Card className='shadow h-100'>
             {/* CARD HEADER */}
@@ -45,8 +46,8 @@ const HomeCards = () => {
             {/* HEADER /////////////// ROW #6 */}
             <Card.Footer className='bg-transparent'>
               <div className='BuckitCardFooter'>
-                {post.tags.map((tag) => (
-                  <div>#{tag}</div>
+                {post.tags.map((tag, i) => (
+                  <div key={i}>#{tag}</div>
                 ))}
               </div>
             </Card.Footer>
