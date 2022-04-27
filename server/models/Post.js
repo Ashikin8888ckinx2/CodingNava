@@ -35,6 +35,10 @@ const PostSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
+  bucketlist_id: {
+    type: Schema.Types.ObjectId,
+    ref: "BucketList",
+  },
   comment_ids: [
     {
       type: Schema.Types.ObjectId,
