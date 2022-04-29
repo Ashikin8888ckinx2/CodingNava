@@ -16,7 +16,8 @@
       }
     ],
     "tags": ["Travel", "World"],
-    "createdBy": "5c8a1d5b0190b214360dc057",
+    "date_created": "2021-10-20 20:50:10.276Z",
+    "createdBy": "5c8a1dfa2f8fb814b56fa182",
     "comment_ids": []
   },
   {
@@ -30,7 +31,8 @@
       }
     ],
     "tags": ["Adventure", "Experience"],
-    "createdBy": "5c8a1d5b0190b214360dc057",
+    "date_created": "2021-01-19 20:50:10.276Z",
+    "createdBy": "5c8a1dfa2f8fb814b56fa182",
     "comment_ids": []
   },
   {
@@ -47,28 +49,30 @@
       }
     ],
     "tags": ["Personal", "Achievements"],
-    "createdBy": "5c8a1d5b0190b214360dc057",
+    "date_created": "2021-05-23 20:50:10.276Z",
+    "createdBy": "5c8a1dfa2f8fb814b56fa182",
     "comment_ids": []
   },
   {
     "bucketlist_id": "6197f4d7b2118634421fc921",
     "title": "Chase a Tornado",
     "description": "My favorite movie growing up was Twister",
-    "images": [],
+    "images": ["https://source.unsplash.com/lr_FyB65Byk"],
     "likes": [
       {
         "_id": "5c8a1dfa2f8fb814b56fa184"
       }
     ],
     "tags": ["Adventure", "Weather"],
-    "createdBy": "5c8a1d5b0190b214360dc057",
+    "date_created": "2021-2-12 20:50:10.276Z",
+    "createdBy": "5c8a1dfa2f8fb814b56fa181",
     "comment_ids": []
   },
   {
     "bucketlist_id": "6197f4d7b2118634421fc921",
     "title": "Go bungee jumping",
     "description": "Sounds scary, but I'm sure I'll love it!",
-    "images": [],
+    "images": ["https://source.unsplash.com/Z2h10lcXXfU"],
     "likes": [
       {
         "_id": "5c8a1dfa2f8fb814b56fa183"
@@ -78,70 +82,75 @@
       }
     ],
     "tags": ["Music", "Personal"],
-    "createdBy": "5c8a1d5b0190b214360dc057",
+    "date_created": "2021-03-10 20:50:10.276Z",
+    "createdBy": "5c8a1dfa2f8fb814b56fa181",
     "comment_ids": []
   },
   {
     "bucketlist_id": "6197f4d7b2118634421fc921",
     "title": "Go back to school for your Master’s or PhD",
     "description": "I want to study web development and computer science",
-    "images": [],
+    "images": ["https://source.unsplash.com/8CqDvPuo_kI"],
     "likes": [
       {
         "_id": "5c8a1dfa2f8fb814b56fa184"
       }
     ],
     "tags": ["Financial", "Personal"],
-    "createdBy": "5c8a1d5b0190b214360dc057",
+    "date_created": "2021-09-08 20:50:10.276Z",
+    "createdBy": "5c8a1dfa2f8fb814b56fa181",
     "comment_ids": []
   },
   {
     "bucketlist_id": "6197f4d7b2118634421fc921",
     "title": "Buy your own home and pay off the mortgage",
     "description": "The American dream...",
-    "images": [],
+    "images": ["https://source.unsplash.com/aren8nutd1Q"],
     "likes": [
       {
         "_id": "5c8a1dfa2f8fb814b56fa184"
       }
     ],
     "tags": ["Family", "Personal"],
-    "createdBy": "5c8a1d5b0190b214360dc057",
+    "date_created": "2021-11-18 20:50:10.276Z",
+    "createdBy": "5c8a1dfa2f8fb814b56fa181",
     "comment_ids": []
   },
   {
     "bucketlist_id": "6197f4d7b2118634421fc945",
     "title": "I saw the total solar eclipse in 2017",
     "description": "I was in KCMO, and it was incredible!!!",
-    "images": [],
+    "images": ["https://source.unsplash.com/7k7k3WZWggk"],
     "likes": [
       {
         "_id": "5c8a1dfa2f8fb814b56fa184"
       }
     ],
     "tags": ["Animals", "Travel"],
-    "createdBy": "5c8a1d5b0190b214360dc057",
+    "date_created": "2021-04-12 20:50:10.276Z",
+    "createdBy": "5c8a1dfa2f8fb814b56fa183",
     "comment_ids": []
   },
   {
     "bucketlist_id": "6197f4d7b2118634421fc945",
     "title": "Don't forget to watch the lunar eclipse this Friday!",
     "description": "It's a once-in-400-years event!",
-    "images": [],
+    "images": ["https://source.unsplash.com/ZOSkWlDVCsE"],
     "likes": [
       {
         "_id": "5c8a1dfa2f8fb814b56fa182"
       }
     ],
     "tags": ["Galaxy", "Sky"],
-    "createdBy": "5c8a1d5b0190b214360dc057",
+    "date_created": "2021-10-10 20:50:10.276Z",
+    "createdBy": "5c8a1dfa2f8fb814b56fa183",
     "comment_ids": []
   },
   {
     "bucketlist_id": "6197f4d7b2118634421fc945",
     "title": "Did you know there's such thing as an annular solar eclipse?",
     "description": "I saw one in St. George, Utah!",
-    "images": [],
+    "images": ["https://source.unsplash.com/PH-kgbHTjgU"],
     "likes": [
       {
         "_id": "5c8a1dfa2f8fb814b56fa182"
@@ -151,7 +160,8 @@
       }
     ],
     "tags": ["Ocean", "Sea"],
-    "createdBy": "5c8a1d5b0190b214360dc057",
+    "date_created": "2021-07-14 20:50:10.276Z",
+    "createdBy": "5c8a1dfa2f8fb814b56fa183",
     "comment_ids": []
   }
 ]
