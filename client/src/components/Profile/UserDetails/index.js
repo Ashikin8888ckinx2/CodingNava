@@ -27,6 +27,9 @@ const ProfileUserDetails = (props) => {
   const [followers, setFollowers] = useState(false);
   const [following, setFollowing] = useState(false);
 
+  console.log(followers);
+  console.log(following);
+  
   const userId = Auth.getProfile().data._id;
   const { loading, error, data } = useQuery(GET_BUCKETLISTS, {
     variables: { id: userId },
