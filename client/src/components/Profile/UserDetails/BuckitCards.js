@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Col, Image } from 'react-bootstrap';
-import moment from 'moment';
+
+import { convertDate } from '../../../utils/dateConvert.js';
 import '../Profile.css';
 
 import { GET_POSTS } from '../../../utils/queries';
@@ -31,7 +32,7 @@ const BuckitCards = (props) => {
                   <Image className='BuckitCardProfileImage' src={userData.picture + '/60x60'} roundedCircle />
                   <p className='BuckitCardUsername '>{userData.username}</p>
                 </div>
-                <div className='BuckitCardDate'>{moment(Date(data.getPosts.description)).format('ll')}</div>
+                <div className='BuckitCardDate'>{convertDate(post.date_created * 1)}</div>
               </div>
             </Card.Title>
 
