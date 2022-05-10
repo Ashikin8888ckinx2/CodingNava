@@ -124,8 +124,14 @@ const resolvers = {
     },
     deleteBucketList: async (parent, { listId }, context) => {
       // check if logged in, then delete a bucket list from a user's profile
-      if (context.user) {
-        const updatedUser = await User.findByIdAndUpdate({ _id: context.user._id }, { $pull: { bucketList: { listId } } }, { new: true });
+      if (context.user) {        
+        await BucketList.findByIdAndDelete(
+          {_id: listId}
+        )
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { bucketList: listId } }, 
+          { new: true });
         return updatedUser;
       }
       throw new AuthenticationError('User not logged in');
