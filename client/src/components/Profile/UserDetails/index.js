@@ -110,15 +110,12 @@ const ProfileUserDetails = (props) => {
         {/* USER BUCKETS */}
         {/* /////////////////////////////////////////////////// */}
 
-        <PostCreateCard />
-      </Row>
+        {window.location.pathname === '/profile' ? <PostCreateCard /> : ''}
 
       {/* //////////////////////////////////////////////////////////////// */}
       {/* //////////////////////////////////////////////////////////////// */}
       {/* NEED TO PASS THE PROPS INTO THIS FOR WHEN USER CREATE BUCKIT */}
       {/* //////////////////////////////////////////////////////////////// */}
-
-      <Row>
         <BuckitCards userData={props} />
       </Row>
 
