@@ -30,6 +30,8 @@ const PostModal = (props) => {
     addBucketList({
       variables: { listData: formState }
     })
+
+    document.location.reload();
   }
 
   return (

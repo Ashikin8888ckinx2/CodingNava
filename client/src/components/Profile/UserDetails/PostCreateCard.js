@@ -1,12 +1,14 @@
 // Create Modal for BucketList
 import React, { useState } from 'react';
+import { TrashFill } from 'react-bootstrap-icons';
+
 import PostModal from './PostModal';
 import '../Profile.css';
 import { GET_BUCKETLISTS } from '../../../utils/queries';
 import { useQuery } from '@apollo/client';
 import Auth from '../../../utils/auth';
 
-import { Card, Col, Form, Button, Row, Stack, Modal } from 'react-bootstrap';
+import { Card, Col, Form, InputGroup, Button, Row, Stack, Modal } from 'react-bootstrap';
 
 const PostCreateCard = () => {
   const [post, setPost] = useState(false);
@@ -18,6 +20,12 @@ const PostCreateCard = () => {
 
   if (loading) return null;
   if (error) return 'error';
+
+  const handleDelete = (event) =>{
+    // Goal: Render bucket list id
+    const value = event.target;
+    console.log(value);
+  }
 
   return (
     <>
@@ -46,7 +54,10 @@ const PostCreateCard = () => {
                     </Form.Select>
                   </Col>
                   <Col xs={8} sm={8} md={9} lg={10}>
-                    <div className='scrollForm'>{item.name}</div>
+                    <InputGroup>
+                      <div className='scrollForm'>{item.name}</div>
+                      <InputGroup.Text onClick={handleDelete}><TrashFill></TrashFill></InputGroup.Text>
+                    </InputGroup>
                   </Col>
                 </Stack>
               </Row>
