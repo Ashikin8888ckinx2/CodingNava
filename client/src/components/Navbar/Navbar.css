@@ -1,19 +1,51 @@
-.BucketBrand:hover {
-  -moz-transform: rotate(28deg);
-  -webkit-transform: rotate(28deg);
-  -o-transform: rotate(28deg);
-  -ms-transform: rotate(28deg);
-  transform: rotate(28deg);
-  color: #282846;
-  transition: color transform 0.15s ease;
-}
-
 .navSignup {
   margin-left: 4px !important;
 }
 
 .navLogin {
   margin-left: 4px !important;
+}
+
+/* ////////////////////////////////////////////////// */
+/* NAV BRAND  */
+/* ////////////////////////////////////////////////// */
+
+.NavBarMainContainer {
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+  padding: 0px !important;
+  background-image: url('https://source.unsplash.com/xOxFEblwM-g');
+}
+
+.NavBrandContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 16px !important;
+  grid-gap: 0.7rem !important;
+  gap: 0.7rem !important;
+}
+
+.NavBrandContainer i {
+  font-size: 2.6rem !important;
+  vertical-align: middle;
+  color: #fff;
+}
+
+.NavBrandContainer i:hover {
+  color: #99154e;
+  -moz-transform: rotate(28deg);
+  -webkit-transform: rotate(28deg);
+  -o-transform: rotate(28deg);
+  -ms-transform: rotate(28deg);
+  transform: rotate(28deg);
+  transition: color transform 0.15s ease;
+}
+
+.NavBrandContainer span {
+  font-size: 2.2rem !important;
+  font-weight: 600;
+  font-family: 'Lobster', cursive;
 }
 
 /* ////////////////////////////////////////////////// */
@@ -24,14 +56,14 @@
   padding: 8px 8px 8px 8px !important;
 }
 
-.NavProfileIcon svg {
-  color: #fed049;
+.NavProfileIcon i {
+  color: #1e4766;
   margin: 0px !important;
   font-size: 2.4rem !important;
 }
 
-.NavProfileIcon svg:hover {
-  color: #d2ad3d;
+.NavProfileIcon i:hover {
+  color: #296491;
   transition: color 0.15s ease;
 }
 

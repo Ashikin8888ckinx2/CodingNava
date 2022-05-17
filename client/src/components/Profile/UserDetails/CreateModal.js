@@ -17,11 +17,11 @@ const CreateModel = (props) => {
     setFormState({
       ...formState,
       [name]: value,
-      createdBy: props.bucketLists[0].createdBy
+      createdBy: props.bucketLists[0].createdBy,
     });
 
     console.log(formState);
-  }
+  };
 
   // Handle form submit
   const handleFormSubmit = async (event) => {
@@ -34,7 +34,7 @@ const CreateModel = (props) => {
           description: formState.description,
           images: formState.images,
           tags: formState.tags,
-          createdBy: formState.createdBy
+          createdBy: formState.createdBy,
         },
         listName: formState.listName
       }
@@ -86,14 +86,18 @@ const CreateModel = (props) => {
                       </Row>
                       <Row>
                         <Col>
-                          <Form.Select className='pe-4' name='listName' onChange={handleChange} >
-                            {props.bucketLists.map((list, index) =>(
-                            <option value={list.name} key={index}>{list.name}</option>
+                          <Form.Select className='pe-4' name='listName' onChange={handleChange}>
+                            {props.bucketLists.map((list, index) => (
+                              <option value={list.name} key={index}>
+                                {list.name}
+                              </option>
                             ))}
                           </Form.Select>
                         </Col>
                         <Col>
-                          <Button variant='primary' type='submit'>Submit</Button>
+                          <Button variant='primary' type='submit'>
+                            Submit
+                          </Button>
                         </Col>
                       </Row>
                     </Form>

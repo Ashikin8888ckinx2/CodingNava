@@ -4,6 +4,8 @@ import { Card, Col, Image } from 'react-bootstrap';
 import { convertDate } from '../../../utils/dateConvert.js';
 import '../Profile.css';
 
+import { convertDate } from '../../../utils/dateConvert.js';
+
 import { GET_POSTS } from '../../../utils/queries';
 import { useQuery } from '@apollo/client';
 import Auth from '../../../utils/auth';
@@ -16,6 +18,7 @@ const BuckitCards = (props) => {
   const { loading, error, data } = useQuery(GET_POSTS, {
     variables: { userId },
   });
+
   // Handle errors for post data
   if (loading) return null;
   if (error) return 'error';

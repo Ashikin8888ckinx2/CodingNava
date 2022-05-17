@@ -10,8 +10,7 @@ import Search from './Search';
 import RainDrop from '../../utils/animation';
 
 // Bootstrap Navbar
-import { Navbar, Nav, Container, Stack, Row, Col } from 'react-bootstrap';
-import { BucketFill } from 'react-bootstrap-icons';
+import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const MainNavBar = () => {
@@ -31,30 +30,21 @@ const MainNavBar = () => {
               collapseOnSelect
               // Only collapse for small screens
               expand='sm'
-              className='rounded my-2 py-0'
+              className='NavBarMainContainer rounded'
               variant='dark'
-              style={{
-                backgroundImage: `url("https://source.unsplash.com/xOxFEblwM-g")`,
-              }}
             >
               <LinkContainer to='/'>
-                <Navbar.Brand href='/' className='p-2'>
-                  <Stack direction='horizontal' gap={1}>
-                    <BucketFill size={36} className='BucketBrand' onMouseOver={() => toggle()} onMouseOut={() => toggle()} />
-                    <h1
-                      className='mb-0 mt-2'
-                      style={{
-                        fontFamily: 'Bebas Neue',
-                      }}
-                    >
-                      Buck It
-                    </h1>
-                  </Stack>
+                <Navbar.Brand href='/' className='NavBrandContainer'>
+                  <div>
+                    <i className='fab fa-bitbucket' onMouseOver={() => toggle()} onMouseOut={() => toggle()}></i>
+                  </div>
+
+                  <span>Buck It</span>
                 </Navbar.Brand>
               </LinkContainer>
               <Navbar.Toggle aria-controls='responsive-navbar-nav' />
               <Navbar.Collapse id='responsive-navbar-nav'>
-                <Nav className='justify-content-end' style={{ width: '100%' }}>
+                <Nav className='justify-content-end pe-1' style={{ width: '100%' }}>
                   {/* AUTHROIZATION -------------------------------------- */}
                   <Search />
                   {Auth.loggedIn() ? (
