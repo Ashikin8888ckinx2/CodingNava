@@ -1,9 +1,7 @@
 import React from 'react';
 import { Card, Col, Image } from 'react-bootstrap';
 
-import { convertDate } from '../../../utils/dateConvert.js';
 import '../Profile.css';
-
 import { convertDate } from '../../../utils/dateConvert.js';
 
 import { GET_POSTS } from '../../../utils/queries';

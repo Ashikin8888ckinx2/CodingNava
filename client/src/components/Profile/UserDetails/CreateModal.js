@@ -40,7 +40,7 @@ const CreateModel = (props) => {
       }
     })
 
-    document.location.reload();
+    // document.location.reload();
   }
 
   return (

@@ -31,7 +31,7 @@ const PostModal = (props) => {
       variables: { listData: formState }
     })
 
-    document.location.reload();
+    // document.location.reload();
   }
 
   return (
