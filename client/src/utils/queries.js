@@ -86,6 +86,21 @@ export const GET_BUCKETLIST = gql`
   }
 `;
 
+export const GET_ALL_POSTS = gql`
+  query getAllPosts {
+    getAllPosts {
+      title
+      description
+      images
+      tags
+      date_created
+      createdBy {
+        username
+        picture
+      }
+    }
+  }
+`
 export const GET_POSTS = gql`
   query getPosts($userId: String!){
     getPosts(userId: $userId){
@@ -95,7 +110,10 @@ export const GET_POSTS = gql`
       likes
       tags
       date_created
-      createdBy
+      createdBy {
+        username
+        picture
+      }
       comment{
         comment
         likes

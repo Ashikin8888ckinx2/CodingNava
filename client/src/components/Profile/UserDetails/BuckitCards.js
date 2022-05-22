@@ -2,23 +2,21 @@ import React from 'react';
 import { Card, Col, Image } from 'react-bootstrap';
 import '../Profile.css';
 
-import { convertDate } from '../../../utils/dateConvert.js';
-
 import { GET_POSTS } from '../../../utils/queries';
 import { useQuery } from '@apollo/client';
-import Auth from '../../../utils/auth';
+import { convertDate } from '../../../utils/dateConvert.js';
 
 const BuckitCards = (props) => {
-  const userId = Auth.getProfile().data._id;
   const userData = props.userData.userData;
 
   // Load in post data
   const { loading, error, data } = useQuery(GET_POSTS, {
-    variables: { userId },
+    variables: { userId: userData._id },
   });
 
   // Handle errors for post data
   if (loading) return null;
+  console.log(error);
   if (error) return 'error';
 
   return (
@@ -34,7 +32,7 @@ const BuckitCards = (props) => {
                   <p className='BuckitCardUsername '>{userData.username}</p>
                 </div>
 
-                <div className='BuckitCardDate'>{convertDate(post.date_created * 1)}</div>
+                <div className='BuckitCardDate'>{convertDate(post.date_created)}</div>
               </div>
             </Card.Title>
 
