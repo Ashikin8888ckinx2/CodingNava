@@ -61,7 +61,7 @@ const typeDefs = gql`
     likes: [ID]
     tags: [String]
     date_created: String!
-    createdBy: String!
+    createdBy: User
     comment: [Comment]
   }
   input PostInput {
@@ -92,6 +92,7 @@ const typeDefs = gql`
     followersList(username: String!): FollowUserInfo
     getBucketLists(id:String!): [BucketList]
     getBucketList(_id: String!): BucketList
+    getAllPosts: [Post]
     getPosts(userId: String): [Post]
   }
   type Mutation {
