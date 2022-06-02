@@ -1,42 +1,50 @@
 const db = require('../config/connection');
 const { Types } = require('mongoose');
 
-const {User, BucketList, Post, Comment} = require('../models');
+const { User, BucketList, Post, Comment } = require('../models');
 const userData = require('./userData.json');
 const bucketListData = require('./bucketListData.json');
 const postData = require('./postData.json');
 
-db.once('open', async ()=>{
-    try{
+db.once('open', async () => {
+    try {
         await User.deleteMany({});
         await BucketList.deleteMany({});
         await Post.deleteMany({});
         await Comment.deleteMany({});
-        
+
         // Create user
         const user = await User.create(userData);
-        
-        for(let i=0; i < bucketListData.length; i++) {
+
+        for (let i = 0; i < bucketListData.length; i++) {
             // Create bucketlist and get bucketListId
             let bucketList = await BucketList.create(bucketListData[i]);
-            let post = await Post.create(postData[i]);
+            const postList = postData.filter((post) => {
+                return post.bucketlist_id == bucketList._id;
+            })
 
-            await BucketList.findByIdAndUpdate(
-                bucketList._id,
-                {$push: {post: Types.ObjectId(post._id)}},
-                {new: true}
-            )
+            for (let i = 0; i < postList.length; i++) {
+                const post = await Post.create(postList[i]);
 
-            
+                await BucketList.findByIdAndUpdate(
+                    bucketList._id,
+                    { $push: { post: Types.ObjectId(post._id) } },
+                    { new: true }
+                )
+            }
+
+
             // update user with newly created bucket list id
             await User.findByIdAndUpdate(
                 bucketList.createdBy,
-                {$push: {bucketList: Types.ObjectId(bucketList._id)}},
-                {new: true}
+                { $push: { bucketList: Types.ObjectId(bucketList._id) } },
+                { new: true }
             );
         }
 
-    }catch(err) {
+
+
+    } catch (err) {
         console.log(err);
         process.exit(1);
     }
