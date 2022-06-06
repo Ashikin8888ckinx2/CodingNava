@@ -36,10 +36,12 @@ const CreateModel = (props) => {
           tags: formState.tags,
           createdBy: formState.createdBy,
         },
-        listName: formState.listName,
-      },
-    });
-  };
+        listName: formState.listName
+      }
+    })
+
+    // document.location.reload();
+  }
 
   return (
     <Tab.Container defaultActiveKey='Create'>

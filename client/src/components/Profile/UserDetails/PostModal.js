@@ -28,9 +28,11 @@ const PostModal = (props) => {
     event.preventDefault();
 
     addBucketList({
-      variables: { listData: formState },
-    });
-  };
+      variables: { listData: formState }
+    })
+
+    // document.location.reload();
+  }
 
   return (
     <Tab.Container defaultActiveKey='Buckit List Entry'>

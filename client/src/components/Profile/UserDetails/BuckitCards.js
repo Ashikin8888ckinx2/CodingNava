@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Col, Image } from 'react-bootstrap';
-import '../Profile.css';
 
+import '../Profile.css';
 import { GET_POSTS } from '../../../utils/queries';
 import { useQuery } from '@apollo/client';
 import { convertDate } from '../../../utils/dateConvert.js';
