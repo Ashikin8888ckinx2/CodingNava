@@ -42,7 +42,7 @@ const SearchBtnForm = () => {
   const handleSearchComponent = () => {
     return (
       <div>
-        <Form className='d-flex py-2 navSearchForm' onSubmit={(e) => {e.preventDefault(); handleShow([true, 'xxl-down']);}}>
+        <Form className='d-flex py-2 navSearchForm' onSubmit={(e) => { e.preventDefault(); handleShow([true, 'xxl-down']); }}>
           <FormControl name='username' type='text' placeholder='Search' className='me-2' aria-label='Search' onChange={handleChange} />
           <Button className='btn-success' type='submit'>
             Search
@@ -64,7 +64,7 @@ const SearchBtnForm = () => {
       {/* SEARCH MODAL */}
       {/* /////////////////////////////////////////////////// */}
       <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
-        <SearchModal username={formState.username} onHide={() => setShow(false)}/>
+        <SearchModal username={formState.username} onHide={() => setShow(false)} />
       </Modal>
     </>
   );
