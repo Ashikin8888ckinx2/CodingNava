@@ -16,7 +16,6 @@ const BuckitCards = (props) => {
 
   // Handle errors for post data
   if (loading) return null;
-  console.log(error);
   if (error) return 'error';
 
   return (

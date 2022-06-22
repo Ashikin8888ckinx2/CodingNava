@@ -102,14 +102,15 @@ const ProfileUserDetails = (props) => {
         </Col>
 
         {/* /////////////////////////////////////////////////// */}
-        {/* USER BUCKETS - IF USER IS LOGGED IN SHOW FOR OWN PROFILE, OTHERWISE, DO NOT */}
+        {/* USER BUCKETS */}
         {/* /////////////////////////////////////////////////// */}
 
-        {window.location.pathname === '/profile' ? <PostCreateCard /> : ''}
-
-        {/* /////////////////////////////////////////////////// */}
-        {/* USER BUCKET CARDS */}
-        {/* /////////////////////////////////////////////////// */}
+        <PostCreateCard />
+      </Row>
+      {/* /////////////////////////////////////////////////// */}
+      {/* USER BUCKET CARDS */}
+      {/* /////////////////////////////////////////////////// */}
+      <Row>
         <BuckitCards userData={props} />
       </Row>
 
