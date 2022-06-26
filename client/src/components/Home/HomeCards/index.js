@@ -35,7 +35,7 @@ const HomeCards = () => {
             {/* CARD BODY */}
             <Card.Body className='BuckitCardBodyContainer'>
               <div className='BuckitCardBodyTitle'>{post.title}</div>
-              <Card.Img className='BuckitCardImage rounded' src='https://source.unsplash.com/CJ4mbwSK3EY' />
+              <Card.Img className='BuckitCardImage rounded' src={post.images[0]} />
               <div className='BuckitCardBodyDescription'>{post.description}</div>
             </Card.Body>
 

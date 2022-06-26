@@ -62,6 +62,7 @@ const typeDefs = gql`
     tags: [String]
     date_created: String!
     createdBy: User
+    bucketlist_id: ID
     comment: [Comment]
   }
   input PostInput {
