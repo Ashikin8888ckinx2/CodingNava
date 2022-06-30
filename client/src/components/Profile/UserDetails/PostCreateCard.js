@@ -5,7 +5,8 @@ import { TrashFill } from 'react-bootstrap-icons';
 import PostModal from './PostModal';
 import '../Profile.css';
 import { GET_BUCKETLISTS } from '../../../utils/queries';
-import { useQuery } from '@apollo/client';
+import { ADD_BUCKET_LIST } from '../../../utils/mutations';
+import { useQuery, useMutation } from '@apollo/client';
 import Auth from '../../../utils/auth';
 
 import { Card, Col, Form, InputGroup, Button, Row, Stack, Modal } from 'react-bootstrap';
@@ -16,6 +17,10 @@ const PostCreateCard = () => {
   const userId = Auth.getProfile().data._id;
   const { loading, error, data } = useQuery(GET_BUCKETLISTS, {
     variables: { id: userId },
+  });
+
+  const [addBucketList, { data: bucketData, loading: bucketLoading, error: bucketError }] = useMutation(ADD_BUCKET_LIST, {
+    refetchQueries: [GET_BUCKETLISTS],
   });
 
   if (loading) return null;
@@ -70,7 +75,7 @@ const PostCreateCard = () => {
       {/* POST MODAL */}
       {/* /////////////////////////////////////////////////// */}
       <Modal show={post} onHide={() => setPost(false)} backdrop='static' keyboard={false} className='modal-dialog-scrollable modal-md'>
-        <PostModal userId={userId} />
+        <PostModal userId={userId} addBucketList={addBucketList} onHide={() => setPost(false)}/>
       </Modal>
     </>
   );

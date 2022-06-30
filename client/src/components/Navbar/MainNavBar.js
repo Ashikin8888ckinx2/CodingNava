@@ -13,7 +13,9 @@ import RainDrop from '../../utils/animation';
 import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
+
 const MainNavBar = () => {
+
   const [show, setShow] = useState(false);
 
   const toggle = () => {

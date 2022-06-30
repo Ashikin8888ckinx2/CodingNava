@@ -2,15 +2,18 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_BUCKET_LIST } from '../../../utils/mutations';
+import { GET_BUCKETLIST } from '../../../utils/queries';
 
 import { Card, Col, Tab, Modal, Form, Button } from 'react-bootstrap';
 
 const PostModal = (props) => {
   const [formState, setFormState] = useState({});
-  const [addBucketList, { data, loading, error }] = useMutation(ADD_BUCKET_LIST);
+  // const [addBucketList, { data, loading, error }] = useMutation(ADD_BUCKET_LIST, {
+  //   refetchQueries: [GET_BUCKETLIST],
+  // });
 
-  if (loading) return 'Submitting...';
-  if (error) return `${error.message}`;
+  // if (loading) return 'Submitting...';
+  // if (error) return `${error.message}`;
 
   // Update form state with values from user input
   const handleChange = (event) => {
@@ -27,11 +30,11 @@ const PostModal = (props) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    addBucketList({
+    props.addBucketList({
       variables: { listData: formState }
     })
 
-    // document.location.reload();
+    props.onHide();
   }
 
   return (

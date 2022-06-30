@@ -9,7 +9,6 @@ import FollowingModel from './FollowingModal';
 import PostCreateCard from './PostCreateCard';
 import BuckitCards from './BuckitCards';
 import { GET_BUCKETLISTS } from '../../../utils/queries';
-import Auth from '../../../utils/auth';
 
 //////////////////////////////////////////////////////////
 // Bootstrap Components
@@ -26,8 +25,8 @@ const ProfileUserDetails = (props) => {
   const [create, setCreate] = useState(false);
   const [followers, setFollowers] = useState(false);
   const [following, setFollowing] = useState(false);
-
-  const userId = Auth.getProfile().data._id;
+  
+  const userId = props.userData._id;
   const { loading, error, data } = useQuery(GET_BUCKETLISTS, {
     variables: { id: userId },
   });
