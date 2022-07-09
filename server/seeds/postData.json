@@ -163,5 +163,59 @@
     "date_created": "2021-07-14 20:50:10.276Z",
     "createdBy": "5c8a1dfa2f8fb814b56fa183",
     "comment_ids": []
+  },
+  {
+    "bucketlist_id": "5c88fa8cf4afda39709c2959",
+    "title": "Finally got to sing YNWA!",
+    "description": "Nothing like listening to an entire stadium sing the Liverpool anthem.",
+    "images": ["https://source.unsplash.com/bIyzFopbVOg"],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa181"
+      }
+    ],
+    "tags": ["Sports", "Football"],
+    "date_created": "2021-07-19 16:23:10.276Z",
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
+  },
+  {
+    "bucketlist_id": "5c8a1f4e2f8fb814b56fa185",
+    "title": "A couple more months of training left.",
+    "description": "When you need to find inspiration.",
+    "images": ["https://source.unsplash.com/wAVlWo84SCU"],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa181"
+      }
+    ],
+    "tags": ["Running", "Health"],
+    "date_created": "2021-08-10 21:11:10.276Z",
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
+  },
+  {
+    "bucketlist_id": "5c8a22c62f8fb814b56fa18b",
+    "title": "Roadtrip with the wife!",
+    "description": "Experiencing new things is best done in pairs.",
+    "images": ["https://source.unsplash.com/QM61C6shPZY"],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa181"
+      }
+    ],
+    "tags": ["Trips", "Family"],
+    "date_created": "2021-09-11 10:34:10.276Z",
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
   }
 ]

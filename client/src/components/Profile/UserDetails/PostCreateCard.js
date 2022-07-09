@@ -26,11 +26,11 @@ const PostCreateCard = () => {
   if (loading) return null;
   if (error) return 'error';
 
-  const handleDelete = (event) =>{
+  const handleDelete = (event) => {
     // Goal: Render bucket list id
     const value = event.target;
     console.log(value);
-  }
+  };
 
   return (
     <>
@@ -61,7 +61,10 @@ const PostCreateCard = () => {
                   <Col xs={8} sm={8} md={9} lg={10}>
                     <InputGroup>
                       <div className='scrollForm'>{item.name}</div>
-                      <InputGroup.Text onClick={handleDelete}><TrashFill></TrashFill></InputGroup.Text>
+                      {/* TODO FIX THE WIDTH */}
+                      <InputGroup.Text onClick={handleDelete}>
+                        <TrashFill></TrashFill>
+                      </InputGroup.Text>
                     </InputGroup>
                   </Col>
                 </Stack>
