@@ -68,7 +68,7 @@ const typeDefs = gql`
   input PostInput {
     title: String!
     description: String!
-    images: [String]
+    images: [FileUpload]
     tags: [String]
     createdBy: String!
   }
@@ -108,7 +108,7 @@ const typeDefs = gql`
     editBucketList(listId: ID!, listData: BucketListInput!): BucketList
     
     # Add, edit, delete Post items
-    addPost(postData: PostInput!, listName: String!): BucketList
+    addPost(postData: PostInput!, bucketListId: ID!): BucketList
     deletePost(postId: ID!): BucketList
     editPost(postId: ID! postData: PostInput!): BucketList
     

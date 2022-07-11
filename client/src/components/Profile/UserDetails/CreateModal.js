@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import { Card, Col, Tab, Modal, Form, Button, Row } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../../../utils/mutations';
+import { GET_POSTS } from '../../../utils/queries';
 
 const CreateModel = (props) => {
-  const [formState, setFormState] = useState({});
-  const [addPost, { data, loading, error }] = useMutation(ADD_POST);
+
+  const [formState, setFormState] = useState({bucketListId: props.bucketLists[0]._id});
+  const [addPost, { data, loading, error }] = useMutation(ADD_POST, {
+    refetchQueries: [GET_POSTS],
+  });
 
   if (loading) return 'Submitting...';
   if (error) return `${error.message}`;
@@ -13,11 +17,10 @@ const CreateModel = (props) => {
   // Update form state with values from user input
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormState({
       ...formState,
       [name]: value,
-      createdBy: props.bucketLists[0].createdBy,
+      createdBy: props.userId,
     });
   };
 
@@ -34,12 +37,29 @@ const CreateModel = (props) => {
           tags: formState.tags,
           createdBy: formState.createdBy,
         },
-        listName: formState.listName
+        bucketListId: formState.bucketListId
       }
     })
 
-    // document.location.reload();
+    props.onHide();
   }
+
+  // UPDATING "formState" BASED ON INPUT CHANGES
+  const handleFileChange = (event) => {
+    const { name, files } = event.target;
+    // 1,048,576 bytes is 1 mb, so multiplied by 10 is a limit of 10mb
+    const maxSize = 10 * 1048576;
+
+    if (event.target.files[0] && event.target.files[0].size > maxSize) {
+      event.target.value = "";
+      return alert("File is too big. Needs to be 10MB or smaller");
+    };
+
+    setFormState({
+      ...formState,
+      [name]: files,
+    });
+  };
 
   return (
     <Tab.Container defaultActiveKey='Create'>
@@ -68,7 +88,7 @@ const CreateModel = (props) => {
                       {/* PROFILE PHOTO */}
                       <Form.Group className='mb-3'>
                         <Form.Label>Buckit Image</Form.Label>
-                        <Form.Control type='file' name='images' onChange={handleChange} />
+                        <Form.Control type='file' name='images' onChange={handleFileChange} />
                       </Form.Group>
                       <Row>
                         <Col>
@@ -84,9 +104,9 @@ const CreateModel = (props) => {
                       </Row>
                       <Row>
                         <Col>
-                          <Form.Select className='pe-4' name='listName' onChange={handleChange}>
+                          <Form.Select className='pe-4' name='bucketListId' onChange={handleChange}>
                             {props.bucketLists.map((list, index) => (
-                              <option value={list.name} key={index}>
+                              <option value={list._id} key={index}>
                                 {list.name}
                               </option>
                             ))}

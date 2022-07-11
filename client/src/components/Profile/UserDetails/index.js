@@ -117,7 +117,7 @@ const ProfileUserDetails = (props) => {
       {/* CREATE MODAL */}
       {/* /////////////////////////////////////////////////// */}
       <Modal show={create} onHide={() => setCreate(false)} backdrop='static' keyboard={false} dialogClassName='modal-90w' className='modal-dialog-scrollable'>
-        <CreateModel bucketLists={data.getBucketLists} />
+        <CreateModel userId={userId} bucketLists={data.getBucketLists} onHide={() => setCreate(false)}/>
       </Modal>
       {/* /////////////////////////////////////////////////// */}
       {/* FOLLOWERS MODAL */}

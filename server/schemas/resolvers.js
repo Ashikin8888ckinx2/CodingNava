@@ -128,13 +128,13 @@ const resolvers = {
     },
     deleteBucketList: async (parent, { listId }, context) => {
       // check if logged in, then delete a bucket list from a user's profile
-      if (context.user) {        
+      if (context.user) {
         await BucketList.findByIdAndDelete(
-          {_id: listId}
+          { _id: listId }
         )
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $pull: { bucketList: listId } }, 
+          { $pull: { bucketList: listId } },
           { new: true });
         return updatedUser;
       }
@@ -155,30 +155,37 @@ const resolvers = {
         return updatedList;
       }
     },
-    addPost: async (parent, { postData, listName }, context) => {
+    addPost: async (parent, { postData, bucketListId }, context) => {
       // check if logged in, then add a post to a user's bucket list
-      // if (context.user) {
-      // Create new post
-      const newPost = await Post.create({
-        title: postData.title,
-        description: postData.description,
-        // May have to create a for loop for the images and tags
-        images: postData.images,
-        tags: postData.tags,
-        // createdBy: context.user
-        createdBy: postData.createdBy
-      })
-      // Push post ID into BucketList
-      const updatedBucketList = await BucketList.findOneAndUpdate(
-        { name: listName },
-        { $push: { post: newPost._id } },
-        { new: true }
-      );
+      if (context.user) {
+        if (postData.images) {
+          console.log(postData);
+          for (let i = 0; i < postData.images.length; i++) {
+            const file = await uploadImage(await postData.images[i]);
+            postData.images[i] = file.url;
+          }
+        }
+        // Create new post
+        const newPost = await Post.create({
+          title: postData.title,
+          description: postData.description,
+          // May have to create a for loop for the images and tags
+          images: postData.images,
+          tags: postData.tags,
+          // createdBy: context.user
+          createdBy: postData.createdBy
+        })
+        // Push post ID into BucketList
+        const updatedBucketList = await BucketList.findOneAndUpdate(
+          { _id: bucketListId },
+          { $push: { post: newPost._id } },
+          { new: true }
+        );
 
-      // Return updated bucket list
-      return updatedBucketList;
-      // }
-      // throw new AuthenticationError('User not logged in');
+        // Return updated bucket list
+        return updatedBucketList;
+      }
+      throw new AuthenticationError('User not logged in');
     },
     deletePost: async (parent, { postId }, context) => {
       // check if logged in then delete a post from a user's bucket list
