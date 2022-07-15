@@ -34,7 +34,9 @@ const CreateModel = (props) => {
           title: formState.title,
           description: formState.description,
           images: formState.images,
-          tags: formState.tags,
+          tags: [formState.tag1, formState.tag2].filter((tag) => {
+            return tag != null;
+          }),
           createdBy: formState.createdBy,
         },
         bucketListId: formState.bucketListId
@@ -93,12 +95,12 @@ const CreateModel = (props) => {
                       <Row>
                         <Col>
                           <Form.Group className='mb-3'>
-                            <Form.Control type='text' name='tags' placeholder='Tags #1' onChange={handleChange} />
+                            <Form.Control type='text' name='tag1' placeholder='Tags #1' onChange={handleChange} />
                           </Form.Group>
                         </Col>
                         <Col>
                           <Form.Group className='mb-3'>
-                            <Form.Control type='text' name='tags' placeholder='Tags #2' onChange={handleChange} />
+                            <Form.Control type='text' name='tag2' placeholder='Tags #2' onChange={handleChange} />
                           </Form.Group>
                         </Col>
                       </Row>
