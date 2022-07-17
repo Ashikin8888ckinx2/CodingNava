@@ -71,6 +71,78 @@ a:focus:not(:focus-visible) {
 }
 
 /* ////////////////////////////////////////////// */
+/* BUCKIT LIST */
+/* ////////////////////////////////////////////// */
+
+.BuckitListMasterBody {
+  overflow: scroll;
+  padding: 4px 16px 4px 16px !important;
+}
+
+.BuckitListHeaderContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: transparent !important;
+  margin-bottom: 8px !important;
+}
+
+.BuckitListBodyContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #010101 !important;
+  padding: 8px 16px 16px 16px !important;
+}
+
+.BuckitListBodyHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0px 4px 0px !important;
+}
+
+.BuckitListBodyHeader .card-text {
+  font-size: 16px !important;
+}
+
+.BuckitListBodyIcons {
+  display: flex;
+  grid-gap: 0.8rem !important;
+  gap: 0.8rem !important;
+}
+
+.BuckitListBodyIcons i {
+  font-size: 1.4rem !important;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.BuckitListBodyIcons .fa-trash-alt {
+  color: #ff0000 !important;
+}
+
+.BuckitListBodyIcons .fa-wrench {
+  color: #ffce45 !important;
+}
+
+/* -------------------------------------- */
+
+.BuckitListBodyText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.BuckitListBodyContainer .card-text {
+  color: #fff !important;
+  margin-bottom: 0px !important;
+}
+
+/* ////////////////////////////////////////////// */
 /* BUCKIT CARDS */
 /* ////////////////////////////////////////////// */
 
