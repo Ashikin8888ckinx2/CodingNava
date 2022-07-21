@@ -26,7 +26,8 @@ const Profile = () => {
   const [followUser, { error, followData }] = useMutation(FOLLOW_USER);
   let { username } = useParams();
 
-  const { loading, data } = useQuery(username ? GET_USER : GET_ME, {
+  const viewingOwnProfile = !username;
+  const { loading, data } = useQuery(viewingOwnProfile ? GET_ME : GET_USER, {
     variables: { username },
   });
 
@@ -105,7 +106,7 @@ const Profile = () => {
   return (
     <>
       <div className='rounded' style={editProfileCardStyle}>
-        <ProfileHeader userData={userData} updateProfile={updateProfileSubmit} />
+        <ProfileHeader userData={userData} viewingOwnProfile={viewingOwnProfile} updateProfile={updateProfileSubmit} />
         <Container className='pb-2' fluid>
           <ProfileUserDetails key={userData.username} userData={userData} follow={handleFollowClick} isFollowing={isFollowing} />
         </Container>
