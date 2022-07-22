@@ -35,8 +35,8 @@ export const GET_USER = gql`
 `;
 
 export const SEARCH_USERS = gql`
-  query user($searchUser: String!) {
-    user(searchUser: $searchUser) {
+  query searchUsers($searchUser: String!) {
+    searchUsers(searchUser: $searchUser) {
       username
       picture
     }
