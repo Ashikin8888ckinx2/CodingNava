@@ -26,9 +26,17 @@ const PostCreateCard = (props) => {
   if (error) return 'error';
 
   const handleDelete = (event) => {
-    // Goal: Render bucket list id
     const value = event.target;
     console.log(value);
+  };
+
+  // TO SHOW ADD BUCKIT LIST FOR THE USER THATS LOGGED IN
+  const showAddButton = () => {
+    return (
+      <Button onClick={() => setPost(true)} className='buckitListBtnStyle'>
+        <span className='BuckitListPlus'>+</span>
+      </Button>
+    );
   };
 
   return (
@@ -38,9 +46,7 @@ const PostCreateCard = (props) => {
         <Card className='container shadow pb-3' style={{ height: props.maxHeight }}>
           <Card.Header className='BuckitListHeaderContainer'>
             <div className='fs-4'>Buckit List</div>
-            <Button onClick={() => setPost(true)} className='buckitListBtnStyle'>
-              <span className='BuckitListPlus'>+</span>
-            </Button>
+            {window.location.pathname === '/profile' ? showAddButton() : null}
           </Card.Header>
           <Card.Body className='BuckitListMasterBody'>
             {data.getBucketLists.map((item, index) => (
