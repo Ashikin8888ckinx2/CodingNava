@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
+import { useMeasure } from 'react-use';
 
 import '../Profile.css';
 
@@ -19,13 +20,16 @@ import { Card, Col, Modal, Row } from 'react-bootstrap';
 //////////////////////////////////////////////////////////
 
 const ProfileUserDetails = (props) => {
+  const [ref, { height }] = useMeasure();
+
+  // console.log(height);
   ////////////////////////////////////////////////
   // MODAL STATES
   ////////////////////////////////////////////////
   const [create, setCreate] = useState(false);
   const [followers, setFollowers] = useState(false);
   const [following, setFollowing] = useState(false);
-  
+
   const userId = props.userData._id;
   const { loading, error, data } = useQuery(GET_BUCKETLISTS, {
     variables: { id: userId },
@@ -73,7 +77,7 @@ const ProfileUserDetails = (props) => {
     <>
       <Row>
         <Col sm={4} md={4} lg={4} className='pb-2'>
-          <Card className='shadow mb-2 h-100'>
+          <Card className='shadow mb-2 MasterProfileDetails' ref={ref}>
             {/* HEADER */}
             <Card.Header className='UserDetailsCardHeader'>
               <Card.Title className='UserDetailsCardUsername'>{props.userData.username}</Card.Title>
@@ -104,7 +108,7 @@ const ProfileUserDetails = (props) => {
         {/* USER BUCKETS */}
         {/* /////////////////////////////////////////////////// */}
 
-        <PostCreateCard />
+        <PostCreateCard maxHeight={height} />
       </Row>
       {/* /////////////////////////////////////////////////// */}
       {/* USER BUCKET CARDS */}
