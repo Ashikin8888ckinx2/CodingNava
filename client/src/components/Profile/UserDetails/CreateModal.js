@@ -6,10 +6,16 @@ import { GET_POSTS } from '../../../utils/queries';
 
 const CreateModel = (props) => {
 
-  const [formState, setFormState] = useState({bucketListId: props.bucketLists[0]._id});
+  const [formState, setFormState] = useState({ bucketListId: props.bucketLists[0] ? props.bucketLists[0]._id : null });
   const [addPost, { data, loading, error }] = useMutation(ADD_POST, {
     refetchQueries: [GET_POSTS],
   });
+
+  if (props.bucketLists.length == 0) {
+    return (<Modal.Header closeButton>
+              <h1>Must create bucket first</h1>
+            </Modal.Header>);
+  }
 
   if (loading) return 'Submitting...';
   if (error) return `${error.message}`;

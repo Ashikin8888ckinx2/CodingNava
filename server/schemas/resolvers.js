@@ -45,11 +45,11 @@ const resolvers = {
     },
     // Find all posts based for homepage
     getAllPosts: async (parent) => {
-      return await Post.find().sort({ date_created: -1 }).populate('createdBy');
+      return await Post.find().sort({ date_created: -1 }).populate('createdBy').populate('bucketlist_id');
     },
     // Find posts based on user or bucketlist
     getPosts: async (parent, { userId }) => {
-      return await Post.find({ createdBy: userId }).sort({ date_created: -1 });
+      return await Post.find({ createdBy: userId }).sort({ date_created: -1 }).populate('bucketlist_id');
     }
   },
   Mutation: {
@@ -112,7 +112,7 @@ const resolvers = {
         const newBucketList = await BucketList.create({
           name: listData.name,
           progress: listData.progress,
-          createdBy: context.user
+          createdBy: context.user._id
         })
 
         // Push bucket list id into User array
@@ -169,11 +169,10 @@ const resolvers = {
         const newPost = await Post.create({
           title: postData.title,
           description: postData.description,
-          // May have to create a for loop for the images and tags
           images: postData.images,
           tags: postData.tags,
-          // createdBy: context.user
-          createdBy: postData.createdBy
+          createdBy: postData.createdBy,
+          bucketlist_id: bucketListId
         })
         // Push post ID into BucketList
         const updatedBucketList = await BucketList.findOneAndUpdate(

@@ -98,6 +98,9 @@ export const GET_ALL_POSTS = gql`
         username
         picture
       }
+      bucketlist_id {
+        progress
+      }
     }
   }
 `
@@ -114,10 +117,8 @@ export const GET_POSTS = gql`
         username
         picture
       }
-      comment{
-        comment
-        likes
-        date_created
+      bucketlist_id {
+        progress
       }
     }
   }
