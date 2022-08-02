@@ -96,6 +96,15 @@ export const ADD_COMMENT = gql`
   }
 `;
 
+export const EDIT_BUCKET_LIST = gql`
+  mutation editBucketList($listId: ID!, listData: BucketListInput!) {
+    editBucketList(listId: $listId, listData: $listData){
+      name
+      progress
+    }
+  }
+`
+
 export const DELETE_BUCKET_LIST = gql`
   mutation deleteBucketList($listId: ID!) {
     deleteBucketList(listId: $listId) {
