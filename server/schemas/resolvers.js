@@ -128,27 +128,27 @@ const resolvers = {
     },
     deleteBucketList: async (parent, { listId }, context) => {
       // check if logged in, then delete a bucket list from a user's profile
-      if (context.user) {        
+      if (context.user) {
         await BucketList.findByIdAndDelete(
-          {_id: listId}
+          { _id: listId }
         )
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $pull: { bucketList: listId } }, 
+          { $pull: { bucketList: listId } },
           { new: true });
         return updatedUser;
       }
       throw new AuthenticationError('User not logged in');
     },
-    editBucketList: async (parent, { listId, listData }, context) => {
+    editBucketList: async (parent, { listId, progress }, context) => {
       // check if logged in, then allow user to edit bucket list
       if (context.user) {
         const updatedList = await BucketList.findByIdAndUpdate(
           { _id: listId },
           {
-            name: listData.name,
-            progress: listData.progress,
-
+            $set: {
+              progress: progress
+            }
           }
         );
 

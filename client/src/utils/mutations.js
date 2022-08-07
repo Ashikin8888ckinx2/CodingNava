@@ -97,8 +97,8 @@ export const ADD_COMMENT = gql`
 `;
 
 export const EDIT_BUCKET_LIST = gql`
-  mutation editBucketList($listId: ID!, listData: BucketListInput!) {
-    editBucketList(listId: $listId, listData: $listData){
+  mutation editBucketList($listId: ID!, $progress: String) {
+    editBucketList(listId: $listId, progress: $progress){
       name
       progress
     }

@@ -105,7 +105,7 @@ const typeDefs = gql`
     # Add, edit, delete Bucket List items
     addBucketList(listData: BucketListInput!): User
     deleteBucketList(listId: String!): User
-    editBucketList(listId: ID!, listData: BucketListInput!): BucketList
+    editBucketList(listId: ID!, progress: String): BucketList
     
     # Add, edit, delete Post items
     addPost(postData: PostInput!, listName: String!): BucketList
