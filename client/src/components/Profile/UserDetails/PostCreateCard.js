@@ -5,7 +5,7 @@ import { TrashFill } from 'react-bootstrap-icons';
 import PostModal from './PostModal';
 import '../Profile.css';
 import { GET_BUCKETLISTS } from '../../../utils/queries';
-import { ADD_BUCKET_LIST } from '../../../utils/mutations';
+import { ADD_BUCKET_LIST, EDIT_BUCKET_LIST } from '../../../utils/mutations';
 import { useQuery, useMutation } from '@apollo/client';
 import Auth from '../../../utils/auth';
 
@@ -23,6 +23,10 @@ const PostCreateCard = () => {
     refetchQueries: [GET_BUCKETLISTS],
   });
 
+  const[updatedBucketList, {data: updatedBucketData, loading: updatedBucketLoading, error: updatedBucketError}] = useMutation(EDIT_BUCKET_LIST, {
+    refetchQueries: [GET_BUCKETLISTS],
+  })
+
   if (loading) return null;
   if (error) return 'error';
 
@@ -31,6 +35,19 @@ const PostCreateCard = () => {
     const value = event.target;
     console.log(value);
   };
+
+  const handleProgressChange = (event) =>{
+    // input value (progress) and name (listId) from change
+    const {name, value} = event.target;
+
+    // use value and name to change bucketlist progress
+    updatedBucketList({
+      variables: {
+        listId: name,
+        progress: value
+      }
+    })
+  }
 
   return (
     <>
@@ -52,7 +69,7 @@ const PostCreateCard = () => {
               <Row className='d-flex flex-row g-2 pb-2' key={index}>
                 <Stack direction='horizontal' gap={2}>
                   <Col xs={4} sm={4} md={3} lg={2}>
-                    <Form.Select className='pe-4' defaultValue={item.progress}>
+                    <Form.Select className='pe-4' name={item._id} defaultValue={item.progress} onChange={handleProgressChange}>
                       <option value='To Do'>To Do</option>
                       <option value='In Progress'>In Progress</option>
                       <option value='Complete'>Complete</option>
