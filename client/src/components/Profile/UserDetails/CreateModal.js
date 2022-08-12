@@ -39,8 +39,6 @@ const CreateModel = (props) => {
         listName: formState.listName
       }
     })
-
-    // document.location.reload();
   }
 
   return (
