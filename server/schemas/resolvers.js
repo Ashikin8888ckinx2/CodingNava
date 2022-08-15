@@ -157,28 +157,28 @@ const resolvers = {
     },
     addPost: async (parent, { postData, listName }, context) => {
       // check if logged in, then add a post to a user's bucket list
-      // if (context.user) {
-      // Create new post
-      const newPost = await Post.create({
-        title: postData.title,
-        description: postData.description,
-        // May have to create a for loop for the images and tags
-        images: postData.images,
-        tags: postData.tags,
-        // createdBy: context.user
-        createdBy: postData.createdBy
-      })
-      // Push post ID into BucketList
-      const updatedBucketList = await BucketList.findOneAndUpdate(
-        { name: listName },
-        { $push: { post: newPost._id } },
-        { new: true }
-      );
+      if (context.user) {
+        // Create new post
+        const newPost = await Post.create({
+          title: postData.title,
+          description: postData.description,
+          // May have to create a for loop for the images and tags
+          images: postData.images,
+          tags: postData.tags,
+          // createdBy: context.user
+          createdBy: postData.createdBy
+        })
+        // Push post ID into BucketList
+        const updatedBucketList = await BucketList.findOneAndUpdate(
+          { name: listName },
+          { $push: { post: newPost._id } },
+          { new: true }
+        );
 
-      // Return updated bucket list
-      return updatedBucketList;
-      // }
-      // throw new AuthenticationError('User not logged in');
+        // Return updated bucket list
+        return updatedBucketList;
+      }
+      throw new AuthenticationError('User not logged in');
     },
     deletePost: async (parent, { postId }, context) => {
       // check if logged in then delete a post from a user's bucket list
