@@ -28,11 +28,13 @@ const ProfileHeader = (props) => {
                     </Col>
                     {/* IF WINDOW SIZE IS LESS THAN xs=0-768 pixels */}
 
+                    { props.viewingOwnProfile ? 
                     <Col style={{ textAlign: 'right' }}>
                       <Button className='editProfileBtnStyle' onClick={() => setShow(true)}>
                         Edit Profile
                       </Button>
-                    </Col>
+                    </Col> 
+                    : "" }
                   </Row>
                 </Container>
               </Card.ImgOverlay>

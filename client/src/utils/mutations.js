@@ -114,10 +114,7 @@ export const DELETE_BUCKET_LIST = gql`
       bio
       picture
       banner_picture
-      bucketList {
-        _id
-        progress
-      }
+      bucketList
     }
   }
 `;

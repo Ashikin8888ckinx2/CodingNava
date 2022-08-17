@@ -19,8 +19,6 @@ const CreateModel = (props) => {
       [name]: value,
       createdBy: props.bucketLists[0].createdBy,
     });
-
-    console.log(formState);
   };
 
   // Handle form submit

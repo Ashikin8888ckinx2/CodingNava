@@ -21,7 +21,7 @@ const resolvers = {
       throw new AuthenticationError('Not logged in!');
     },
     // Find all users
-    users: async (parent, { searchUser }) => {
+    searchUsers: async (parent, { searchUser }) => {
       return User.find({ username: { "$regex": searchUser, "$options": "i" } });
     },
     // Find a single user

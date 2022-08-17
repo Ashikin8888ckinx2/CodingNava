@@ -217,5 +217,23 @@
     "date_created": "2021-09-11 10:34:10.276Z",
     "createdBy": "5c8a1d5b0190b214360dc057",
     "comment_ids": []
+  },
+  {
+    "bucketlist_id": "5c88fa8cf4afda39709c2960",
+    "title": "Colors on Colors",
+    "description": "Magic right infront of our eyes",
+    "images": ["https://source.unsplash.com/va_nrBLonf8"],
+    "likes": [
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa182"
+      },
+      {
+        "_id": "5c8a1dfa2f8fb814b56fa181"
+      }
+    ],
+    "tags": ["Trips", "Sky"],
+    "date_created": "2021-04-11 10:34:10.276Z",
+    "createdBy": "5c8a1d5b0190b214360dc057",
+    "comment_ids": []
   }
 ]
