@@ -41,9 +41,9 @@ const BuckitCards = (props) => {
               <Card.Img className='BuckitCardImage rounded' src={post.images} />
               <div className='BuckitCardBodyDescription'>{post.description}</div>
             </Card.Body>
-
+        {console.log(post)}
             <div className='BuckitCardBodyStatus'>
-              Status: <span>In Progress</span>
+              Status: <span>{post.bucketlist_id ? post.bucketlist_id.progress : "n/a"}</span>
             </div>
 
             {/* HEADER /////////////// ROW #6 */}
