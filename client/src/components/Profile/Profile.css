@@ -97,6 +97,8 @@ a:focus:not(:focus-visible) {
 }
 
 .BuckitListBodyHeader {
+  background-color: transparent !important;
+  border: none !important;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -145,64 +147,62 @@ a:focus:not(:focus-visible) {
 /* ////////////////////////////////////////////// */
 /* BUCKIT CARDS */
 /* ////////////////////////////////////////////// */
-
+/* COMPLETE */
 .BuckitCardTitleContainer {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 16px 16px 0px 16px !important;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  padding: 0px 16px 0px 16px !important;
   justify-content: space-between !important;
   align-items: center !important;
 }
 
-.BuckitCardImageUsername {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start !important;
-  align-items: center !important;
-  grid-gap: 0.5rem !important;
-  gap: 0.5rem !important;
-}
-
+/* COMPLETE */
 .BuckitCardProfileImage {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
 }
 
-.BuckitCardUsername {
-  font-size: 21px !important;
-  margin-bottom: 0 !important;
-}
-
+/* COMPLETE */
 .BuckitCardDate {
+  padding: 16px 16px 0px 0px !important;
   font-size: 18px !important;
 }
 
+/* COMPLETE */
 .BuckitCardBodyContainer {
   display: flex;
   flex-direction: column;
   padding: 0px 16px 0px 16px !important;
 }
 
+/* COMPLETE */
 .BuckitCardBodyTitle {
   font-size: 19px !important;
-  padding: 0px 0px 8px 0px !important;
-}
-
-.BuckitCardImage {
-  width: 100% !important;
-  height: 20vw !important;
-  object-fit: cover;
-}
-
-.BuckitCardBodyDescription {
-  font-size: 19px !important;
+  font-weight: 600;
   padding: 8px 0px 8px 0px !important;
 }
 
-.BuckitCardBodyStatus {
-  font-size: 19px !important;
-  padding: 0px 0px 8px 16px !important;
+/* COMPLETE */
+.BuckitCardImage {
+  width: 100% !important;
+  height: 14vw !important;
+  object-fit: cover;
 }
 
+/* COMPLETE */
+.BuckitCardBodyDescription {
+  font-size: 16px !important;
+  /* padding: 8px 0px 8px 0px !important; */
+}
+
+/* COMPLETE */
+.BuckitCardBodyStatus {
+  font-size: 19px !important;
+  padding: 8px 0px 8px 16px !important;
+}
+/* COMPLETE */
 .BuckitCardBodyStatus span {
   color: #55b3b1;
 }
@@ -311,12 +311,16 @@ a:focus:not(:focus-visible) {
     font-size: 20px !important;
   }
 
+  .BuckitCardTitleContainer {
+    justify-content: center !important;
+  }
+
   /* ----------------------------------------- */
   /* BUCKIT CARD */
   /* ----------------------------------------- */
-  .BuckitCardDate {
+  /* .BuckitCardDate {
     padding-top: 0.8rem !important;
-  }
+  } */
 }
 
 @media only screen and (max-width: 767px) {
@@ -344,6 +348,7 @@ a:focus:not(:focus-visible) {
   /* ----------------------------------------- */
   /* BUCKIT CARD */
   /* ----------------------------------------- */
+
   .BuckitCardImageUsername {
     flex-wrap: wrap;
     justify-content: center !important ;

@@ -8,12 +8,6 @@ import { Card, Col, Tab, Modal, Form, Button } from 'react-bootstrap';
 
 const PostModal = (props) => {
   const [formState, setFormState] = useState({});
-  // const [addBucketList, { data, loading, error }] = useMutation(ADD_BUCKET_LIST, {
-  //   refetchQueries: [GET_BUCKETLIST],
-  // });
-
-  // if (loading) return 'Submitting...';
-  // if (error) return `${error.message}`;
 
   // Update form state with values from user input
   const handleChange = (event) => {
@@ -31,11 +25,11 @@ const PostModal = (props) => {
     event.preventDefault();
 
     props.addBucketList({
-      variables: { listData: formState }
-    })
+      variables: { listData: formState },
+    });
 
     props.onHide();
-  }
+  };
 
   return (
     <Tab.Container defaultActiveKey='Buckit List Entry'>
