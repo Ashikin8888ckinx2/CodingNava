@@ -38,7 +38,7 @@ const PostCreateCard = (props) => {
       <Col sm={8} md={8} lg={8} className='pb-2'>
         <Card className='container shadow pb-3' style={{ height: props.maxHeight }}>
           <Card.Header className='BuckitListHeaderContainer'>
-            <div className='fs-4'>Buckit List</div>
+            <div className='fs-3'>Buckit List</div>
 
             {/* ---------------------------------------------------------- */}
             {/* If User Is Viewing His Or Her Profile In Show These Items  */}
@@ -54,7 +54,10 @@ const PostCreateCard = (props) => {
               <Card className='mb-2' key={index}>
                 <Card.Body className='BuckitListBodyContainer rounded'>
                   <Card.Header className='BuckitListBodyHeader'>
-                    <Card.Text>{item.progress}</Card.Text>
+                    <Card.Text>
+                      {' '}
+                      <span style={{ color: '#80ED99' }}>Status:</span> {item.progress}
+                    </Card.Text>
 
                     {/* ---------------------------------------------------------- */}
                     {/* If User Is Viewing His Or Her Profile In Show These Items  */}
@@ -66,9 +69,17 @@ const PostCreateCard = (props) => {
                           placement='left'
                           overlay={
                             <Popover id='popover-positioned-left'>
-                              <Popover.Header as='h3'>Popover left</Popover.Header>
+                              <Popover.Header as='h3'>Status Update</Popover.Header>
                               <Popover.Body>
-                                <strong>Holy guacamole!</strong> Check this info.
+                                <Button variant='primary' className='btn-sm' type='submit' name='progress' value='To Do'>
+                                  To Do
+                                </Button>{' '}
+                                <Button variant='warning' className='btn-sm' type='submit' name='progress' value='In Progress'>
+                                  In Progress
+                                </Button>{' '}
+                                <Button variant='success' className='btn-sm' type='submit' name='progress' value='Complete'>
+                                  Complete
+                                </Button>{' '}
                               </Popover.Body>
                             </Popover>
                           }
@@ -82,7 +93,10 @@ const PostCreateCard = (props) => {
                   </Card.Header>
 
                   <div className='BuckitListBodyText'>
-                    <Card.Text>{item.name}</Card.Text>
+                    <Card.Text>
+                      <span style={{ color: '#FFC947' }}>List Item: </span>
+                      {item.name}
+                    </Card.Text>
                   </div>
                 </Card.Body>
               </Card>

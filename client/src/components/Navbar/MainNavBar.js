@@ -13,9 +13,7 @@ import RainDrop from '../../utils/animation';
 import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-
 const MainNavBar = () => {
-
   const [show, setShow] = useState(false);
 
   const toggle = () => {
@@ -41,7 +39,7 @@ const MainNavBar = () => {
                     <i className='fab fa-bitbucket' onMouseOver={() => toggle()} onMouseOut={() => toggle()}></i>
                   </div>
 
-                  <span>Buck It</span>
+                  <span className='brandText'>Buck It</span>
                 </Navbar.Brand>
               </LinkContainer>
               <Navbar.Toggle aria-controls='responsive-navbar-nav' />
