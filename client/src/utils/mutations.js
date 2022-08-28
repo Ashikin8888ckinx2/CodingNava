@@ -68,8 +68,8 @@ export const ADD_BUCKET_LIST = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postData: PostInput!, $listName: String!){
-  addPost(postData: $postData, listName: $listName){
+  mutation addPost($postData: PostInput!, $bucketListId: ID!){
+  addPost(postData: $postData, bucketListId: $bucketListId){
     _id
     name
     createdBy
