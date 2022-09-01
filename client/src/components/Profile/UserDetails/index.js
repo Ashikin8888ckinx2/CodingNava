@@ -132,7 +132,7 @@ const ProfileUserDetails = (props) => {
         <FollowersModel username={props.userData.username} />
       </Modal>
       {/* /////////////////////////////////////////////////// */}
-      {/* FOLLOWING MODAL */}
+      {/* FOLLOWING MODAL -- */}
       {/* /////////////////////////////////////////////////// */}
       <Modal show={state.following} onHide={() => setState({ ...state, following: false })} backdrop='static' keyboard={false} className='modal-dialog-scrollable' size='xl'>
         <FollowingModel username={props.userData.username} />
