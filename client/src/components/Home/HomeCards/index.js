@@ -39,7 +39,7 @@ const HomeCards = () => {
             </Card.Body>
 
             <div className='BuckitCardBodyStatus'>
-              Status: <span>In Progress</span>
+              Status: <span>{post.bucketlist_id ? post.bucketlist_id.progress : "n/a"}</span>
             </div>
 
             {/* FOOTER */}

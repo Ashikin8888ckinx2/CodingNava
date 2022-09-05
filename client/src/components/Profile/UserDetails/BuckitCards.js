@@ -40,9 +40,9 @@ const BuckitCards = (props) => {
               <div className='BuckitCardBodyTitle'>{post.title} </div>
               <div className='BuckitCardBodyDescription'>{post.description}</div>
             </Card.Body>
-
+        {console.log(post)}
             <div className='BuckitCardBodyStatus'>
-              Status: <span>In Progress</span>
+              Status: <span>{post.bucketlist_id ? post.bucketlist_id.progress : "n/a"}</span>
             </div>
 
             {/* FOOTER */}
