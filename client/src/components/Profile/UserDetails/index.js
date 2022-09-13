@@ -22,15 +22,13 @@ import { Card, Col, Modal, Row } from 'react-bootstrap';
 const ProfileUserDetails = (props) => {
   const [ref, { height }] = useMeasure();
 
-  const [state, setState] = useState({
-    create: false,
-    followers: false,
-    following: false,
-  });
-
+  // console.log(height);
   ////////////////////////////////////////////////
   // MODAL STATES
   ////////////////////////////////////////////////
+  const [create, setCreate] = useState(false);
+  const [followers, setFollowers] = useState(false);
+  const [following, setFollowing] = useState(false);
 
   const userId = props.userData._id;
   const { loading, error, data } = useQuery(GET_BUCKETLISTS, {
@@ -50,7 +48,7 @@ const ProfileUserDetails = (props) => {
     if (window.location.pathname === '/profile') {
       return (
         <div>
-          <i className='fab fa-bitbucket' onClick={() => setState({ ...state, create: true })}></i>
+          <i className='fab fa-bitbucket' onClick={() => setCreate(true)}></i>
           Create
         </div>
       );
@@ -82,23 +80,23 @@ const ProfileUserDetails = (props) => {
           <Card className='shadow mb-2 MasterProfileDetails' ref={ref}>
             {/* HEADER */}
             <Card.Header className='UserDetailsCardHeader'>
-              <Card.Title className='UserDetailsCardUsername '>{props.userData.username}</Card.Title>
+              <Card.Title className='UserDetailsCardUsername'>{props.userData.username}</Card.Title>
             </Card.Header>
             {/* BODY */}
             <Card.Body>
-              <Card.Subtitle className='UserDetailsCardSubTitle font-monospace'>About Me</Card.Subtitle>
-              <Card.Text className='UserDetailsCardBio font-monospace'>{props.userData.bio || 'Current bio is empty'}</Card.Text>
+              <Card.Subtitle className='UserDetailsCardSubTitle'>About Me</Card.Subtitle>
+              <Card.Text className='UserDetailsCardBio'>{props.userData.bio || 'Current bio is empty'}</Card.Text>
             </Card.Body>
             {/* FOOTER */}
             <Card.Footer className='UserDetailsFooterContainer'>
               {handleUserDetailIcons()}
               <div>
-                <i className='fa fa-users' onClick={() => setState({ ...state, followers: true })}></i>
+                <i className='fa fa-users' onClick={() => setFollowers(true)}></i>
                 {/* <People onClick={() => setFollowers(true)} /> */}
                 <span>{props.userData.followers.length || 0}</span>
               </div>
               <div>
-                <i className='fa fa-user-plus' onClick={() => setState({ ...state, following: true })}></i>
+                <i className='fa fa-user-plus' onClick={() => setFollowing(true)}></i>
                 {/* <PersonPlus onClick={() => setFollowing(true)} /> */}
                 <span>{props.userData.following.length || 0}</span>
               </div>
@@ -122,19 +120,19 @@ const ProfileUserDetails = (props) => {
       {/* /////////////////////////////////////////////////// */}
       {/* CREATE MODAL */}
       {/* /////////////////////////////////////////////////// */}
-      <Modal show={state.create} onHide={() => setState({ ...state, create: false })} backdrop='static' keyboard={false} dialogClassName='modal-90w' className='modal-dialog-scrollable'>
-        <CreateModel bucketLists={data.getBucketLists} onHide={() => setState({ ...state, create: false })} />
+      <Modal show={create} onHide={() => setCreate(false)} backdrop='static' keyboard={false} dialogClassName='modal-90w' className='modal-dialog-scrollable'>
+        <CreateModel userId={userId} bucketLists={data.getBucketLists} onHide={() => setCreate(false)} />
       </Modal>
       {/* /////////////////////////////////////////////////// */}
       {/* FOLLOWERS MODAL */}
       {/* /////////////////////////////////////////////////// */}
-      <Modal show={state.followers} onHide={() => setState({ ...state, followers: false })} backdrop='static' keyboard={false} className='modal-dialog-scrollable' size='xl'>
+      <Modal show={followers} onHide={() => setFollowers(false)} backdrop='static' keyboard={false} className='modal-dialog-scrollable' size='xl'>
         <FollowersModel username={props.userData.username} />
       </Modal>
       {/* /////////////////////////////////////////////////// */}
-      {/* FOLLOWING MODAL -- */}
+      {/* FOLLOWING MODAL */}
       {/* /////////////////////////////////////////////////// */}
-      <Modal show={state.following} onHide={() => setState({ ...state, following: false })} backdrop='static' keyboard={false} className='modal-dialog-scrollable' size='xl'>
+      <Modal show={following} onHide={() => setFollowing(false)} backdrop='static' keyboard={false} className='modal-dialog-scrollable' size='xl'>
         <FollowingModel username={props.userData.username} />
       </Modal>
     </>
