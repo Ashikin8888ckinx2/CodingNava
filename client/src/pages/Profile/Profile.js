@@ -27,6 +27,7 @@ const Profile = () => {
   let { username } = useParams();
 
   const viewingOwnProfile = !username;
+
   const { loading, data } = useQuery(viewingOwnProfile ? GET_ME : GET_USER, {
     variables: { username },
   });
@@ -105,7 +106,7 @@ const Profile = () => {
 
   return (
     <>
-      <div className='rounded' style={editProfileCardStyle}>
+      <div className='rounded font-monospace' style={editProfileCardStyle}>
         <ProfileHeader userData={userData} viewingOwnProfile={viewingOwnProfile} updateProfile={updateProfileSubmit} />
         <Container className='pb-2' fluid>
           <ProfileUserDetails key={userData.username} userData={userData} follow={handleFollowClick} isFollowing={isFollowing} />

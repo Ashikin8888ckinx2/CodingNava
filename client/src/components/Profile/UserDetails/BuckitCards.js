@@ -4,7 +4,7 @@ import { Card, Col, Image } from 'react-bootstrap';
 import '../Profile.css';
 import { GET_POSTS } from '../../../utils/queries';
 import { useQuery } from '@apollo/client';
-import { convertDate } from '../../../utils/dateConvert.js';
+import { convertDate } from '../../../utils/helpers';
 
 const BuckitCards = (props) => {
   const userData = props.userData.userData;
@@ -20,33 +20,31 @@ const BuckitCards = (props) => {
 
   return (
     <>
-      {data.getPosts.map((post, index) => (
-        <Col className='pb-2' sm={4} md={4} lg={4} key={index}>
+      {data.getPosts.map((post, i) => (
+        <Col className='pb-2' sm={6} md={4} lg={4} xl={3} xxl={3} key={i}>
           <Card className='shadow h-100'>
             {/* CARD HEADER */}
             <Card.Title>
-              <div className='BuckitCardTitleContainer'>
-                <div className='BuckitCardImageUsername'>
-                  <Image className='BuckitCardProfileImage' src={userData.picture + '/60x60'} roundedCircle />
-                  <p className='BuckitCardUsername '>{userData.username}</p>
+              <div className='d-flex flex-column bd-highlight' style={{ height: 'auto' }}>
+                <div className='bd-highlight align-self-end BuckitCardDate'>{convertDate(post.date_created)}</div>
+                <div className='p-2 bd-highlight align-self-center'>
+                  <Image className='BuckitCardProfileImage' src={userData.picture} roundedCircle />
                 </div>
-
-                <div className='BuckitCardDate'>{convertDate(post.date_created)}</div>
+                <div className='p-2 bd-highlight align-self-center'>{userData.username}</div>
               </div>
             </Card.Title>
 
             {/* CARD BODY */}
             <Card.Body className='BuckitCardBodyContainer'>
-              <div className='BuckitCardBodyTitle'>{post.title} </div>
               <Card.Img className='BuckitCardImage rounded' src={post.images} />
+              <div className='BuckitCardBodyTitle'>{post.title} </div>
               <div className='BuckitCardBodyDescription'>{post.description}</div>
             </Card.Body>
-        {console.log(post)}
             <div className='BuckitCardBodyStatus'>
-              Status: <span>{post.bucketlist_id ? post.bucketlist_id.progress : "n/a"}</span>
+              Status: <span>{post.bucketlist_id ? post.bucketlist_id.progress : 'n/a'}</span>
             </div>
 
-            {/* HEADER /////////////// ROW #6 */}
+            {/* FOOTER */}
             <Card.Footer className='bg-transparent'>
               <div className='BuckitCardFooter'>
                 {post.tags.map((tag, i) => (
