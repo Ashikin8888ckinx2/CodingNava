@@ -96,6 +96,15 @@ export const ADD_COMMENT = gql`
   }
 `;
 
+export const EDIT_BUCKET_LIST = gql`
+  mutation editBucketList($listId: ID!, $progress: String) {
+    editBucketList(listId: $listId, progress: $progress){
+      name
+      progress
+    }
+  }
+`
+
 export const DELETE_BUCKET_LIST = gql`
   mutation deleteBucketList($listId: ID!) {
     deleteBucketList(listId: $listId) {
@@ -105,10 +114,7 @@ export const DELETE_BUCKET_LIST = gql`
       bio
       picture
       banner_picture
-      bucketList {
-        _id
-        progress
-      }
+      bucketList
     }
   }
 `;

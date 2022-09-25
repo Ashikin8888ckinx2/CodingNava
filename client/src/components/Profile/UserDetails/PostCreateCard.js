@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import PostModal from './PostModal';
 import '../Profile.css';
 import { GET_BUCKETLISTS } from '../../../utils/queries';
-import { ADD_BUCKET_LIST } from '../../../utils/mutations';
+import { ADD_BUCKET_LIST, DELETE_BUCKET_LIST, EDIT_BUCKET_LIST } from '../../../utils/mutations';
 import { useQuery, useMutation } from '@apollo/client';
 import Auth from '../../../utils/auth';
 
@@ -25,13 +25,47 @@ const PostCreateCard = (props) => {
     refetchQueries: [GET_BUCKETLISTS],
   });
 
-  const handleDelete = (event) => {
-    const value = event.target;
-    console.log(value);
-  };
+  const[updatedBucketList, {data: updatedBucketData, loading: updatedBucketLoading, error: updatedBucketError}] = useMutation(EDIT_BUCKET_LIST, {
+    refetchQueries: [GET_BUCKETLISTS],
+  });
+
+  const [deleteBucketList, {data: deleteBucketData, loading: deleteBucketLoading, error: deleteBucketError}] = useMutation(DELETE_BUCKET_LIST, {
+    refetchQueries: [GET_BUCKETLISTS],
+  })
 
   if (loading) return null;
   if (error) return 'error';
+
+  const handleDelete = (event) => {
+    const { id }= event.target;
+
+    deleteBucketList({
+      variables: {
+        listId: id
+      }
+    });
+  };
+
+  const handleProgressChange = (event) =>{
+    // input value (progress) and name (listId) from change
+    const {name, value} = event.target;
+
+    // use value and name to change bucketlist progress
+    updatedBucketList({
+      variables: {
+        listId: name,
+        progress: value
+      }
+    })
+  }
+  // TO SHOW ADD BUCKIT LIST FOR THE USER THATS LOGGED IN
+  const showAddButton = () => {
+    return (
+      <Button onClick={() => setState({ ...state, post: true })} className='buckitListBtnStyle'>
+        <span className='BuckitListPlus'>+</span>
+      </Button>
+    );
+  };
 
   return (
     <>
@@ -86,7 +120,7 @@ const PostCreateCard = (props) => {
                         >
                           <i className='fas fa-wrench'></i>
                         </OverlayTrigger>
-                        <i className='far fa-trash-alt'></i>
+                        <i className='far fa-trash-alt' id={item._id} onClick={handleDelete}></i>
                       </div>
                     )}
                     {/* ----------------------------------------------------------------- */}
