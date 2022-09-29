@@ -4,38 +4,37 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 import { useQuery } from '@apollo/client';
 import { GET_ALL_POSTS } from '../../../utils/queries';
-import { convertDate } from '../../../utils/dateConvert';
+import { convertDate } from '../../../utils/helpers';
 
 const HomeCards = () => {
-
   const { loading, data } = useQuery(GET_ALL_POSTS);
 
   if (loading) {
     return null;
   }
-  
+
   return (
     <>
       {data.getAllPosts.map((post, i) => (
-        <Col className='pb-2' sm={4} md={4} lg={4} key={i}>
-
+        <Col className='pb-2' sm={6} md={4} lg={4} xl={3} xxl={3} key={i}>
           <Card className='shadow h-100'>
             {/* CARD HEADER */}
             <Card.Title>
-              <div className='BuckitCardTitleContainer'>
+              <div className='d-flex flex-column bd-highlight' style={{ height: 'auto' }}>
+                <div className='bd-highlight align-self-end BuckitCardDate'>{convertDate(post.date_created)}</div>
                 <LinkContainer to={'/profile/' + post.createdBy.username}>
-                  <div className='BuckitCardImageUsername'>
-                    <Image className='BuckitCardProfileImage' src={post.createdBy.picture} width="60px" roundedCircle />
-                    <p className='BuckitCardUsername '>{post.createdBy.username}</p>
+                  <div className='p-2 bd-highlight align-self-center'>
+                    <Image className='BuckitCardProfileImage' src={post.createdBy.picture} style={{ cursor: 'pointer' }} roundedCircle />
                   </div>
                 </LinkContainer>
-                <div className='BuckitCardDate'>{convertDate(post.date_created)}</div>
+                <div className='p-2 bd-highlight align-self-center'>{post.createdBy.username}</div>
               </div>
             </Card.Title>
+
             {/* CARD BODY */}
             <Card.Body className='BuckitCardBodyContainer'>
-              <div className='BuckitCardBodyTitle'>{post.title}</div>
               <Card.Img className='BuckitCardImage rounded' src={post.images[0]} />
+              <div className='BuckitCardBodyTitle'>{post.title}</div>
               <div className='BuckitCardBodyDescription'>{post.description}</div>
             </Card.Body>
 
@@ -43,7 +42,7 @@ const HomeCards = () => {
               Status: <span>{post.bucketlist_id ? post.bucketlist_id.progress : "n/a"}</span>
             </div>
 
-            {/* HEADER /////////////// ROW #6 */}
+            {/* FOOTER */}
             <Card.Footer className='bg-transparent'>
               <div className='BuckitCardFooter'>
                 {post.tags.map((tag, i) => (
@@ -52,10 +51,8 @@ const HomeCards = () => {
               </div>
             </Card.Footer>
           </Card>
-
         </Col>
-      ))
-      }
+      ))}
     </>
   );
 };

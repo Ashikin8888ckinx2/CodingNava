@@ -7,11 +7,10 @@ import { Card, Container, Row, Col, Image, Button, Modal, Tab } from 'react-boot
 import '../Profile.css';
 
 const ProfileHeader = (props) => {
-  ////////////////////////////////////////////////
-  // MODAL STATES
-  ////////////////////////////////////////////////
-
-  const [show, setShow] = useState(false);
+  const [state, setState] = useState({
+    viewingOwnProfile: window.location.pathname === '/profile',
+    show: false,
+  });
 
   return (
     <>
@@ -26,15 +25,16 @@ const ProfileHeader = (props) => {
                     <Col xs={3} sm={3} md={3} lg={3}>
                       <Image className='UserProfileImage' src={props.userData.picture || 'https://source.unsplash.com/XHVpWcr5grQ'} thumbnail rounded />
                     </Col>
-                    {/* IF WINDOW SIZE IS LESS THAN xs=0-768 pixels */}
-
-                    { props.viewingOwnProfile ? 
-                    <Col style={{ textAlign: 'right' }}>
-                      <Button className='editProfileBtnStyle' onClick={() => setShow(true)}>
-                        Edit Profile
-                      </Button>
-                    </Col> 
-                    : "" }
+                    {/* ---------------------------------------------------------- */}
+                    {/* If User Is Viewing His Or Her Profile In Show These Items  */}
+                    {state.viewingOwnProfile && (
+                      <Col style={{ textAlign: 'right' }}>
+                        <Button className='editProfileBtnStyle' onClick={() => setState({ ...state, show: true })}>
+                          Edit Profile
+                        </Button>
+                      </Col>
+                    )}
+                    {/* ----------------------------------------------------------------- */}
                   </Row>
                 </Container>
               </Card.ImgOverlay>
@@ -46,7 +46,7 @@ const ProfileHeader = (props) => {
       {/* /////////////////////////////////////////////////// */}
       {/* EDIT PROFILE MODAL */}
       {/* /////////////////////////////////////////////////// */}
-      <Modal show={show} onHide={() => setShow(false)} backdrop='static' keyboard={false} dialogClassName='modal-90w' aria-labelledby='user-edit-profile-modal'>
+      <Modal show={state.show} onHide={() => setState({ ...state, show: false })} backdrop='static' keyboard={false} dialogClassName='modal-90w' aria-labelledby='user-edit-profile-modal'>
         <Tab.Container defaultActiveKey='Settings'>
           {/* LOGIN/SIGNUP MODAL: HEADER */}
           <Modal.Header closeButton>

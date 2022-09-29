@@ -7,7 +7,7 @@ import HomeCards from '../../components/Home/HomeCards';
 const Home = () => {
   return (
     <>
-      <div className='rounded'>
+      <div className='rounded font-monospace'>
         <Container className='pb-2' fluid>
           <Row>
             <HomeCards key={Date.now()}/>

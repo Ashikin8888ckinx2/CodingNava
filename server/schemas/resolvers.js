@@ -140,15 +140,15 @@ const resolvers = {
       }
       throw new AuthenticationError('User not logged in');
     },
-    editBucketList: async (parent, { listId, listData }, context) => {
+    editBucketList: async (parent, { listId, progress }, context) => {
       // check if logged in, then allow user to edit bucket list
       if (context.user) {
         const updatedList = await BucketList.findByIdAndUpdate(
           { _id: listId },
           {
-            name: listData.name,
-            progress: listData.progress,
-
+            $set: {
+              progress: progress
+            }
           }
         );
 

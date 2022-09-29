@@ -13,7 +13,7 @@
 .NavBarMainContainer {
   margin-top: 8px !important;
   margin-bottom: 8px !important;
-  padding: 0px !important;
+  padding: 4px !important;
   background-color: #010101;
 }
 
@@ -33,11 +33,7 @@
 }
 
 .NavBrandContainer i:hover {
-  color: #99154e;
-  -moz-transform: rotate(28deg);
-  -webkit-transform: rotate(28deg);
-  -o-transform: rotate(28deg);
-  -ms-transform: rotate(28deg);
+  color: #009dae;
   transform: rotate(28deg);
   transition: color transform 0.15s ease;
 }
@@ -48,23 +44,39 @@
   font-family: 'Lobster', cursive;
 }
 
+.brandText {
+  color: white;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.brandText:hover {
+  color: transparent;
+  transition: 500ms ease;
+}
+
 /* ////////////////////////////////////////////////// */
 /* SEARCH EMOJI + PROFILE + LOGOUT BUTTON  */
 /* ////////////////////////////////////////////////// */
 
-.NavProfileIcon {
+.NavProfileContainer {
   padding: 8px 8px 8px 8px !important;
 }
 
-.NavProfileIcon i {
-  color: #1e4766;
-  margin: 0px !important;
-  font-size: 2.4rem !important;
+.NavProfileImage {
+  width: 40px !important;
+  height: 40px !important;
+  -o-object-fit: cover;
+  object-fit: cover;
+  cursor: pointer;
+  border: #fff solid 3px !important;
+  transition: 1s ease;
 }
 
-.NavProfileIcon i:hover {
-  color: #296491;
-  transition: color 0.15s ease;
+.NavProfileImage:hover {
+  transform: scale(0.8);
+  transition: 1s ease;
 }
 
 /* SEARCH EMOJI */
@@ -72,11 +84,12 @@
   font-size: 36px !important;
   padding: 0px 8px 0px 16px !important;
   cursor: pointer;
+  transition: 1s ease;
 }
 
 .NavSearchEmoji:hover {
-  transform: scale(1.1);
-  transition: transform 0.15s ease;
+  transform: scale(0.8);
+  transition: transform 1s ease;
 }
 
 .SearchModalTitle {
@@ -90,6 +103,7 @@
 .UserSearchImage {
   width: 100% !important;
   height: 19vw !important;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 
@@ -125,7 +139,7 @@
 
 @media only screen and (max-width: 500px) {
   .NavSearchEmoji,
-  .NavProfileIcon {
+  .NavProfileImage {
     margin-left: 20px !important;
   }
 
@@ -134,12 +148,8 @@
   }
 
   .NavSearchEmoji:hover {
-    -moz-transform: scale(1.1) translate(14px, 0px);
-    -webkit-transform: scale(1.1) translate(14px, 0px);
-    -o-transform: scale(1.1) translate(14px, 0px);
-    -ms-transform: scale(1.1) translate(14px, 0px);
-    transform: scale(1.1) translate(14px, 0px);
-    transition: transform 0.15s ease;
+    transform: scale(0.8) translate(-50px, 0px);
+    transition: 1s ease;
   }
 
   .navSearchForm {
@@ -160,6 +170,7 @@
   .UserSearchImage {
     width: 100% !important;
     height: 19vw !important;
+    -o-object-fit: cover;
     object-fit: cover;
   }
 
