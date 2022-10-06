@@ -10,7 +10,7 @@ const Home = () => {
       <div className='rounded font-monospace'>
         <Container className='pb-2' fluid>
           <Row>
-            <HomeCards />
+            <HomeCards key={Date.now()}/>
           </Row>
         </Container>
       </div>
